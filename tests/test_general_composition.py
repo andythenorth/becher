@@ -46,3 +46,32 @@ def test_same_site_collision_rejected():
     parts={'tank':load_part('tank')}
     with pytest.raises(ValueError,match='Incompatible geometry'):
         arbitrary_scene((('tank',.5,.5,0),('tank',.5,.5,0)),parts)
+
+
+def test_packing_uses_actual_footprints_not_original_centres():
+    from src.composition import packed_sites, packed_scene
+    parts = {n: load_part(n) for n in ('tank','chimney_low_tapered')}
+    sites = packed_sites(parts, ('tank','chimney_low_tapered'), (0,0), 0)
+    assert sites is not None and sites[0] != sites[1]
+    scene = packed_scene(parts, ('tank','chimney_low_tapered'), (0,0), 0)
+    assert scene is not None
+    assert len(scene['catalogue']['components']) == 2
+
+
+def test_slab_not_collision_checked_but_component_base_is():
+    from src.composition import valid_addition
+    # A local footing is an ordinary shape, so another solid intersecting it
+    # is rejected; the shared tile slab is not supplied to occupied geometry.
+    footing = {'id':'footing','type':'box','bounds':[.2,.2,.044,.4,.4,.09]}
+    intruder = {'id':'intruder','type':'box','bounds':[.25,.25,.07,.35,.35,.12]}
+    occupied = occupied_boxes(footing)
+    assert not valid_addition([intruder],occupied,(.25,.25,.35,.35))
+    assert valid_addition([intruder],[],(.25,.25,.35,.35))
+
+
+def test_all_quarter_turns_are_available_for_packing():
+    from src.composition import packed_scene
+    parts = {n: load_part(n) for n in ('tank','chimney_low_tapered')}
+    for turns in range(4):
+        scene = packed_scene(parts,('tank','chimney_low_tapered'),(0,turns),0)
+        assert scene is not None

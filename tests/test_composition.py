@@ -11,7 +11,7 @@ from zipfile import ZipFile
 from PIL import Image
 import pytest
 
-from src.composition import candidates, compose, draft, draw
+from src.composition import candidates, draft, draw
 from src.mesh.compile import compile_scene
 from ui.__main__ import Handler, Review
 
@@ -41,14 +41,6 @@ def test_all_installed_compositions_compile_inside_tile():
             vertices = compile_scene(scene).vertices
             assert (vertices >= -1e-9).all()
             assert (vertices[..., :2] <= 1 + 1e-9).all()
-
-
-def test_incompatible_storage_placement_is_rejected(monkeypatch):
-    from src import composition
-    parts = {name: composition.load_part(name) for name in ('gable_shed', 'tank')}
-    monkeypatch.setitem(composition.PLANS, 'wall_pair', ((.5, .28, .81), (.37, .55), (.78,)))
-    with pytest.raises(ValueError, match='incompatible footprints'):
-        compose('gable_shed', 'wall_pair', 'tank', parts)
 
 
 def test_cap_allows_skew_and_one_type_fallback():

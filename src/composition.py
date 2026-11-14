@@ -1,6 +1,8 @@
 """Choose seeded tile compositions from fixed assemblies and compatible placements."""
 
 from collections import Counter
+from functools import lru_cache
+from itertools import combinations
 from copy import deepcopy
 import json
 from pathlib import Path
@@ -16,16 +18,9 @@ TYPE_CAP = 12
 HIGH_PROFILE = .42  # Height above the slab in tile units.
 SLAB = .044
 
-# Each storage plan gives the hall (X, Y, length) and a grid of vessel centres.
-PLANS = {
-    'end_single': ((.275, .28, .48), (.75,), (.70,)),
-    'wall_pair': ((.5, .28, .81), (.37, .63), (.78,)),
-    'wall_row': ((.5, .28, .81), (.23, .50, .77), (.78,)),
-    'end_pair': ((.305, .28, .52), (.77,), (.59, .83)),
-    'corner_square': ((.5, .25, .76), (.60, .85), (.55, .80)),
-    'joined_pair': ((.5, .28, .81), (.50,), (.78,)),
-}
-VESSEL_PLANS = ('wall_pair', 'wall_row', 'end_pair', 'corner_square')
+EPSILON = 1e-6
+SITE_MIN, SITE_MAX = .035, .965
+GAP = .018  # Clearance between the occupied footprints of packed components.
 
 
 def vocabularies():
@@ -48,49 +43,13 @@ def list_components():
 def render_component(component, output):
     if component not in component_catalogue():
         raise ValueError(f'Unknown installed component: {component}')
-    shapes = place(load_part(component), '', (.5, .5, 0))
+    shapes = rigid_place(load_part(component), '', (.5, .5), 0)
     render_geometry({'shapes': shapes}, output)
     return {'id': component, 'sprites': 4}
 
 
 def load_part(name):
     return json.loads((DIRECTORY / f'{name}.json').read_text(encoding='utf-8'))
-
-
-def place(part, prefix, offset, xy_scale=(1, 1)):
-    # Hall spans fit the authored placement plan; all component Z dimensions are fixed.
-    def point(values):
-        return [round(value * scale + base, 8)
-                for value, scale, base in zip(values, (*xy_scale, 1), offset)]
-
-    shapes = deepcopy(part['shapes'])
-    for shape in shapes:
-        shape['id'] = prefix + shape['id']
-        if 'bounds' in shape:
-            bounds = shape['bounds']
-            shape['bounds'] = point(bounds[:3]) + point(bounds[3:])
-        elif shape['type'] == 'rings':
-            shape['rings'] = [[point(vertex) for vertex in ring] for ring in shape['rings']]
-        elif shape['type'] == 'revolution' and xy_scale == (1, 1):
-            shape['center'] = point(shape['center'])
-            shape['profile'] = [[round(z + offset[2], 8), radius]
-                                for z, radius in shape['profile']]
-        elif shape['type'] == 'beam' and xy_scale == (1, 1):
-            shape['start'] = point(shape['start'])
-            shape['end'] = point(shape['end'])
-        else:
-            raise ValueError(f"Unsupported assembly placement for {shape['id']}")
-    return shapes
-
-
-def footprint(part, x, y, scale):
-    a, b, c, d = part['footprint']
-    sx, sy = scale
-    return x + a*sx, y + b*sy, x + c*sx, y + d*sy
-
-
-def overlaps(a, b):
-    return a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
 
 
 def top(shape):
@@ -101,83 +60,6 @@ def top(shape):
     if shape['type'] == 'revolution':
         return max(z for z, _ in shape['profile'])
     return max(shape['start'][2], shape['end'][2]) + shape['thickness'] / 2
-
-
-def compose(shed, plan, accessory, parts):
-    hall = parts[shed]
-    slab = dict(id='slab', type='box', material='concrete',
-                bounds=[.035, .045, 0, .965, .955, SLAB])
-    kind = 'none'
-    placements = []
-    if plan == 'equipment_tile':
-        part = parts[accessory]
-        kind = part['role'] + 's'
-        hall_site = (.5, .5, (1, 1))
-    elif plan in PLANS:
-        (x, y, length), xs, ys = PLANS[plan]
-        hall_site = (x, y, (length, .85))
-        part = parts[accessory]
-        kind = part['role'] + 's'
-        placements = [(x, y) for y in ys for x in xs]
-    else:
-        hall_site = (.5 if plan == 'standalone' else .43, .5, (.90, 1.40))
-        if plan == 'with_annex':
-            part = parts[accessory]
-            placements = [(.65, .812)]
-
-    x, y, hall_scale = hall_site
-    hall_bounds = footprint(hall, x, y, hall_scale)
-    bounds = [hall_bounds]
-    shapes = place(hall, 'hall_', (x, y, SLAB), hall_scale)
-    for index, (x, y) in enumerate(placements):
-        area = footprint(part, x, y, (1, 1))
-        # An annex deliberately intersects its host wall. Storage needs a clear site.
-        collision = any(overlaps(area, other) for other in bounds)
-        if collision != (plan == 'with_annex'):
-            raise ValueError(f'{shed}, {plan}, {accessory}: incompatible footprints')
-        bounds.append(area)
-        prefix = 'annex_' if plan == 'with_annex' else f'yard_{index}_'
-        shapes.extend(place(part, prefix, (x, y, SLAB)))
-    if any(not (0 <= a < c <= 1 and 0 <= b < d <= 1) for a, b, c, d in bounds):
-        raise ValueError(f'{shed}, {plan}, {accessory}: assembly extends off the tile')
-
-    if plan in PLANS and len(placements) > 1:
-        reach = part['footprint'][2] - (.024 if kind == 'tanks' else .01)
-        z = SLAB + part['port'][2]
-        for row, y in enumerate(ys):
-            for column, x in enumerate(xs):
-                if column + 1 < len(xs):
-                    shapes.append(dict(id=f'pipe_x_{row}_{column}', type='beam', material='pipe',
-                                       start=[x + reach, y, z], end=[xs[column + 1] - reach, y, z],
-                                       thickness=.023))
-                if row + 1 < len(ys):
-                    shapes.append(dict(id=f'pipe_y_{row}_{column}', type='beam', material='pipe',
-                                       start=[x, y + reach, z], end=[x, ys[row + 1] - reach, z],
-                                       thickness=.023))
-
-    silhouette = 'high' if max(map(top, shapes)) - SLAB >= HIGH_PROFILE else 'low'
-    label = shed.replace('_', ' ') if plan == 'equipment_tile' else ' · '.join(name.replace('_', ' ') for name in (shed, plan, accessory) if name)
-    return {'shapes': [slab, *shapes], 'catalogue': {
-        'composition': '_'.join(filter(None, (shed, plan, accessory))),
-        'type': f'{plan}:{kind}',
-        'layout': plan.replace('_', ' '),
-        'ancillary': kind,
-        'silhouette': silhouette,
-        'label': label,
-    }}
-
-
-# General fixed-geometry composition.  No component geometry is generated or scaled.
-# Components are translated and quarter-turned; primitive occupancy, not vocabulary
-# roles, determines whether a combination is valid.
-from functools import lru_cache
-from itertools import combinations
-
-SITE_MIN, SITE_MAX = .035, .965
-# Ordered positions, ensuring adjacent and diagonal layouts are both considered.
-SITES = ((.20,.20),(.80,.80),(.80,.20),(.20,.80),
-         (.50,.20),(.80,.50),(.50,.80),(.20,.50))
-EPSILON = 1e-6
 
 
 def rotate_xy(x, y, turns):
@@ -311,61 +193,117 @@ def all_names(tags):
                    for name in items})
 
 
+def packed_sites(parts, names, turns, axis):
+    """Pack intact component footprints, centred in the tile.
+
+    The component origin is irrelevant. The returned positions are derived
+    solely from the rotated authored footprints; no role or magic site list.
+    """
+    bounds = [transformed_footprint(parts[n], (0, 0), t)
+              for n, t in zip(names, turns)]
+    widths = [b[2]-b[0] for b in bounds]
+    heights = [b[3]-b[1] for b in bounds]
+    if axis == 0:
+        if sum(widths)+GAP*(len(names)-1) > SITE_MAX-SITE_MIN+EPSILON or max(heights)>SITE_MAX-SITE_MIN+EPSILON:
+            return None
+        cursor = .5 - (sum(widths)+GAP*(len(names)-1))/2
+        sites=[]
+        for b,w in zip(bounds,widths):
+            sites.append((round(cursor-b[0],8), round(.5-(b[1]+b[3])/2,8)))
+            cursor += w+GAP
+        return sites
+    if sum(heights)+GAP*(len(names)-1) > SITE_MAX-SITE_MIN+EPSILON or max(widths)>SITE_MAX-SITE_MIN+EPSILON:
+        return None
+    cursor = .5 - (sum(heights)+GAP*(len(names)-1))/2
+    sites=[]
+    for b,h in zip(bounds,heights):
+        sites.append((round(.5-(b[0]+b[2])/2,8), round(cursor-b[1],8)))
+        cursor += h+GAP
+    return sites
+
+
+def packed_scene(parts, names, turns, axis):
+    sites = packed_sites(parts, names, turns, axis)
+    if sites is None:
+        return None
+    try:
+        return arbitrary_scene(tuple((n,x,y,t) for n,(x,y),t in zip(names,sites,turns)),parts)
+    except ValueError:
+        return None
+
+
 @lru_cache(maxsize=16)
 def _general_candidates(names, silhouette):
     if silhouette not in ('low','high'):
         raise ValueError('Select a low or high silhouette')
     parts = {name:load_part(name) for name in names}
     pool = {}
-    def add(entries):
+
+    def add(scene):
+        if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+            pool[scene['catalogue']['composition']] = scene
+
+    # Standalone parts are a fallback, rather than the dominant batch output.
+    for name in names:
+        part = parts[name]
+        centre = transformed_footprint(part,(0,0),0)
+        at = (.5-(centre[0]+centre[2])/2,.5-(centre[1]+centre[3])/2)
         try:
-            scene=arbitrary_scene(entries,parts)
+            add(arbitrary_scene(((name,*at,0),),parts))
         except ValueError:
-            return False
-        if scene['catalogue']['silhouette'] == silhouette:
-            pool[scene['catalogue']['composition']]=scene
-        return True
+            pass
 
-    # Every component is eligible alone, irrespective of original role.
-    for name in names:
-        add(((name,.5,.5,0),))
-
-    # Exhaustive unordered component pairs. For each pair select the first
-    # feasible site from each of two contrasting placement orders. No role
-    # restrictions, and the same names work across vocabulary boundaries.
+    # Every unordered component pair is attempted with both packing axes and
+    # all four orientations of each component. No category restrictions.
+    # Stop after the first valid placement *matching the requested silhouette*.
+    feasible_pairs = []
     for a,b in combinations(names,2):
-        for first,second in ((a,b),(b,a)):
-            base=(first,.5,.5,0)
-            for x,y in SITES:
-                turns = 0 if x==y else 1
-                entries=(base,(second,x,y,turns))
-                if add(entries):
-                    break
-
-    # Repeated instances of the same component, where their geometry fits.
-    for name in names:
-        base=(name,.28,.5,0)
-        for x,y in ((.72,.5),(.5,.75),(.75,.75)):
-            if add((base,(name,x,y,0))):
-                break
-
-    # Three-component arrangements formed from any compatible pair and a
-    # third independently selected component, without role compatibility.
-    # Bounded to keep the candidate catalogue reasonably fast to enumerate.
-    if len(names)>2:
-        for i,a in enumerate(names):
-            b=names[(i+1)%len(names)]
-            c=names[(i+2)%len(names)]
-            for x,y in SITES:
-                first=((a,.36,.36,0),(b,x,y,0))
-                try:
-                    arbitrary_scene(first,parts)
-                except ValueError:
-                    continue
-                for xx,yy in reversed(SITES):
-                    if add((*first,(c,xx,yy,0))):
+        selected = None
+        for axis in (0,1):
+            for ta in range(4):
+                for tb in range(4):
+                    scene = packed_scene(parts,(a,b),(ta,tb),axis)
+                    if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+                        selected = scene
                         break
+                if selected is not None:
+                    break
+            if selected is not None:
                 break
+        if selected is not None:
+            add(selected)
+            feasible_pairs.append((a,b))
+
+    # Repeat identical parts where a second copy fits; no special casing.
+    for name in names:
+        for axis in (0,1):
+            found = False
+            for t in range(4):
+                scene=packed_scene(parts,(name,name),(0,t),axis)
+                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+                    add(scene)
+                    found=True
+                    break
+            if found:
+                break
+
+    # Triple diversity is bounded linearly with catalogue size, rather than
+    # attempting a cubic number of tuples. All pairings remain eligible above.
+    if len(names)>2 and feasible_pairs:
+        for i,a in enumerate(names):
+            partners = next(((x,y) for x,y in feasible_pairs if a in (x,y)), None)
+            if partners is None:
+                continue
+            b = partners[1] if partners[0] == a else partners[0]
+            others = [n for n in names if n not in (a,b)]
+            if not others:
+                continue
+            c = others[i % len(others)]
+            for axis in (0,1):
+                scene=packed_scene(parts,(a,b,c),(0,0,0),axis)
+                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+                    add(scene)
+                    break
     if not pool:
         raise ValueError('No compositions match this silhouette and vocabulary')
     return pool
