@@ -1,0 +1,267 @@
+{
+  "components": [
+    {
+      "bounds": [
+        0.043,
+        0.065,
+        0,
+        0.957,
+        0.935,
+        0.05
+      ],
+      "count": 0,
+      "id": "base",
+      "material": "concrete",
+      "parent": null,
+      "rise": 0.0,
+      "role": "foundation",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.391227,
+        0.391078,
+        0.05,
+        0.695791,
+        0.636153,
+        0.225266
+      ],
+      "count": 0,
+      "id": "main",
+      "material": "metal",
+      "parent": null,
+      "rise": 0.0,
+      "role": "fabric",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.391227,
+        0.391078,
+        0.05,
+        0.695791,
+        0.636153,
+        0.225266
+      ],
+      "count": 1,
+      "id": "main:roof",
+      "material": "roof",
+      "parent": "main",
+      "rise": 0.025,
+      "role": "roof",
+      "roof": "flat",
+      "shape": "roof"
+    },
+    {
+      "bounds": [
+        0.086,
+        0.106,
+        0.05,
+        0.294,
+        0.314,
+        0.4
+      ],
+      "count": 0,
+      "id": "standalone:tank_a",
+      "material": "pipe",
+      "parent": null,
+      "rise": 0.0,
+      "role": "vessel",
+      "roof": null,
+      "shape": "cylinder"
+    },
+    {
+      "bounds": [
+        0.116,
+        0.476,
+        0.05,
+        0.324,
+        0.684,
+        0.44
+      ],
+      "count": 0,
+      "id": "standalone:tank_b",
+      "material": "pipe",
+      "parent": null,
+      "rise": 0.0,
+      "role": "vessel",
+      "roof": null,
+      "shape": "cylinder"
+    },
+    {
+      "bounds": [
+        0.6362,
+        0.1462,
+        0.05,
+        0.8338,
+        0.3438,
+        0.48
+      ],
+      "count": 0,
+      "id": "standalone:tank_c",
+      "material": "pipe",
+      "parent": null,
+      "rise": 0.0,
+      "role": "vessel",
+      "roof": null,
+      "shape": "cylinder"
+    },
+    {
+      "bounds": [
+        0.697791,
+        0.54425,
+        0.054,
+        0.707791,
+        0.590814,
+        0.134128
+      ],
+      "count": 0,
+      "id": "feat/doors/main/personnel/right/door",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "doors",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.467687,
+        0.506696,
+        0.234266,
+        0.509687,
+        0.546696,
+        0.342686
+      ],
+      "count": 0,
+      "id": "feat/equipment/main/roof_vent/0",
+      "material": "metal",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "equipment",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.577767,
+        0.362078,
+        0.071699,
+        0.607767,
+        0.373078,
+        0.090699
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/front/plate/0",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.55093,
+        0.654153,
+        0.074056,
+        0.58093,
+        0.665153,
+        0.093056
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/back/plate/0",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.543354,
+        0.654153,
+        0.082121,
+        0.573354,
+        0.665153,
+        0.101121
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/back/plate/1",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.577432,
+        0.654153,
+        0.067904,
+        0.607432,
+        0.665153,
+        0.086904
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/back/plate/2",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    }
+  ],
+  "family": "tank_yard",
+  "id": "3098250cb2bf2f9b",
+  "index": 6,
+  "label": "Ancillary - bulk tank yard",
+  "parameters": {
+    "base_building_id": "581b15a40b8dde83",
+    "facade_profiles": {
+      "main": {
+        "doors": "personnel",
+        "windows": "blank"
+      }
+    },
+    "feature_counters": {
+      "doors": 0,
+      "equipment": 0,
+      "greeble": 0,
+      "windows": 0
+    },
+    "feature_pipeline": true,
+    "feature_schema": 1,
+    "fixtures": [],
+    "global_scale": [
+      1.0877,
+      0.9077,
+      0.8189
+    ],
+    "grammar_category": "ancillary",
+    "layout": "mirror_x",
+    "omitted_optional": [],
+    "rerolls": {},
+    "roof_config": {
+      "main": {
+        "bays": 1,
+        "rise": 0.025,
+        "roof": "flat"
+      }
+    },
+    "schema_version": 1,
+    "variation": {
+      "annex_mode": "include",
+      "arrangement": "broad_annex",
+      "aspect": "broad",
+      "height": "low",
+      "roof_variant": 3
+    }
+  },
+  "seed": 8421
+}

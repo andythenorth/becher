@@ -10,7 +10,7 @@ import numpy as np
 
 MATERIAL_IDS = {
     'metal': 1, 'roof': 2, 'concrete': 3,
-    'frame': 4, 'glass': 5, 'chimney': 6, 'pipe': 7
+    'frame': 4, 'glass': 5, 'chimney': 6, 'pipe': 7, 'tank_wall': 8
 }
 
 # Explicit 1x surface classes for downstream non-destructive treatments.

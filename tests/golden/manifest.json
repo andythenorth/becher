@@ -1,16 +1,6 @@
 {
   "cases": {
     "classic": {
-      "build_options": {
-        "candidate_mode": "classic",
-        "designs": 1,
-        "edge_contrast": "off",
-        "facade_mode": "boxes",
-        "roof_colours": "off",
-        "seed": 1267,
-        "semantic_colour": "on",
-        "semantic_hues": 4
-      },
       "images": {
         "0000_000": {
           "file": "classic_0000_000.png",
@@ -59,19 +49,18 @@
           "vertices": "d6a1bc8be23aa51eee696dbf444147865b1b054fab2eb4ddf19f1a65dd3f61d1"
         }
       },
+      "render_options": {
+        "edge_contrast": "off",
+        "facade_mode": "boxes",
+        "roof_colours": "off",
+        "semantic_colour": "on",
+        "semantic_hues": 4
+      },
       "scenes": {
         "0000": "9305fba87629ad44dffe96b2060340481c8240b4e263b5e6275ac94af6138076"
       }
     },
     "diverse": {
-      "build_options": {
-        "candidate_mode": "diverse",
-        "designs": 2,
-        "edge_contrast": "on",
-        "facade_mode": "decals",
-        "roof_colours": "on",
-        "seed": 8421
-      },
       "images": {
         "0000_000": {
           "file": "diverse_0000_000.png",
@@ -164,21 +153,17 @@
           "vertices": "91e18a14d5ccda3acfdcdc9d5c5a4eebb5ef3c522d7adb488200649895560941"
         }
       },
+      "render_options": {
+        "edge_contrast": "on",
+        "facade_mode": "decals",
+        "roof_colours": "on"
+      },
       "scenes": {
         "0000": "7605f1627fdd066b8914bfcb0007c9597ce67d5cc2396c9531edd9480b58e167",
         "0006": "7f3beeb4f27c0ed586506865449363540116fd3798fc8796ef8014612711ad14"
       }
     },
     "related": {
-      "build_options": {
-        "candidate_mode": "related",
-        "designs": 2,
-        "edge_contrast": "on",
-        "facade_mode": "decals",
-        "industry": "multi_slope_industrial_hall",
-        "roof_colours": "on",
-        "seed": 5027
-      },
       "images": {
         "0000_000": {
           "file": "related_0000_000.png",
@@ -270,6 +255,11 @@
           "triangle_count": 456,
           "vertices": "e5a92f5adecc2343f4c77be8bd6ed97a086f299472b4ffde7c3f983c479c2acc"
         }
+      },
+      "render_options": {
+        "edge_contrast": "on",
+        "facade_mode": "decals",
+        "roof_colours": "on"
       },
       "scenes": {
         "0000": "f545884a309d8e9cdd61f1cc1a23a8a6e13707251123e9ff69b7d8ebf5396e17",

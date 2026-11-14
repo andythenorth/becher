@@ -1,0 +1,150 @@
+{
+  "role": "chimney",
+  "footprint": [
+    -0.237,
+    -0.132,
+    0.237,
+    0.132
+  ],
+  "shapes": [
+    {
+      "id": "shared_plinth",
+      "type": "box",
+      "bounds": [
+        -0.237,
+        -0.132,
+        0,
+        0.237,
+        0.132,
+        0.065
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "shaft_0",
+      "type": "revolution",
+      "center": [
+        -0.127,
+        0
+      ],
+      "profile": [
+        [
+          0.065,
+          0.08
+        ],
+        [
+          1.361,
+          0.053
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "crown_0",
+      "type": "revolution",
+      "center": [
+        -0.127,
+        0
+      ],
+      "profile": [
+        [
+          1.345,
+          0.060419999999999995
+        ],
+        [
+          1.381,
+          0.060419999999999995
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "mouth_0",
+      "type": "revolution",
+      "center": [
+        -0.127,
+        0
+      ],
+      "profile": [
+        [
+          1.38,
+          0.04134
+        ],
+        [
+          1.394,
+          0.04134
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    },
+    {
+      "id": "shaft_1",
+      "type": "revolution",
+      "center": [
+        0.127,
+        0
+      ],
+      "profile": [
+        [
+          0.065,
+          0.08
+        ],
+        [
+          1.361,
+          0.053
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "crown_1",
+      "type": "revolution",
+      "center": [
+        0.127,
+        0
+      ],
+      "profile": [
+        [
+          1.345,
+          0.060419999999999995
+        ],
+        [
+          1.381,
+          0.060419999999999995
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "mouth_1",
+      "type": "revolution",
+      "center": [
+        0.127,
+        0
+      ],
+      "profile": [
+        [
+          1.38,
+          0.04134
+        ],
+        [
+          1.394,
+          0.04134
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    }
+  ],
+  "layout": "end_single",
+  "port": [
+    0,
+    0,
+    0
+  ]
+}

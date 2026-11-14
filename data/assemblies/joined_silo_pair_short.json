@@ -1,0 +1,270 @@
+{
+  "shapes": [
+    {
+      "id": "bin_0_store_1_hopper",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        -0.115,
+        0.0
+      ],
+      "profile": [
+        [
+          0.0943368,
+          0.024823500000000002
+        ],
+        [
+          0.15757944,
+          0.095475
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin_0_store_1_leg_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.18051125,
+        -0.06551125,
+        0.01242,
+        -0.15451125,
+        -0.03951125,
+        0.16585944
+      ]
+    },
+    {
+      "id": "bin_0_store_1_leg_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.18051125,
+        0.03951125,
+        0.01242,
+        -0.15451125,
+        0.06551125,
+        0.16585944
+      ]
+    },
+    {
+      "id": "bin_0_store_1_leg_2",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.07548875,
+        -0.06551125,
+        0.01242,
+        -0.04948875,
+        -0.03951125,
+        0.16585944
+      ]
+    },
+    {
+      "id": "bin_0_store_1_leg_3",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.07548875,
+        0.03951125,
+        0.01242,
+        -0.04948875,
+        0.06551125,
+        0.16585944
+      ]
+    },
+    {
+      "id": "bin_0_store_1_body",
+      "type": "revolution",
+      "material": "metal",
+      "center": [
+        -0.115,
+        0.0
+      ],
+      "profile": [
+        [
+          0.15757944,
+          0.095475
+        ],
+        [
+          0.38156379,
+          0.095475
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin_0_store_1_cap",
+      "type": "revolution",
+      "material": "metal",
+      "center": [
+        -0.115,
+        0.0
+      ],
+      "profile": [
+        [
+          0.38087379,
+          0.095475
+        ],
+        [
+          0.40264467,
+          0.011457
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin_1_store_1_hopper",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.115,
+        0.0
+      ],
+      "profile": [
+        [
+          0.0943368,
+          0.024823500000000002
+        ],
+        [
+          0.15757944,
+          0.095475
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin_1_store_1_leg_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.04948875,
+        -0.06551125,
+        0.01242,
+        0.07548875,
+        -0.03951125,
+        0.16585944
+      ]
+    },
+    {
+      "id": "bin_1_store_1_leg_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.04948875,
+        0.03951125,
+        0.01242,
+        0.07548875,
+        0.06551125,
+        0.16585944
+      ]
+    },
+    {
+      "id": "bin_1_store_1_leg_2",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.15451125,
+        -0.06551125,
+        0.01242,
+        0.18051125,
+        -0.03951125,
+        0.16585944
+      ]
+    },
+    {
+      "id": "bin_1_store_1_leg_3",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.15451125,
+        0.03951125,
+        0.01242,
+        0.18051125,
+        0.06551125,
+        0.16585944
+      ]
+    },
+    {
+      "id": "bin_1_store_1_body",
+      "type": "revolution",
+      "material": "metal",
+      "center": [
+        0.115,
+        0.0
+      ],
+      "profile": [
+        [
+          0.15757944,
+          0.095475
+        ],
+        [
+          0.38156379,
+          0.095475
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin_1_store_1_cap",
+      "type": "revolution",
+      "material": "metal",
+      "center": [
+        0.115,
+        0.0
+      ],
+      "profile": [
+        [
+          0.38087379,
+          0.095475
+        ],
+        [
+          0.40264467,
+          0.011457
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "shared_plinth",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.222,
+        -0.115,
+        0.0,
+        0.222,
+        0.115,
+        0.01242
+      ]
+    },
+    {
+      "id": "internal_tie",
+      "type": "beam",
+      "material": "pipe",
+      "start": [
+        -0.041,
+        0,
+        0.17896944
+      ],
+      "end": [
+        0.041,
+        0,
+        0.17896944
+      ],
+      "thickness": 0.022
+    }
+  ],
+  "role": "silo",
+  "footprint": [
+    -0.222,
+    -0.115,
+    0.222,
+    0.115
+  ],
+  "port": [
+    -0.115,
+    0,
+    0.17896944
+  ],
+  "layout": "joined_pair"
+}

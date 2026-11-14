@@ -1,0 +1,53 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.38,
+    -0.2,
+    0.37,
+    0.16
+  ],
+  "shapes": [
+    {
+      "id": "mass_0",
+      "type": "box",
+      "material": "metal",
+      "bounds": [
+        -0.38,
+        -0.17,
+        0.0,
+        -0.19,
+        0.14,
+        0.21
+      ]
+    },
+    {
+      "id": "mass_1",
+      "type": "box",
+      "material": "metal",
+      "bounds": [
+        0.18,
+        -0.2,
+        0.0,
+        0.37,
+        0.16,
+        0.65
+      ]
+    },
+    {
+      "id": "link_1",
+      "type": "beam",
+      "start": [
+        -0.26,
+        -0.01,
+        0.19
+      ],
+      "end": [
+        0.26,
+        -0.01,
+        0.62
+      ],
+      "thickness": 0.107,
+      "material": "roof"
+    }
+  ]
+}

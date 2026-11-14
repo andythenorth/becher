@@ -1,0 +1,96 @@
+{
+  "shapes": [
+    {
+      "id": "store_1_plinth",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.0,
+          0.11852000000000001
+        ],
+        [
+          0.031,
+          0.11852000000000001
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_1_body",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.031,
+          0.10452000000000002
+        ],
+        [
+          0.17774608,
+          0.10452000000000002
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_1_cap",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.17674608,
+          0.10452000000000002
+        ],
+        [
+          0.21119248,
+          0.07107360000000001
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_1_hatch",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.20719248,
+          0.025
+        ],
+        [
+          0.22619248,
+          0.025
+        ]
+      ],
+      "segments": 24
+    }
+  ],
+  "role": "tank",
+  "footprint": [
+    -0.11852000000000001,
+    -0.11852000000000001,
+    0.11852000000000001,
+    0.11852000000000001
+  ],
+  "port": [
+    0,
+    0,
+    0.062
+  ]
+}

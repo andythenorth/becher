@@ -162,11 +162,11 @@ def refill(run, *, workers=4, buffers=True, grammar_file=None, dry_run=False,
         return {'rejected_active': rejected, 'replaced': {}, 'dry_run': bool(dry_run)}
     if not 1 <= workers <= 64: raise ValueError('workers must be 1..64')
     if max_attempts < 1: raise ValueError('max_attempts must be >= 1')
-    from .sampling import catalogue, create, planned_family
-    primary, ancillary=catalogue(grammar_file)
-    mode=manifest.get('candidate_mode','classic')
-    industry=manifest.get('industry')
-    families=primary+(ancillary if mode!='classic' else [])
+    if manifest.get('pipeline_revision') != pipeline.PIPELINE_REVISION:
+        raise ValueError('Refill requires a run generated with the current family selection policy')
+    from .sampling import catalogue, create, select_families
+    primary, ancillary = catalogue(grammar_file)
+    families = select_families(primary, ancillary, manifest['grammar_families'])
     grammar_sha=hashlib.sha256(json.dumps(families,sort_keys=True).encode()).hexdigest()
     if grammar_sha != manifest['grammar_sha256']:
         raise ValueError('Grammar library differs from saved run: use the original grammar pack')
@@ -183,10 +183,9 @@ def refill(run, *, workers=4, buffers=True, grammar_file=None, dry_run=False,
         for _ in range(max_attempts):
             index=cursor
             cursor+=1
-            if planned_family(index,manifest['seed'],primary,ancillary,mode,industry)['id'] != wanted_family:
+            if families[index % len(families)]['id'] != wanted_family:
                 continue
-            model=create(manifest['seed'],index,primary=primary,ancillary=ancillary,
-                         mode=mode,industry=industry)
+            model=create(manifest['seed'],index,families)
             if not validate(model)['passes'] or f'{index:04d}' in used:
                 continue
             found=model

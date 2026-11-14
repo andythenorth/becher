@@ -1,0 +1,231 @@
+{
+  "components": [
+    {
+      "bounds": [
+        0.043,
+        0.065,
+        0,
+        0.957,
+        0.935,
+        0.05
+      ],
+      "count": 0,
+      "id": "base",
+      "material": "concrete",
+      "parent": null,
+      "rise": 0.0,
+      "role": "foundation",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.125899,
+        0.568044,
+        0.05,
+        0.396083,
+        0.840218,
+        0.292589
+      ],
+      "count": 0,
+      "id": "main",
+      "material": "metal",
+      "parent": null,
+      "rise": 0.0,
+      "role": "fabric",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.125899,
+        0.568044,
+        0.05,
+        0.396083,
+        0.840218,
+        0.292589
+      ],
+      "count": 1,
+      "id": "main:roof",
+      "material": "roof",
+      "parent": "main",
+      "rise": 0.084481,
+      "role": "roof",
+      "roof": "shed",
+      "shape": "roof"
+    },
+    {
+      "bounds": [
+        0.48,
+        0.12,
+        0.05,
+        0.66,
+        0.31,
+        0.72
+      ],
+      "count": 0,
+      "id": "standalone:silo_a",
+      "material": "concrete",
+      "parent": null,
+      "rise": 0.0,
+      "role": "vessel",
+      "roof": null,
+      "shape": "cylinder"
+    },
+    {
+      "bounds": [
+        0.68,
+        0.12,
+        0.05,
+        0.86,
+        0.31,
+        0.7
+      ],
+      "count": 0,
+      "id": "standalone:silo_b",
+      "material": "concrete",
+      "parent": null,
+      "rise": 0.0,
+      "role": "vessel",
+      "roof": null,
+      "shape": "cylinder"
+    },
+    {
+      "bounds": [
+        0.52,
+        0.48,
+        0.05,
+        0.72,
+        0.68,
+        0.64
+      ],
+      "count": 0,
+      "id": "standalone:silo_c",
+      "material": "concrete",
+      "parent": null,
+      "rise": 0.0,
+      "role": "vessel",
+      "roof": null,
+      "shape": "cylinder"
+    },
+    {
+      "bounds": [
+        0.398083,
+        0.666027,
+        0.054,
+        0.408083,
+        0.769453,
+        0.224664
+      ],
+      "count": 0,
+      "id": "feat/doors/main/loading/right/door",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "doors",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.191358,
+        0.667854,
+        0.321882,
+        0.233358,
+        0.707854,
+        0.387579
+      ],
+      "count": 0,
+      "id": "feat/equipment/main/roof_vent/0",
+      "material": "metal",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "equipment",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.156849,
+        0.539044,
+        0.075537,
+        0.186849,
+        0.550044,
+        0.094537
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/front/plate/0",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.154179,
+        0.858218,
+        0.091145,
+        0.184179,
+        0.869218,
+        0.110145
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/back/plate/0",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    }
+  ],
+  "family": "silo_cluster",
+  "id": "21e07821870fe23b",
+  "index": 1,
+  "label": "Ancillary - silo storage",
+  "parameters": {
+    "base_building_id": "666a84038c3d25d6",
+    "facade_profiles": {
+      "main": {
+        "doors": "loading",
+        "windows": "blank"
+      }
+    },
+    "feature_counters": {
+      "doors": 0,
+      "equipment": 0,
+      "greeble": 0,
+      "windows": 0
+    },
+    "feature_pipeline": true,
+    "feature_schema": 1,
+    "fixtures": [],
+    "global_scale": [
+      1.0392,
+      0.9721,
+      0.9114
+    ],
+    "grammar_category": "ancillary",
+    "layout": "mirror_y",
+    "omitted_optional": [],
+    "rerolls": {},
+    "roof_config": {
+      "main": {
+        "bays": 1,
+        "rise": 0.084481,
+        "roof": "shed"
+      }
+    },
+    "schema_version": 1,
+    "variation": {
+      "annex_mode": "normal",
+      "arrangement": "baseline",
+      "aspect": "square",
+      "height": "medium",
+      "roof_variant": 2
+    }
+  },
+  "seed": 5027
+}

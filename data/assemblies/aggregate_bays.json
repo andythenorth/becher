@@ -1,0 +1,76 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.33,
+    -0.28,
+    0.34,
+    0.26
+  ],
+  "shapes": [
+    {
+      "id": "mass_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.33,
+        -0.28,
+        0.0,
+        0.34,
+        -0.21,
+        0.17
+      ]
+    },
+    {
+      "id": "mass_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.33,
+        -0.21,
+        0.0,
+        -0.275,
+        0.26,
+        0.17
+      ]
+    },
+    {
+      "id": "mass_2",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.01,
+        -0.21,
+        0.0,
+        0.045,
+        0.26,
+        0.17
+      ]
+    },
+    {
+      "id": "mass_3",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.285,
+        -0.21,
+        0.0,
+        0.34,
+        0.26,
+        0.17
+      ]
+    },
+    {
+      "id": "mass_4",
+      "type": "box",
+      "material": "chimney",
+      "bounds": [
+        -0.26,
+        -0.2,
+        0.0,
+        -0.04,
+        0.11,
+        0.08
+      ]
+    }
+  ]
+}

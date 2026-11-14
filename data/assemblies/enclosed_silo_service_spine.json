@@ -1,0 +1,115 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.36,
+    -0.24,
+    0.34,
+    0.26
+  ],
+  "shapes": [
+    {
+      "id": "mass_0",
+      "type": "box",
+      "material": "metal",
+      "bounds": [
+        -0.33,
+        -0.21,
+        0.0,
+        0.1,
+        0.23,
+        0.69
+      ]
+    },
+    {
+      "id": "mass_1",
+      "type": "box",
+      "material": "roof",
+      "bounds": [
+        -0.36,
+        -0.24,
+        0.68,
+        0.13,
+        0.26,
+        0.75
+      ]
+    },
+    {
+      "id": "mass_2",
+      "type": "box",
+      "material": "metal",
+      "bounds": [
+        0.09,
+        -0.13,
+        0.0,
+        0.32,
+        0.15,
+        0.92
+      ]
+    },
+    {
+      "id": "mass_3",
+      "type": "box",
+      "material": "roof",
+      "bounds": [
+        0.07,
+        -0.15,
+        0.91,
+        0.34,
+        0.17,
+        0.98
+      ]
+    },
+    {
+      "id": "mass_4",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.336,
+        -0.16,
+        0.22,
+        -0.319,
+        -0.105,
+        0.6
+      ]
+    },
+    {
+      "id": "mass_5",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.336,
+        -0.03,
+        0.22,
+        -0.319,
+        0.025,
+        0.6
+      ]
+    },
+    {
+      "id": "mass_6",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.336,
+        0.11,
+        0.22,
+        -0.319,
+        0.165,
+        0.6
+      ]
+    },
+    {
+      "id": "mass_7",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.22,
+        -0.217,
+        0.0,
+        -0.02,
+        -0.2,
+        0.19
+      ]
+    }
+  ]
+}

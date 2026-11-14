@@ -1,0 +1,158 @@
+{
+  "catalogue": {
+    "label": "Twin tapered stacks",
+    "ancillary": "chimneys",
+    "silhouette": "high",
+    "vocabularies": [
+      "General industrial"
+    ]
+  },
+  "shapes": [
+    {
+      "id": "slab",
+      "type": "box",
+      "bounds": [
+        0.035,
+        0.045,
+        0,
+        0.965,
+        0.955,
+        0.044
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "shared_plinth",
+      "type": "box",
+      "bounds": [
+        0.263,
+        0.368,
+        0.044,
+        0.737,
+        0.632,
+        0.109
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "shaft_0",
+      "type": "revolution",
+      "center": [
+        0.373,
+        0.5
+      ],
+      "profile": [
+        [
+          0.109,
+          0.08
+        ],
+        [
+          1.405,
+          0.053
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "crown_0",
+      "type": "revolution",
+      "center": [
+        0.373,
+        0.5
+      ],
+      "profile": [
+        [
+          1.389,
+          0.060419999999999995
+        ],
+        [
+          1.425,
+          0.060419999999999995
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "mouth_0",
+      "type": "revolution",
+      "center": [
+        0.373,
+        0.5
+      ],
+      "profile": [
+        [
+          1.424,
+          0.04134
+        ],
+        [
+          1.438,
+          0.04134
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    },
+    {
+      "id": "shaft_1",
+      "type": "revolution",
+      "center": [
+        0.627,
+        0.5
+      ],
+      "profile": [
+        [
+          0.109,
+          0.08
+        ],
+        [
+          1.405,
+          0.053
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "crown_1",
+      "type": "revolution",
+      "center": [
+        0.627,
+        0.5
+      ],
+      "profile": [
+        [
+          1.389,
+          0.060419999999999995
+        ],
+        [
+          1.425,
+          0.060419999999999995
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "mouth_1",
+      "type": "revolution",
+      "center": [
+        0.627,
+        0.5
+      ],
+      "profile": [
+        [
+          1.424,
+          0.04134
+        ],
+        [
+          1.438,
+          0.04134
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    }
+  ]
+}

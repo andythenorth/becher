@@ -23,6 +23,28 @@ def test_revolution_normals_radial_and_caps():
     assert any((f.normals[0]==[0,0,1]).all() for f in faces)
 
 
+def test_revolution_creases_keep_shoulder_normals_off_shaft():
+    shape = {'type': 'revolution', 'profile': [[0, .20], [.4, .20], [.42, .10], [.9, .10]]}
+    smooth = compile_scene({'shapes': [shape]})
+    creased = compile_scene({'shapes': [{**shape, 'crease_rings': [1, 2]}]})
+
+    assert np.array_equal(smooth.vertices, creased.vertices)
+    z = creased.vertices[..., 2]
+    lower_shaft = (z.min(axis=1) == 0) & (z.max(axis=1) == .4)
+    shoulder = (z.min(axis=1) == .4) & (z.max(axis=1) == .42)
+    upper_shaft = (z.min(axis=1) == .42) & (z.max(axis=1) == .9)
+    assert lower_shaft.any() and shoulder.any() and upper_shaft.any()
+    assert (np.abs(smooth.normals[upper_shaft, :, 2]) > .1).any()
+    assert np.allclose(creased.normals[lower_shaft | upper_shaft, :, 2], 0)
+    assert (creased.normals[shoulder, :, 2] > .9).all()
+
+
+@pytest.mark.parametrize('rings', [[0], [2], [1.5], [True], None])
+def test_revolution_rejects_invalid_creases(rings):
+    with pytest.raises(ValueError, match='interior profile indices'):
+        revolution([[0, .2], [.5, .2], [1, .2]], crease_rings=rings)
+
+
 def test_sphere_is_surface_not_tubular_hoops():
     profile=[(.1,0),(.2,.2),(.4,.3),(.6,.2),(.7,0)]
     mesh=compile_scene({'shapes':[{'id':'sphere','type':'revolution','profile':profile}]})

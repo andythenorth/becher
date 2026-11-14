@@ -1,6 +1,6 @@
 # Becher
 
-Procedural OpenTTD industrial sprites. **Current application: v0.16.6.** The working baseline is the v0.16.2 mesh renderer and high-five-o’clock lighting, unchanged by the repository consolidation.
+Procedural OpenTTD industrial sprites. Becher generates batches from selected building families using the mesh renderer and high-five-o’clock lighting.
 
 ## Run
 
@@ -8,23 +8,33 @@ Requires Python 3.10+, NumPy and Pillow. From the repository root:
 
 ```bash
 python -m pip install -e .
-python -m becher pipeline --candidate-mode diverse --seed 1267 --designs 12 \
+python -m becher pipeline --seed 1267 --designs 12 \
   --workers 4 --facade-mode decals --edge-contrast on --roof-colours on \
-  --out output/diverse
+  --out output/pipeline
 ```
 
-`python becher.py ...` also works without installation when dependencies are available. Rendered sprites are indexed 64 × 128 PNGs with four rotations; `output/diverse/review.png` provides a contact sheet.
-
-For a related set, provide a primary family ID:
-
-```bash
-python -m becher pipeline --candidate-mode related \
-  --industry multi_slope_industrial_hall --seed 5027 --designs 16 \
-  --workers 4 --facade-mode decals --edge-contrast on --roof-colours on \
-  --out output/related
-```
+`python becher.py ...` also works without installation when dependencies are available. Rendered sprites are indexed 64 × 128 PNGs with four rotations; `output/pipeline/review.png` provides a contact sheet.
 
 For all commands and options: `python -m becher --help` and `python -m becher pipeline --help`.
+
+To generate from specific families, list their IDs with `python -m becher families`
+and pass one `--family` per selected family:
+
+```bash
+python -m becher pipeline --family broad_high_roof_hall --family tank_yard \
+  --seed 1267 --designs 12 --out output/selected-families
+```
+
+The batch cycles through the eligible families in catalogue order, skips
+invalid designs, and applies seeded structural variation. The design count
+is the total for the batch. With no `--family` flags, all primary factory
+families are eligible.
+
+Run `python -m ui` from the checkout and open <http://127.0.0.1:8765/> to
+choose families and review sprites in the browser.
+
+Use a new output directory for generation with this policy. Older runs
+can still be reviewed, rerolled and exported. Refill requires a new-policy run.
 
 ## Tests
 
@@ -33,9 +43,9 @@ python -m pytest -q tests/test_golden_outputs.py
 python -m pytest -q
 ```
 
-The golden test suite compares 20 frozen native sprites, the underlying compiled mesh buffers, and generated scenes for three representative pipeline configurations. **Never regenerate approved reference images automatically.** Tests use a captured v0.16.4 baseline: deliberate image changes require review.
-
-`TEST_SCORECARD.md` and `TEST_SCORES.csv` score every surviving test. `TEST_PRUNING_AUDIT.md` records removed assertions and deliberate mutation tests. Some full-suite workflow tests are comparatively slow and seven selection tests depend on shared state.
+Five frozen building scenes exercise mesh compilation and rendering against
+the original mesh references and 20 indexed sprites. Sampling tests cover
+family selection, determinism and refill separately.
 
 ## Layout
 

@@ -1,5 +1,4 @@
 """Negative controls for the golden oracle: damaged metadata must be rejected."""
-import copy
 import pytest
 from test_golden_outputs import REFERENCE, assert_complete_sprite_coverage
 
@@ -14,7 +13,7 @@ def simulated_manifest(case):
     return {'nodes':nodes,'candidates':candidates}
 
 
-@pytest.mark.parametrize('mode',('classic','diverse','related'))
+@pytest.mark.parametrize('mode',tuple(REFERENCE['cases']))
 @pytest.mark.parametrize('damage',('missing','duplicate','unexpected','wrong_candidate'))
 def test_golden_rejects_incomplete_or_incorrect_sprite_inventory(mode,damage):
     case=REFERENCE['cases'][mode]

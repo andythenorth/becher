@@ -1,0 +1,121 @@
+{
+  "catalogue": {
+    "label": "stepped stack \u00b7 medium",
+    "ancillary": "chimneys"
+  },
+  "shapes": [
+    {
+      "id": "slab",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.035,
+        0.045,
+        0,
+        0.965,
+        0.955,
+        0.044
+      ]
+    },
+    {
+      "id": "plinth",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          0.044,
+          0.178
+        ],
+        [
+          0.0605,
+          0.178
+        ],
+        [
+          0.0737,
+          0.154
+        ]
+      ],
+      "segments": 32,
+      "material": "concrete"
+    },
+    {
+      "id": "shaft_0",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          0.0737,
+          0.14
+        ],
+        [
+          0.35882,
+          0.14
+        ],
+        [
+          0.373076,
+          0.105
+        ],
+        [
+          0.66176,
+          0.105
+        ],
+        [
+          0.676016,
+          0.078
+        ],
+        [
+          1.03598,
+          0.078
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "crown_0",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          1.02542,
+          0.08892
+        ],
+        [
+          1.04918,
+          0.08892
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "mouth_0",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          1.04852,
+          0.060840000000000005
+        ],
+        [
+          1.05776,
+          0.060840000000000005
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    }
+  ]
+}

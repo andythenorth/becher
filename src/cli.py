@@ -25,9 +25,8 @@ def main(argv=None):
     pipe.add_argument('--start',type=int,default=0)
     pipe.add_argument('--workers',type=int,default=4)
     pipe.add_argument('--grammars')
-    pipe.add_argument('--candidate-mode', choices=('classic','diverse','related'), default='classic',
-                      help='classic v0.14 order, structurally diverse search, or industry-coherent set')
-    pipe.add_argument('--industry', help='primary family ID for related mode (50%% halls, 50%% ancillary)')
+    pipe.add_argument('--family', action='append', metavar='ID',
+                      help='repeat to select families (defaults to all primary factories)')
     pipe.add_argument('--out',default='output/pipeline')
     pipe.add_argument('--edge-contrast',choices=('on','off'),default='off')
     pipe.add_argument('--semantic-colour',choices=('on','off'),default='on')
@@ -37,6 +36,37 @@ def main(argv=None):
     pipe.add_argument('--no-buffers',action='store_true')
     pipe.add_argument('--renderer',choices=('mesh',),default='mesh',
                       help='frozen triangle mesh raycaster (only backend)')
+
+    family_list=sub.add_parser('families',help='list the available candidate families as JSON')
+    family_list.add_argument('--grammars')
+
+    sub.add_parser('scenes',help='list installed geometry scenes from data/scenes')
+    authored=sub.add_parser('render-scene',help='render an installed geometry scene at four rotations')
+    authored.add_argument('--scene',required=True,help='scene ID from the scenes command')
+    authored.add_argument('--out',required=True)
+
+    authored_batch=sub.add_parser('render-scenes',help='render a batch of installed geometry scenes')
+    authored_batch.add_argument('--scene',action='append',required=True,help='repeat for each scene ID')
+    authored_batch.add_argument('--out',required=True)
+    authored_batch.add_argument('--workers',type=int)
+
+    sub.add_parser('components', help='list live assembly components')
+    component = sub.add_parser('render-component', help='render an assembly component at four rotations')
+    component.add_argument('--component', required=True, help='component ID from the components command')
+    component.add_argument('--out', required=True)
+
+    sub.add_parser('vocabularies',help='list installed assembly vocabularies')
+    compose = sub.add_parser('compose', help='assemble and render 16 seeded tiles')
+    reroll_tile = sub.add_parser('reroll-tile', help='replace one row of a composition batch')
+    for command in (compose, reroll_tile):
+        command.add_argument('--vocabulary', action='append', required=True)
+        command.add_argument('--seed', type=int, default=1267)
+        command.add_argument('--silhouette', choices=('low', 'high'), default='low')
+        command.add_argument('--out', required=True)
+    reroll_tile.add_argument('--row', type=int, required=True)
+    reroll_tile.add_argument('--revision', type=int, required=True)
+    reroll_tile.add_argument('--current', action='append', required=True,
+                             help='current composition ID, repeated for each row in order')
 
     bake=sub.add_parser('bake-scene',help='compile a renderer-independent geometry JSON scene to frozen mesh')
     bake.add_argument('--input',required=True)
@@ -129,7 +159,53 @@ def main(argv=None):
                     workers=args.workers,grammar_file=args.grammars,buffers=not args.no_buffers,
                     edge_contrast=args.edge_contrast,semantic_colour=args.semantic_colour,
                     semantic_hues=args.semantic_hues,roof_colours=args.roof_colours,facade_mode=args.facade_mode,
-                    candidate_mode=args.candidate_mode,industry=args.industry,renderer=args.renderer)
+                    renderer=args.renderer,
+                    family_ids=args.family)
+    elif args.cmd=='families':
+        from .sampling import catalogue
+        primary, ancillary = catalogue(args.grammars)
+        value = {
+            category: [{'id': item['id'], 'label': item.get('label', item['id'])} for item in group]
+            for category, group in (('primary', primary), ('ancillary', ancillary))
+        }
+    elif args.cmd=='scenes':
+        from .authored_scenes import list_scenes
+        value=list_scenes()
+    elif args.cmd=='render-scene':
+        from .authored_scenes import render_scene
+        try:
+            value=render_scene(args.scene,args.out)
+        except (ValueError, OSError, KeyError, TypeError) as error:
+            parser.error(str(error))
+    elif args.cmd=='render-scenes':
+        from .authored_scenes import render_scenes
+        try:
+            value=render_scenes(args.scene,args.out,args.workers)
+        except (ValueError, OSError) as error:
+            parser.error(str(error))
+    elif args.cmd == 'components':
+        from .composition import list_components
+        value = list_components()
+    elif args.cmd == 'render-component':
+        from .composition import render_component
+        try:
+            value = render_component(args.component, args.out)
+        except (ValueError, OSError, KeyError, TypeError) as error:
+            parser.error(str(error))
+    elif args.cmd=='vocabularies':
+        from .composition import vocabularies
+        value=sorted(vocabularies())
+    elif args.cmd in ('compose', 'reroll-tile'):
+        from .composition import draft, redraft, render_draft
+        try:
+            brief = (args.vocabulary, args.seed, args.silhouette)
+            if args.cmd == 'compose':
+                scenes = draft(*brief)
+            else:
+                scenes = redraft(*brief, args.current, args.row, args.revision)
+            value = render_draft(scenes, args.out)
+        except (ValueError, OSError) as error:
+            parser.error(str(error))
     elif args.cmd=='bake-scene':
         from .mesh.compile import compile_scene, save_mesh
         path=Path(args.out)

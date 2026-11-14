@@ -1,0 +1,116 @@
+{
+  "role": "chimney",
+  "footprint": [
+    -0.199,
+    -0.199,
+    0.199,
+    0.199
+  ],
+  "shapes": [
+    {
+      "id": "footing",
+      "type": "box",
+      "bounds": [
+        -0.199,
+        -0.199,
+        0,
+        0.199,
+        0.199,
+        0.06
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pedestal",
+      "type": "box",
+      "bounds": [
+        -0.163,
+        -0.163,
+        0.06,
+        0.163,
+        0.163,
+        0.194
+      ],
+      "material": "chimney"
+    },
+    {
+      "id": "coping",
+      "type": "box",
+      "bounds": [
+        -0.179,
+        -0.179,
+        0.193,
+        0.179,
+        0.179,
+        0.23
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "shaft_0",
+      "type": "revolution",
+      "center": [
+        0,
+        0
+      ],
+      "profile": [
+        [
+          0.23,
+          0.111
+        ],
+        [
+          1.5935,
+          0.079
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "crown_0",
+      "type": "revolution",
+      "center": [
+        0,
+        0
+      ],
+      "profile": [
+        [
+          1.5775,
+          0.09005999999999999
+        ],
+        [
+          1.6135,
+          0.09005999999999999
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "mouth_0",
+      "type": "revolution",
+      "center": [
+        0,
+        0
+      ],
+      "profile": [
+        [
+          1.6125,
+          0.06162
+        ],
+        [
+          1.6265,
+          0.06162
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    }
+  ],
+  "layout": "end_single",
+  "port": [
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,897 @@
+{
+  "components": [
+    {
+      "bounds": [
+        0.043,
+        0.065,
+        0,
+        0.957,
+        0.935,
+        0.05
+      ],
+      "count": 0,
+      "id": "base",
+      "material": "concrete",
+      "parent": null,
+      "rise": 0.0,
+      "role": "foundation",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.0,
+        0.149198,
+        0.05,
+        1.0,
+        0.86112,
+        0.499529
+      ],
+      "count": 0,
+      "id": "main",
+      "material": "metal",
+      "parent": null,
+      "rise": 0.0,
+      "role": "fabric",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.0,
+        0.149198,
+        0.05,
+        1.0,
+        0.86112,
+        0.499529
+      ],
+      "count": 3,
+      "id": "main:roof",
+      "material": "roof",
+      "parent": "main",
+      "rise": 0.099669,
+      "role": "roof",
+      "roof": "sawtooth",
+      "shape": "roof"
+    },
+    {
+      "bounds": [
+        0.400616,
+        0.040243,
+        0.05,
+        0.883917,
+        0.175611,
+        0.446721
+      ],
+      "count": 0,
+      "id": "parallel_bay",
+      "material": "metal",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "fabric",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.400616,
+        0.040243,
+        0.05,
+        0.883917,
+        0.175611,
+        0.446721
+      ],
+      "count": 1,
+      "id": "parallel_bay:roof",
+      "material": "roof",
+      "parent": "parallel_bay",
+      "rise": 0.037442,
+      "role": "roof",
+      "roof": "shed",
+      "shape": "roof"
+    },
+    {
+      "bounds": [
+        0.113542,
+        0.82346,
+        0.05,
+        0.388524,
+        0.950368,
+        0.350077
+      ],
+      "count": 0,
+      "id": "rear_shops",
+      "material": "metal",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "fabric",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.113542,
+        0.82346,
+        0.05,
+        0.388524,
+        0.950368,
+        0.350077
+      ],
+      "count": 1,
+      "id": "rear_shops:roof",
+      "material": "roof",
+      "parent": "rear_shops",
+      "rise": 0.025,
+      "role": "roof",
+      "roof": "flat",
+      "shape": "roof"
+    },
+    {
+      "bounds": [
+        0.14,
+        0.137198,
+        0.396137,
+        0.3,
+        0.147198,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/front/0",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.37,
+        0.137198,
+        0.396137,
+        0.53,
+        0.147198,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/front/1",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.6,
+        0.137198,
+        0.396137,
+        0.76,
+        0.147198,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/front/2",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.83,
+        0.137198,
+        0.396137,
+        0.94,
+        0.147198,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/front/3",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.14,
+        0.86312,
+        0.396137,
+        0.3,
+        0.87312,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/back/0",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.37,
+        0.86312,
+        0.396137,
+        0.53,
+        0.87312,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/back/1",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.6,
+        0.86312,
+        0.396137,
+        0.76,
+        0.87312,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/back/2",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.83,
+        0.86312,
+        0.396137,
+        0.94,
+        0.87312,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/back/3",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.002,
+        0.248867,
+        0.396137,
+        0.012,
+        0.362775,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/left/0",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.002,
+        0.412609,
+        0.396137,
+        0.012,
+        0.526517,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/left/1",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.002,
+        0.576351,
+        0.396137,
+        0.012,
+        0.690259,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/left/2",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.002,
+        0.740093,
+        0.396137,
+        0.012,
+        0.818405,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/left/3",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.988,
+        0.248867,
+        0.396137,
+        0.998,
+        0.362775,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/right/0",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.988,
+        0.412609,
+        0.396137,
+        0.998,
+        0.526517,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/right/1",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.988,
+        0.576351,
+        0.396137,
+        0.998,
+        0.690259,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/right/2",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.988,
+        0.740093,
+        0.396137,
+        0.998,
+        0.818405,
+        0.450081
+      ],
+      "count": 0,
+      "id": "feat/windows/main/clerestory/right/3",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.477944,
+        0.028243,
+        0.161082,
+        0.545606,
+        0.038243,
+        0.359442
+      ],
+      "count": 0,
+      "id": "feat/windows/parallel_bay/tall_factory/front/0",
+      "material": "glass",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.608435,
+        0.028243,
+        0.161082,
+        0.676098,
+        0.038243,
+        0.359442
+      ],
+      "count": 0,
+      "id": "feat/windows/parallel_bay/tall_factory/front/1",
+      "material": "glass",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.738927,
+        0.028243,
+        0.161082,
+        0.806589,
+        0.038243,
+        0.359442
+      ],
+      "count": 0,
+      "id": "feat/windows/parallel_bay/tall_factory/front/2",
+      "material": "glass",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.477944,
+        0.177611,
+        0.161082,
+        0.545606,
+        0.187611,
+        0.359442
+      ],
+      "count": 0,
+      "id": "feat/windows/parallel_bay/tall_factory/back/0",
+      "material": "glass",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.608435,
+        0.177611,
+        0.161082,
+        0.676098,
+        0.187611,
+        0.359442
+      ],
+      "count": 0,
+      "id": "feat/windows/parallel_bay/tall_factory/back/1",
+      "material": "glass",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.738927,
+        0.177611,
+        0.161082,
+        0.806589,
+        0.187611,
+        0.359442
+      ],
+      "count": 0,
+      "id": "feat/windows/parallel_bay/tall_factory/back/2",
+      "material": "glass",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "windows",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.988,
+        0.40549,
+        0.054,
+        0.998,
+        0.67602,
+        0.373661
+      ],
+      "count": 0,
+      "id": "feat/doors/main/loading/right/door",
+      "material": "glass",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "doors",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.168538,
+        0.81146,
+        0.054,
+        0.322528,
+        0.82146,
+        0.302065
+      ],
+      "count": 0,
+      "id": "feat/doors/rear_shops/process/front/door",
+      "material": "glass",
+      "parent": "rear_shops",
+      "rise": 0.0,
+      "role": "doors",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.299,
+        0.53797,
+        0.509183,
+        0.341,
+        0.57797,
+        0.602359
+      ],
+      "count": 0,
+      "id": "feat/equipment/main/roof_vent/0",
+      "material": "metal",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "equipment",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.629,
+        0.426804,
+        0.555872,
+        0.671,
+        0.466804,
+        0.65326
+      ],
+      "count": 0,
+      "id": "feat/equipment/main/roof_vent/1",
+      "material": "metal",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "equipment",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.344292,
+        0.120198,
+        0.09834,
+        0.374292,
+        0.131198,
+        0.11734
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/front/plate/0",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.205995,
+        0.120198,
+        0.087927,
+        0.235995,
+        0.131198,
+        0.106927
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/front/plate/1",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.279427,
+        0.120198,
+        0.098889,
+        0.309427,
+        0.131198,
+        0.117889
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/front/plate/2",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.230385,
+        0.87912,
+        0.117445,
+        0.260385,
+        0.89012,
+        0.136445
+      ],
+      "count": 0,
+      "id": "feat/greeble/main/back/plate/0",
+      "material": "concrete",
+      "parent": "main",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.792833,
+        0.011243,
+        0.102788,
+        0.822833,
+        0.022243,
+        0.121788
+      ],
+      "count": 0,
+      "id": "feat/greeble/parallel_bay/front/plate/0",
+      "material": "concrete",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.740671,
+        0.011243,
+        0.115837,
+        0.770671,
+        0.022243,
+        0.134837
+      ],
+      "count": 0,
+      "id": "feat/greeble/parallel_bay/front/plate/1",
+      "material": "concrete",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.602673,
+        0.011243,
+        0.121509,
+        0.632673,
+        0.022243,
+        0.140509
+      ],
+      "count": 0,
+      "id": "feat/greeble/parallel_bay/front/plate/2",
+      "material": "concrete",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.491901,
+        0.193611,
+        0.09175,
+        0.521901,
+        0.204611,
+        0.11075
+      ],
+      "count": 0,
+      "id": "feat/greeble/parallel_bay/back/plate/0",
+      "material": "concrete",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.627208,
+        0.193611,
+        0.091091,
+        0.657208,
+        0.204611,
+        0.110091
+      ],
+      "count": 0,
+      "id": "feat/greeble/parallel_bay/back/plate/1",
+      "material": "concrete",
+      "parent": "parallel_bay",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.201202,
+        0.79446,
+        0.096311,
+        0.231202,
+        0.80546,
+        0.115311
+      ],
+      "count": 0,
+      "id": "feat/greeble/rear_shops/front/plate/0",
+      "material": "concrete",
+      "parent": "rear_shops",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.181618,
+        0.79446,
+        0.075476,
+        0.211618,
+        0.80546,
+        0.094476
+      ],
+      "count": 0,
+      "id": "feat/greeble/rear_shops/front/plate/1",
+      "material": "concrete",
+      "parent": "rear_shops",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.250767,
+        0.79446,
+        0.079429,
+        0.280767,
+        0.80546,
+        0.098429
+      ],
+      "count": 0,
+      "id": "feat/greeble/rear_shops/front/plate/2",
+      "material": "concrete",
+      "parent": "rear_shops",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    },
+    {
+      "bounds": [
+        0.182571,
+        0.968368,
+        0.084074,
+        0.212571,
+        0.979368,
+        0.103074
+      ],
+      "count": 0,
+      "id": "feat/greeble/rear_shops/back/plate/0",
+      "material": "concrete",
+      "parent": "rear_shops",
+      "rise": 0.0,
+      "role": "greeble",
+      "roof": null,
+      "shape": "box"
+    }
+  ],
+  "family": "multi_slope_industrial_hall",
+  "id": "1a90202101964773",
+  "index": 0,
+  "label": "F - multi-slope industrial hall",
+  "parameters": {
+    "base_building_id": "1b89cd8fe330dba3",
+    "facade_profiles": {
+      "main": {
+        "doors": "loading",
+        "windows": "clerestory"
+      },
+      "parallel_bay": {
+        "doors": "none",
+        "windows": "tall_factory"
+      },
+      "rear_shops": {
+        "doors": "process",
+        "windows": "blank"
+      }
+    },
+    "feature_counters": {
+      "doors": 0,
+      "equipment": 0,
+      "greeble": 0,
+      "windows": 0
+    },
+    "feature_pipeline": true,
+    "feature_schema": 1,
+    "fixtures": [],
+    "global_scale": [
+      1.0162,
+      1.0318,
+      1.0513
+    ],
+    "grammar_category": "primary",
+    "layout": "mirror_x",
+    "omitted_optional": [],
+    "rerolls": {},
+    "roof_config": {
+      "main": {
+        "bays": 3,
+        "rise": 0.099669,
+        "roof": "sawtooth"
+      },
+      "parallel_bay": {
+        "bays": 1,
+        "rise": 0.037442,
+        "roof": "shed"
+      },
+      "rear_shops": {
+        "bays": 1,
+        "rise": 0.025,
+        "roof": "flat"
+      }
+    },
+    "schema_version": 1,
+    "variation": {
+      "annex_mode": "normal",
+      "arrangement": "short_annex",
+      "aspect": "square",
+      "height": "raised",
+      "roof_variant": 0
+    }
+  },
+  "seed": 5027
+}

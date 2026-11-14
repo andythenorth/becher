@@ -1,0 +1,633 @@
+{
+  "shapes": [
+    {
+      "id": "foundation",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.029,
+        0.042,
+        0,
+        0.971,
+        0.958,
+        0.044
+      ]
+    },
+    {
+      "id": "hall_walls",
+      "type": "box",
+      "material": "metal",
+      "bounds": [
+        0.11,
+        0.1,
+        0.044,
+        0.87,
+        0.39,
+        0.25
+      ]
+    },
+    {
+      "id": "hall_gable",
+      "type": "rings",
+      "material": "roof",
+      "rings": [
+        [
+          [
+            0.097,
+            0.085,
+            0.232
+          ],
+          [
+            0.097,
+            0.405,
+            0.232
+          ],
+          [
+            0.097,
+            0.405,
+            0.273
+          ],
+          [
+            0.097,
+            0.245,
+            0.388
+          ],
+          [
+            0.097,
+            0.085,
+            0.273
+          ]
+        ],
+        [
+          [
+            0.883,
+            0.085,
+            0.232
+          ],
+          [
+            0.883,
+            0.405,
+            0.232
+          ],
+          [
+            0.883,
+            0.405,
+            0.273
+          ],
+          [
+            0.883,
+            0.245,
+            0.388
+          ],
+          [
+            0.883,
+            0.085,
+            0.273
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "hall_window_0_0",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        0.17300000000000001,
+        0.094,
+        0.155,
+        0.23700000000000002,
+        0.10600000000000001,
+        0.206
+      ]
+    },
+    {
+      "id": "hall_window_1_0",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        0.17300000000000001,
+        0.384,
+        0.155,
+        0.23700000000000002,
+        0.396,
+        0.206
+      ]
+    },
+    {
+      "id": "hall_window_0_1",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        0.363,
+        0.094,
+        0.155,
+        0.42700000000000005,
+        0.10600000000000001,
+        0.206
+      ]
+    },
+    {
+      "id": "hall_window_1_1",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        0.363,
+        0.384,
+        0.155,
+        0.42700000000000005,
+        0.396,
+        0.206
+      ]
+    },
+    {
+      "id": "hall_window_0_2",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        0.5529999999999999,
+        0.094,
+        0.155,
+        0.617,
+        0.10600000000000001,
+        0.206
+      ]
+    },
+    {
+      "id": "hall_window_1_2",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        0.5529999999999999,
+        0.384,
+        0.155,
+        0.617,
+        0.396,
+        0.206
+      ]
+    },
+    {
+      "id": "hall_window_0_3",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        0.743,
+        0.094,
+        0.155,
+        0.807,
+        0.10600000000000001,
+        0.206
+      ]
+    },
+    {
+      "id": "hall_window_1_3",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        0.743,
+        0.384,
+        0.155,
+        0.807,
+        0.396,
+        0.206
+      ]
+    },
+    {
+      "id": "hall_loading_door_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.10200000000000001,
+        0.178,
+        0.044,
+        0.118,
+        0.312,
+        0.182
+      ]
+    },
+    {
+      "id": "hall_loading_door_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.862,
+        0.178,
+        0.044,
+        0.878,
+        0.312,
+        0.182
+      ]
+    },
+    {
+      "id": "store_0_plinth",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.5864999999999999,
+        0.5964999999999999
+      ],
+      "profile": [
+        [
+          0.044,
+          0.102
+        ],
+        [
+          0.06756,
+          0.102
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_0_body",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.5864999999999999,
+        0.5964999999999999
+      ],
+      "profile": [
+        [
+          0.06756,
+          0.088
+        ],
+        [
+          0.1932944,
+          0.088
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_0_cap",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.5864999999999999,
+        0.5964999999999999
+      ],
+      "profile": [
+        [
+          0.1925344,
+          0.088
+        ],
+        [
+          0.214696,
+          0.05984
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_0_hatch",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.5864999999999999,
+        0.5964999999999999
+      ],
+      "profile": [
+        [
+          0.211656,
+          0.025
+        ],
+        [
+          0.226096,
+          0.025
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_1_plinth",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.8135,
+        0.5964999999999999
+      ],
+      "profile": [
+        [
+          0.044,
+          0.102
+        ],
+        [
+          0.06756,
+          0.102
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_1_body",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.8135,
+        0.5964999999999999
+      ],
+      "profile": [
+        [
+          0.06756,
+          0.088
+        ],
+        [
+          0.1932944,
+          0.088
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_1_cap",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.8135,
+        0.5964999999999999
+      ],
+      "profile": [
+        [
+          0.1925344,
+          0.088
+        ],
+        [
+          0.214696,
+          0.05984
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_1_hatch",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.8135,
+        0.5964999999999999
+      ],
+      "profile": [
+        [
+          0.211656,
+          0.025
+        ],
+        [
+          0.226096,
+          0.025
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_2_plinth",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.5864999999999999,
+        0.8235
+      ],
+      "profile": [
+        [
+          0.044,
+          0.102
+        ],
+        [
+          0.06756,
+          0.102
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_2_body",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.5864999999999999,
+        0.8235
+      ],
+      "profile": [
+        [
+          0.06756,
+          0.088
+        ],
+        [
+          0.1932944,
+          0.088
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_2_cap",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.5864999999999999,
+        0.8235
+      ],
+      "profile": [
+        [
+          0.1925344,
+          0.088
+        ],
+        [
+          0.214696,
+          0.05984
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_2_hatch",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.5864999999999999,
+        0.8235
+      ],
+      "profile": [
+        [
+          0.211656,
+          0.025
+        ],
+        [
+          0.226096,
+          0.025
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_3_plinth",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.8135,
+        0.8235
+      ],
+      "profile": [
+        [
+          0.044,
+          0.102
+        ],
+        [
+          0.06756,
+          0.102
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_3_body",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.8135,
+        0.8235
+      ],
+      "profile": [
+        [
+          0.06756,
+          0.088
+        ],
+        [
+          0.1932944,
+          0.088
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_3_cap",
+      "type": "revolution",
+      "material": "pipe",
+      "center": [
+        0.8135,
+        0.8235
+      ],
+      "profile": [
+        [
+          0.1925344,
+          0.088
+        ],
+        [
+          0.214696,
+          0.05984
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "store_3_hatch",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.8135,
+        0.8235
+      ],
+      "profile": [
+        [
+          0.211656,
+          0.025
+        ],
+        [
+          0.226096,
+          0.025
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "link_0_1",
+      "type": "beam",
+      "material": "pipe",
+      "start": [
+        0.6604999999999999,
+        0.5964999999999999,
+        0.0916368
+      ],
+      "end": [
+        0.7395,
+        0.5964999999999999,
+        0.0916368
+      ],
+      "thickness": 0.026
+    },
+    {
+      "id": "link_0_2",
+      "type": "beam",
+      "material": "pipe",
+      "start": [
+        0.5864999999999999,
+        0.6704999999999999,
+        0.0916368
+      ],
+      "end": [
+        0.5864999999999999,
+        0.7495,
+        0.0916368
+      ],
+      "thickness": 0.026
+    },
+    {
+      "id": "link_1_3",
+      "type": "beam",
+      "material": "pipe",
+      "start": [
+        0.8135,
+        0.6704999999999999,
+        0.0916368
+      ],
+      "end": [
+        0.8135,
+        0.7495,
+        0.0916368
+      ],
+      "thickness": 0.026
+    },
+    {
+      "id": "link_2_3",
+      "type": "beam",
+      "material": "pipe",
+      "start": [
+        0.6604999999999999,
+        0.8235,
+        0.0916368
+      ],
+      "end": [
+        0.7395,
+        0.8235,
+        0.0916368
+      ],
+      "thickness": 0.026
+    },
+    {
+      "id": "hall_feed_0",
+      "type": "beam",
+      "material": "pipe",
+      "start": [
+        0.5864999999999999,
+        0.383,
+        0.10668
+      ],
+      "end": [
+        0.5864999999999999,
+        0.5225,
+        0.0916368
+      ],
+      "thickness": 0.029
+    }
+  ],
+  "catalogue": {
+    "label": "C056 \u00b7 gable \u00b7 hall original \u00b7 tank low",
+    "layout": "square in yard",
+    "ancillary": "tanks",
+    "hall_height": "original",
+    "ancillary_height": "low",
+    "composition": "c056",
+    "vocabularies": [
+      "General industrial"
+    ],
+    "silhouette": "mixed"
+  }
+}

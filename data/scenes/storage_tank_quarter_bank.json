@@ -1,0 +1,357 @@
+{
+  "catalogue": {
+    "label": "Four quarter-tile storage tanks",
+    "ancillary": "tanks"
+  },
+  "shapes": [
+    {
+      "id": "slab",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.035,
+        0.045,
+        0,
+        0.965,
+        0.955,
+        0.044
+      ]
+    },
+    {
+      "id": "tank_0_ring",
+      "type": "revolution",
+      "center": [
+        0.265,
+        0.265
+      ],
+      "profile": [
+        [
+          0.044,
+          0.21400000000000002
+        ],
+        [
+          0.06999999999999999,
+          0.21400000000000002
+        ]
+      ],
+      "segments": 32,
+      "material": "concrete"
+    },
+    {
+      "id": "tank_0_shell",
+      "type": "revolution",
+      "center": [
+        0.265,
+        0.265
+      ],
+      "profile": [
+        [
+          0.06999999999999999,
+          0.2
+        ],
+        [
+          0.364,
+          0.2
+        ]
+      ],
+      "segments": 32,
+      "material": "pipe"
+    },
+    {
+      "id": "tank_0_roof",
+      "type": "revolution",
+      "center": [
+        0.265,
+        0.265
+      ],
+      "profile": [
+        [
+          0.362,
+          0.2
+        ],
+        [
+          0.39899999999999997,
+          0.17800000000000002
+        ],
+        [
+          0.438,
+          0.038000000000000006
+        ]
+      ],
+      "segments": 32,
+      "material": "metal"
+    },
+    {
+      "id": "tank_0_hatch",
+      "type": "revolution",
+      "center": [
+        0.265,
+        0.265
+      ],
+      "profile": [
+        [
+          0.436,
+          0.028
+        ],
+        [
+          0.459,
+          0.028
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    },
+    {
+      "id": "tank_1_ring",
+      "type": "revolution",
+      "center": [
+        0.735,
+        0.265
+      ],
+      "profile": [
+        [
+          0.044,
+          0.21400000000000002
+        ],
+        [
+          0.06999999999999999,
+          0.21400000000000002
+        ]
+      ],
+      "segments": 32,
+      "material": "concrete"
+    },
+    {
+      "id": "tank_1_shell",
+      "type": "revolution",
+      "center": [
+        0.735,
+        0.265
+      ],
+      "profile": [
+        [
+          0.06999999999999999,
+          0.2
+        ],
+        [
+          0.364,
+          0.2
+        ]
+      ],
+      "segments": 32,
+      "material": "pipe"
+    },
+    {
+      "id": "tank_1_roof",
+      "type": "revolution",
+      "center": [
+        0.735,
+        0.265
+      ],
+      "profile": [
+        [
+          0.362,
+          0.2
+        ],
+        [
+          0.39899999999999997,
+          0.17800000000000002
+        ],
+        [
+          0.438,
+          0.038000000000000006
+        ]
+      ],
+      "segments": 32,
+      "material": "metal"
+    },
+    {
+      "id": "tank_1_hatch",
+      "type": "revolution",
+      "center": [
+        0.735,
+        0.265
+      ],
+      "profile": [
+        [
+          0.436,
+          0.028
+        ],
+        [
+          0.459,
+          0.028
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    },
+    {
+      "id": "tank_2_ring",
+      "type": "revolution",
+      "center": [
+        0.265,
+        0.735
+      ],
+      "profile": [
+        [
+          0.044,
+          0.21400000000000002
+        ],
+        [
+          0.06999999999999999,
+          0.21400000000000002
+        ]
+      ],
+      "segments": 32,
+      "material": "concrete"
+    },
+    {
+      "id": "tank_2_shell",
+      "type": "revolution",
+      "center": [
+        0.265,
+        0.735
+      ],
+      "profile": [
+        [
+          0.06999999999999999,
+          0.2
+        ],
+        [
+          0.364,
+          0.2
+        ]
+      ],
+      "segments": 32,
+      "material": "pipe"
+    },
+    {
+      "id": "tank_2_roof",
+      "type": "revolution",
+      "center": [
+        0.265,
+        0.735
+      ],
+      "profile": [
+        [
+          0.362,
+          0.2
+        ],
+        [
+          0.39899999999999997,
+          0.17800000000000002
+        ],
+        [
+          0.438,
+          0.038000000000000006
+        ]
+      ],
+      "segments": 32,
+      "material": "metal"
+    },
+    {
+      "id": "tank_2_hatch",
+      "type": "revolution",
+      "center": [
+        0.265,
+        0.735
+      ],
+      "profile": [
+        [
+          0.436,
+          0.028
+        ],
+        [
+          0.459,
+          0.028
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    },
+    {
+      "id": "tank_3_ring",
+      "type": "revolution",
+      "center": [
+        0.735,
+        0.735
+      ],
+      "profile": [
+        [
+          0.044,
+          0.21400000000000002
+        ],
+        [
+          0.06999999999999999,
+          0.21400000000000002
+        ]
+      ],
+      "segments": 32,
+      "material": "concrete"
+    },
+    {
+      "id": "tank_3_shell",
+      "type": "revolution",
+      "center": [
+        0.735,
+        0.735
+      ],
+      "profile": [
+        [
+          0.06999999999999999,
+          0.2
+        ],
+        [
+          0.364,
+          0.2
+        ]
+      ],
+      "segments": 32,
+      "material": "pipe"
+    },
+    {
+      "id": "tank_3_roof",
+      "type": "revolution",
+      "center": [
+        0.735,
+        0.735
+      ],
+      "profile": [
+        [
+          0.362,
+          0.2
+        ],
+        [
+          0.39899999999999997,
+          0.17800000000000002
+        ],
+        [
+          0.438,
+          0.038000000000000006
+        ]
+      ],
+      "segments": 32,
+      "material": "metal"
+    },
+    {
+      "id": "tank_3_hatch",
+      "type": "revolution",
+      "center": [
+        0.735,
+        0.735
+      ],
+      "profile": [
+        [
+          0.436,
+          0.028
+        ],
+        [
+          0.459,
+          0.028
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    }
+  ]
+}

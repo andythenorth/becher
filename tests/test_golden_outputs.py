@@ -1,7 +1,7 @@
 """Approved v0.16.4 output oracle. Never regenerate in an ordinary test run.
 
-These fixtures deliberately duplicate final pixels AND the frozen geometry / scene
-representation, to distinguish appearance changes from geometry changes. A failed
+Frozen building scenes exercise mesh compilation and raster output.
+Fixture hashes authenticate the inputs against the original baseline. A failed
 pixel comparison emits a 4x nearest-neighbour diagnostic diff in tmp_path.
 """
 from __future__ import annotations
@@ -84,12 +84,21 @@ def test_frozen_float_oracle_rejects_geometry_mutation():
 
 
 @pytest.mark.golden
-@pytest.mark.parametrize('mode',('classic','diverse','related'))
+@pytest.mark.parametrize('mode',tuple(REFERENCE['cases']))
 def test_approved_sprites_geometry_and_scene(mode,tmp_path):
     case=REFERENCE['cases'][mode]
     output=tmp_path/mode
-    pipeline.build(output,workers=1,buffers=True,**case['build_options'])
-    manifest=pipeline._load_manifest(output)
+    manifest = {'candidates': {}, 'nodes': {}}
+    items = []
+    for key, scene_hash in case['scenes'].items():
+        scene = json.loads((ROOT / f'{mode}_{key}_scene.json').read_text())
+        actual = digest(json.dumps(scene, sort_keys=True, separators=(',', ':')).encode())
+        assert actual == scene_hash, f'{mode}/{key}: frozen scene modified'
+        node = {'id': key}
+        items.append((node, pipeline.scene_from_dict(scene)))
+        manifest['candidates'][key] = {'current': key}
+        manifest['nodes'][key] = node
+    pipeline._render_nodes(items, output, workers=1, buffers=False, **case['render_options'])
     expected_names = assert_complete_sprite_coverage(manifest, case, mode)
     for key in sorted(manifest['candidates']):
         node=manifest['nodes'][manifest['candidates'][key]['current']]
@@ -101,9 +110,6 @@ def test_approved_sprites_geometry_and_scene(mode,tmp_path):
             assert actual==mesh_record[member],f'{mode}/{key}: mesh {member} changed'
         assert len(mesh.vertices)==mesh_record['triangle_count']
         assert digest(json.dumps(mesh.component_names).encode())==mesh_record['component_names']
-        scene=json.loads((output/node['scene']).read_text())
-        actual_scene=digest(json.dumps(scene,sort_keys=True,separators=(',',':')).encode())
-        assert actual_scene==case['scenes'][key],f'{mode}/{key}: generated scene changed'
         for record in node['sprites']:
             angle=int(record['rotation'])
             name=f'{key}_{angle:03d}'

@@ -1,0 +1,105 @@
+{
+  "catalogue": {
+    "label": "storage tank full tile",
+    "ancillary": "tanks"
+  },
+  "shapes": [
+    {
+      "id": "slab",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.035,
+        0.045,
+        0,
+        0.965,
+        0.955,
+        0.044
+      ]
+    },
+    {
+      "id": "ring",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          0.044,
+          0.424
+        ],
+        [
+          0.06999999999999999,
+          0.424
+        ]
+      ],
+      "segments": 32,
+      "material": "concrete"
+    },
+    {
+      "id": "shell",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          0.06999999999999999,
+          0.41
+        ],
+        [
+          0.5640000000000001,
+          0.41
+        ]
+      ],
+      "segments": 32,
+      "material": "pipe"
+    },
+    {
+      "id": "roof",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          0.562,
+          0.41
+        ],
+        [
+          0.5990000000000001,
+          0.3649
+        ],
+        [
+          0.638,
+          0.0779
+        ]
+      ],
+      "segments": 32,
+      "material": "metal"
+    },
+    {
+      "id": "hatch",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          0.636,
+          0.028
+        ],
+        [
+          0.659,
+          0.028
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    }
+  ]
+}

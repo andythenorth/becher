@@ -99,7 +99,7 @@ def _zones(surface, metadata):
             if component in hosts and name in ('metal','concrete'):
                 zone = 'main_wall' if component == 'main' else 'secondary_wall'
             else:
-                zone = name
+                zone = 'pipe' if name == 'tank_wall' else name
             masks[zone][pixels] = True
     coverage = sum(mask.astype(np.uint8) for mask in masks.values())
     if not np.all(coverage[surface.silhouette] == 1) or np.any(coverage[~surface.silhouette]):

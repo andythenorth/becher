@@ -132,11 +132,14 @@ def sweep_rings(rings, material='metal', part='sweep'):
     return output
 
 
-def revolution(profile, *, center=(0.5,0.5), segments=32, material='metal', part='vessel'):
+def revolution(profile, *, center=(0.5,0.5), segments=32, material='metal', part='vessel',
+               crease_rings=()):
     """Revolve (z,r) profile into a closed solid, with interpolated side normals.
 
     Sphere, cylinder, cone, and hopper all use the same general construction.
     Caps remain planar; poles at radius zero do not generate fake caps.
+    crease_rings lists zero-based interior profile indices where each adjacent
+    span uses its own slope. Normals still interpolate around each ring.
     """
     values=np.asarray(profile,dtype=float)
     if values.ndim!=2 or values.shape[1] != 2 or len(values)<2 or segments<8:
@@ -146,22 +149,29 @@ def revolution(profile, *, center=(0.5,0.5), segments=32, material='metal', part
     cx,cy=map(float,center)
     out=[]
     z=values[:,0];r=values[:,1]
-    slopes=np.gradient(r,z)
+    if not isinstance(crease_rings, (list, tuple)) or any(
+        type(index) is not int or not 0 < index < len(z)-1 for index in crease_rings
+    ):
+        raise ValueError('Crease rings must be interior profile indices')
+    creases = set(crease_rings)
+    slopes = np.gradient(r, z)
+    span_slopes = np.diff(r) / np.diff(z)
     def point(i,j):
         angle=2*math.pi*j/segments
         return np.array((cx+r[i]*math.cos(angle),cy+r[i]*math.sin(angle),z[i]),float)
-    def normal(i,j):
+    def normal(i,j,span):
         if r[i]<1e-12:
             return np.array((0,0,-1. if i==0 else 1.))
         angle=2*math.pi*j/segments
-        n=np.array((math.cos(angle),math.sin(angle),-slopes[i]),float)
+        slope = span_slopes[span] if i in creases else slopes[i]
+        n=np.array((math.cos(angle),math.sin(angle),-slope),float)
         return n/np.linalg.norm(n)
     for i in range(len(z)-1):
         for j in range(segments):
             k=(j+1)%segments
             for ij in (((i,j),(i,k),(i+1,k)),((i,j),(i+1,k),(i+1,j))):
                 pts=[point(ii,jj) for ii,jj in ij]
-                normals=np.array([normal(ii,jj) for ii,jj in ij])
+                normals=np.array([normal(ii,jj,i) for ii,jj in ij])
                 outward=normals.mean(axis=0)
                 f=_face(*pts,material,part,outward=outward,normals=normals)
                 if f is not None:out.append(f)
@@ -215,7 +225,10 @@ def scene_faces(scene):
         if kind=='box':out+=box(shape['bounds'],mat,part)
         elif kind=='cylinder':out+=cylinder(shape['bounds'],mat,part)
         elif kind=='beam':out+=beam_between(shape['start'],shape['end'],shape['thickness'],material=mat,part=part)
-        elif kind=='revolution':out+=revolution(shape['profile'],center=shape.get('center',(.5,.5)),segments=shape.get('segments',32),material=mat,part=part)
+        elif kind=='revolution':
+            out += revolution(shape['profile'], center=shape.get('center', (.5,.5)),
+                              segments=shape.get('segments', 32), material=mat, part=part,
+                              crease_rings=shape.get('crease_rings', ()))
         elif kind=='rings':out+=sweep_rings(shape['rings'],mat,part)
         elif kind=='triangles':out+=triangle_faces(shape['vertices'],material=mat,part=part,normals=shape.get('normals'))
         else:raise ValueError(f'Unknown geometry primitive: {kind}')

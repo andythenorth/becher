@@ -1,0 +1,125 @@
+{
+  "Grain handling": {
+    "sheds": [
+      "gable_shed",
+      "monitor_shed",
+      "gable_shed_tall",
+      "monitor_shed_tall",
+      "tall_mill",
+      "twin_bay_shed"
+    ],
+    "annexes": [
+      "annex",
+      "loading_annex"
+    ],
+    "storage": [
+      "silo",
+      "joined_silo_pair",
+      "silo_short",
+      "joined_silo_pair_short",
+      "conical_grain_bin"
+    ],
+    "yards": [
+      "grain_elevator",
+      "enclosed_silo_block",
+      "enclosed_silo_service_spine"
+    ]
+  },
+  "Liquid storage": {
+    "sheds": [
+      "gable_shed",
+      "monitor_shed",
+      "gable_shed_tall",
+      "monitor_shed_tall",
+      "boiler_house",
+      "sawtooth_hall"
+    ],
+    "annexes": [
+      "annex",
+      "loading_annex"
+    ],
+    "storage": [
+      "tank",
+      "domed_tank",
+      "tall_process_tank",
+      "storage_tank_quarter_tile"
+    ],
+    "yards": [
+      "storage_tank_full_tile",
+      "storage_tank_quarter_tile",
+      "pump_skid",
+      "vessel_and_tower_train",
+      "three_stage_process_train"
+    ]
+  },
+  "General industrial": {
+    "sheds": [
+      "gable_shed",
+      "monitor_shed",
+      "sawtooth_hall",
+      "boiler_house",
+      "twin_bay_shed",
+      "dispatch_shed",
+      "tall_mill"
+    ],
+    "annexes": [
+      "office_annex",
+      "loading_annex"
+    ],
+    "storage": [],
+    "yards": [
+      "enclosed_lift_tower",
+      "cooling_cell"
+    ]
+  },
+  "Chimneys": {
+    "sheds": [],
+    "annexes": [],
+    "storage": [
+      "chimney_battered_base",
+      "chimney_soft_taper",
+      "chimney_soft_taper_medium",
+      "chimney_soft_taper_very_tall",
+      "chimney_square_pedestal",
+      "chimney_square_pedestal_medium",
+      "chimney_square_pedestal_short",
+      "chimney_square_pedestal_very_tall",
+      "chimney_stepped_stack",
+      "chimney_stepped_stack_medium",
+      "chimney_stepped_stack_very_tall",
+      "chimney_straight_on_plinth",
+      "chimney_twin_stack",
+      "chimney_low_tapered",
+      "chimney_low_straight"
+    ],
+    "yards": [
+      "chimney_battered_base",
+      "chimney_soft_taper",
+      "chimney_soft_taper_medium",
+      "chimney_soft_taper_very_tall",
+      "chimney_square_pedestal",
+      "chimney_square_pedestal_medium",
+      "chimney_square_pedestal_short",
+      "chimney_square_pedestal_very_tall",
+      "chimney_stepped_stack",
+      "chimney_stepped_stack_medium",
+      "chimney_stepped_stack_very_tall",
+      "chimney_straight_on_plinth",
+      "chimney_twin_stack",
+      "chimney_low_tapered",
+      "chimney_low_straight"
+    ]
+  },
+  "Mining and aggregates": {
+    "sheds": [],
+    "annexes": [],
+    "storage": [],
+    "yards": [
+      "aggregate_bays",
+      "short_inclined_conveyor",
+      "mine_headframe",
+      "stepped_crusher_house",
+      "trough_fed_crusher"
+    ]
+  }
+}

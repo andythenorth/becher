@@ -24,8 +24,8 @@ from .roof_colour import apply as apply_roof_colour
 from .feature_passes import STAGES, build_features, reroll as reroll_features, validate_features
 from .palette import load_palette
 
-# Change when scene construction or raster output semantics change.
-PIPELINE_REVISION = "v0.16.1-mesh-only"
+# Change when candidate selection, scene construction or raster output semantics change.
+PIPELINE_REVISION = "explicit-families-v1"
 
 
 def _write_json(path, data):
@@ -214,32 +214,28 @@ def feedback_action(out,candidate,action,value=None,notes=None):
 def build(out, *, seed=1267, designs=12, start=0, workers=4, grammar_file=None,
           buffers=True, max_attempts=None, edge_contrast="off",
           semantic_colour="on", semantic_hues=3, roof_colours="off", facade_mode="boxes",
-          candidate_mode="classic", industry=None, renderer="mesh"):
+          renderer="mesh", family_ids=None):
     if renderer != 'mesh': raise ValueError('v0.16.1 supports only renderer=mesh')
     if edge_contrast not in ('off','on'):raise ValueError('invalid edge contrast mode')
     if semantic_colour not in ('off','on'):raise ValueError('invalid semantic colour mode')
     if roof_colours not in ('off','on'):raise ValueError('invalid roof colour mode')
     if facade_mode not in ('boxes','decals'):raise ValueError('invalid facade mode')
     if semantic_hues not in (3,4):raise ValueError('semantic hues must be 3 or 4')
-    if candidate_mode not in ('classic','diverse','related'):raise ValueError('invalid candidate mode')
     if not 1<=designs<=256:raise ValueError('designs must be 1..256')
     if not 1<=workers<=64:raise ValueError('workers must be 1..64')
-    out=Path(out);out.mkdir(parents=True,exist_ok=True)
+    out=Path(out)
     t0=perf_counter()
-    from .sampling import catalogue, candidates as sample_candidates
+    from .sampling import catalogue, candidates as sample_candidates, select_families
     primary, ancillary=catalogue(grammar_file)
-    families=primary + (ancillary if candidate_mode != 'classic' else [])
+    families = select_families(primary, ancillary, family_ids)
     grammar_sha=hashlib.sha256(json.dumps(families,sort_keys=True).encode()).hexdigest()
-    if candidate_mode=='related' and industry not in {f['id'] for f in primary}:
-        raise ValueError('related mode requires a valid --industry primary grammar ID')
-    if candidate_mode!='related' and industry is not None:
-        raise ValueError('--industry applies only to related mode')
+    out.mkdir(parents=True,exist_ok=True)
     existing=out/'manifest.json'
     if existing.exists():
         old=_load_manifest(out)
         if old.get('pipeline_revision') != PIPELINE_REVISION:
             raise ValueError('Existing output was compiled by a different Becher revision; use a new --out directory (old PNGs are preserved)')
-        if (old.get('seed'),old.get('start'),old.get('designs'),old.get('grammar_sha256'),old.get('edge_contrast','off'),old.get('semantic_colour','on'),old.get('semantic_hues',3),old.get('roof_colours','off'),old.get('facade_mode','boxes'),old.get('candidate_mode','classic'),old.get('industry'),old.get('renderer','analytic')) != (seed,start,designs,grammar_sha,edge_contrast,semantic_colour,semantic_hues,roof_colours,facade_mode,candidate_mode,industry,renderer):
+        if (old.get('seed'),old.get('start'),old.get('designs'),old.get('grammar_sha256'),old.get('edge_contrast','off'),old.get('semantic_colour','on'),old.get('semantic_hues',3),old.get('roof_colours','off'),old.get('facade_mode','boxes'),old.get('renderer','analytic')) != (seed,start,designs,grammar_sha,edge_contrast,semantic_colour,semantic_hues,roof_colours,facade_mode,renderer):
             raise ValueError('Output already contains a different run; select a new --out path')
         _assert_cached_sprites(out,old)
         if not (out/'index.html').exists():
@@ -248,7 +244,7 @@ def build(out, *, seed=1267, designs=12, start=0, workers=4, grammar_file=None,
         return {**json.loads((out/'timing.json').read_text()),'cached':True}
 
     accepted,rejected,attempt=sample_candidates(
-        seed,designs,start,primary,ancillary,candidate_mode,industry,
+        seed,designs,start,families,
         max_attempts or designs*12)
     nodes={};candidates={};leaves=[]
     for root in accepted:
@@ -267,7 +263,7 @@ def build(out, *, seed=1267, designs=12, start=0, workers=4, grammar_file=None,
     manifest={'schema_version':1,'compiler':'becher-step3','pipeline_revision':PIPELINE_REVISION,
               'edge_contrast':edge_contrast, 'semantic_colour':semantic_colour,
               'semantic_hues':semantic_hues, 'roof_colours':roof_colours, 'facade_mode':facade_mode,
-              'candidate_mode':candidate_mode,'industry':industry,'renderer':renderer,
+              'renderer':renderer,
               'grammar_families':[f['id'] for f in families],
               'seed':seed,'start':start,'designs':len(accepted),
               'rotations_per_design':4,

@@ -1,0 +1,50 @@
+{
+  "shapes": [
+    {
+      "id": "walls",
+      "type": "box",
+      "material": "metal",
+      "bounds": [
+        -0.104,
+        -0.09,
+        0,
+        0.104,
+        0.09,
+        0.145
+      ]
+    },
+    {
+      "id": "flat_roof",
+      "type": "box",
+      "material": "roof",
+      "bounds": [
+        -0.115,
+        -0.103,
+        0.137,
+        0.115,
+        0.103,
+        0.17
+      ]
+    },
+    {
+      "id": "door",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.034,
+        0.087,
+        0,
+        0.034,
+        0.096,
+        0.106
+      ]
+    }
+  ],
+  "role": "annex",
+  "footprint": [
+    -0.115,
+    -0.103,
+    0.115,
+    0.103
+  ]
+}

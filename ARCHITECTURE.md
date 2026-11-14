@@ -4,6 +4,15 @@
 
 `data/grammars/industrial_v1.json` and `data/grammars/ancillary_v1.json` → `src/architectures.py` / `src/sampling.py` / `src/feature_passes.py` → immutable building model → `src/mesh/compile.py` → frozen triangle mesh → `src/mesh/intersect.py` and `src/mesh/render.py` → indexed PNG, optional surface buffers and review output. `src/pipeline.py` coordinates deterministic candidate generation and output manifests.
 
+## Assembly composition
+
+`data/assemblies/` and the placement plans in `src/composition.py` produce
+a pool of eligible tile scenes for the selected vocabulary and silhouette.
+The seeded sampler draws 16 rows. Each scene goes through the existing mesh
+compiler and renderer via `src/authored_scenes.py`. The local web UI calls the
+`compose` and `reroll-tile` CLI commands. A reroll renders one replacement
+scene and reuses the other rows' exported files.
+
 ## Editing seams
 
 - **Content:** `data/` holds current family definitions, parameter ranges, DOS palette, material lighting ramps and handoff profiles. Change design choices here where the existing schema permits.

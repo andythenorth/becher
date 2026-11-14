@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Becher</title>
+  <style>
+    td button[aria-pressed="true"] { outline: 2px solid currentColor; }
+    th[scope="row"] { max-width: 18rem; text-align: left; }
+    td img { display: block; }
+    #status { white-space: pre-wrap; }
+    #previews { overflow-x: auto; }
+    #previews:not([hidden]) { display: flex; gap: 0.5rem; }
+    #previews figure { margin: 0; flex: none; }
+    #previews img { display: block; image-rendering: pixelated; }
+  </style>
+  <script src="/app.js?v=four-scale-inspector-v1" defer></script>
+</head>
+<body>
+  <h1>Becher</h1>
+  <form id="installed" hidden>
+    <fieldset>
+      <legend>Build a batch</legend>
+      <fieldset>
+        <legend>Vocabulary</legend>
+        <div id="vocabularies"></div>
+      </fieldset>
+      <p>
+        <label>Silhouette
+          <select id="silhouette">
+            <option value="low">Low</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+        <label>Seed <input id="assembly-seed" type="number" min="0" max="4294967295" value="1267" required></label>
+        <button id="render-scenes" type="submit" disabled>Render batch</button>
+      </p>
+    </fieldset>
+  </form>
+
+  <details id="component-preview" hidden>
+    <summary>Preview a component</summary>
+    <label>Component <select id="component-choice"></select></label>
+    <button id="render-component" type="button">Render component</button>
+  </details>
+
+  <pre id="status" role="status"></pre>
+  <main>
+    <label>Preview background
+      <select id="background">
+        <option value="#0000ff" selected>Blue</option>
+        <option value="">Transparent</option>
+      </select>
+    </label>
+    <section id="sheet" hidden>
+      <p>
+        <a id="save-batch">Save batch ZIP</a>
+        <button id="copy-sheet" type="button">Copy contact sheet</button>
+        <button id="save-sheet" type="button">Save contact sheet</button>
+      </p>
+      <table>
+        <thead><tr><th scope="col">Candidate</th><th scope="col">0°</th><th scope="col">90°</th><th scope="col">180°</th><th scope="col">270°</th><th scope="col" id="row-actions" hidden>Actions</th></tr></thead>
+        <tbody id="candidates"></tbody>
+      </table>
+    </section>
+
+    <section id="inspector" hidden>
+      <p>
+        <button id="back" type="button">Contact sheet</button>
+        <button id="previous" type="button">Previous sprite</button>
+        <button id="next" type="button">Next sprite</button>
+        <button id="reroll" type="button" hidden>Reroll row</button>
+        <button id="copy" type="button">Copy image</button>
+        <a id="save">Save PNG</a>
+        <a id="save-geometry" hidden>Save geometry JSON</a>
+
+      </p>
+      <p id="caption" aria-live="polite"></p>
+      <p>Left/Right moves between sprites. Esc returns to the contact sheet.</p>
+      <div id="previews" role="group" aria-label="Sprite zoom comparison" hidden>
+        <figure>
+          <figcaption>100%</figcaption>
+          <img alt="" width="64" height="128">
+        </figure>
+        <figure>
+          <figcaption>200%</figcaption>
+          <img alt="" width="128" height="256">
+        </figure>
+        <figure>
+          <figcaption>400%</figcaption>
+          <img alt="" width="256" height="512">
+        </figure>
+        <figure>
+          <figcaption>800%</figcaption>
+          <img alt="" width="512" height="1024">
+        </figure>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

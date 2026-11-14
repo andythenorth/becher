@@ -1,0 +1,120 @@
+{
+  "catalogue": {
+    "label": "square pedestal \u00b7 very tall",
+    "ancillary": "chimneys"
+  },
+  "shapes": [
+    {
+      "id": "slab",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.035,
+        0.045,
+        0,
+        0.965,
+        0.955,
+        0.044
+      ]
+    },
+    {
+      "id": "footing",
+      "type": "box",
+      "bounds": [
+        0.301,
+        0.301,
+        0.044,
+        0.699,
+        0.699,
+        0.1256
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pedestal",
+      "type": "box",
+      "bounds": [
+        0.337,
+        0.337,
+        0.1256,
+        0.663,
+        0.663,
+        0.30784
+      ],
+      "material": "chimney"
+    },
+    {
+      "id": "coping",
+      "type": "box",
+      "bounds": [
+        0.321,
+        0.321,
+        0.30648,
+        0.679,
+        0.679,
+        0.3568
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "shaft_0",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          0.3568,
+          0.111
+        ],
+        [
+          2.21116,
+          0.079
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "crown_0",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          2.1894,
+          0.09005999999999999
+        ],
+        [
+          2.23836,
+          0.09005999999999999
+        ]
+      ],
+      "segments": 32,
+      "material": "chimney"
+    },
+    {
+      "id": "mouth_0",
+      "type": "revolution",
+      "center": [
+        0.5,
+        0.5
+      ],
+      "profile": [
+        [
+          2.237,
+          0.06162
+        ],
+        [
+          2.25604,
+          0.06162
+        ]
+      ],
+      "segments": 32,
+      "material": "frame"
+    }
+  ]
+}

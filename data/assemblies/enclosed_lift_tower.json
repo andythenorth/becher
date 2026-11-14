@@ -1,0 +1,76 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.27,
+    -0.19,
+    0.29,
+    0.19
+  ],
+  "shapes": [
+    {
+      "id": "mass_0",
+      "type": "box",
+      "material": "metal",
+      "bounds": [
+        -0.235,
+        -0.155,
+        0.0,
+        0.075,
+        0.155,
+        1.02
+      ]
+    },
+    {
+      "id": "mass_1",
+      "type": "box",
+      "material": "metal",
+      "bounds": [
+        0.07,
+        -0.09,
+        0.0,
+        0.29,
+        0.13,
+        0.63
+      ]
+    },
+    {
+      "id": "mass_2",
+      "type": "box",
+      "material": "roof",
+      "bounds": [
+        -0.27,
+        -0.19,
+        0.99,
+        0.11,
+        0.19,
+        1.08
+      ]
+    },
+    {
+      "id": "mass_3",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        -0.23,
+        -0.165,
+        0.61,
+        -0.12,
+        -0.15,
+        0.89
+      ]
+    },
+    {
+      "id": "mass_4",
+      "type": "box",
+      "material": "glass",
+      "bounds": [
+        -0.01,
+        -0.165,
+        0.61,
+        0.1,
+        -0.15,
+        0.89
+      ]
+    }
+  ]
+}
