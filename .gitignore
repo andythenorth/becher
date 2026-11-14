@@ -1,10 +1,9 @@
+.venv/
+venv/
 __pycache__/
-*.py[cod]
 .pytest_cache/
+*.py[cod]
 *.egg-info/
 build/
 dist/
-output/
-runs/
-.mine_last_run.json
-.venv/
+.DS_Store
