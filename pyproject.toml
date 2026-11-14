@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "becher"
+version = "0.16.6"
+description = "OpenTTD 1x indexed industrial sprite generator"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26", "Pillow>=10.0", "pytest>=8"]
+
+[project.scripts]
+becher = "src.cli:main"
+
+[tool.setuptools]
+packages = ["src", "src.mesh"]
+py-modules = ["becher"]

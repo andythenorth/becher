@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "coordinate_system": "unit ground footprint, z vertical, 2:1 dimetric camera",
+  "families": [
+    {
+      "id": "bof_tall_converter_hall",
+      "label": "BOF tall converter hall",
+      "main": [
+        0.23,
+        0.15,
+        0.67,
+        0.79,
+        0.97
+      ],
+      "main_roofs": [
+        "gable_y",
+        "gable_x"
+      ],
+      "annexes": [
+        {
+          "id": "charging_bay",
+          "rect": [
+            0.08,
+            0.27,
+            0.25,
+            0.71,
+            0.52
+          ],
+          "roofs": [
+            "shed",
+            "flat"
+          ],
+          "windows": "tall_factory",
+          "doors": "loading"
+        },
+        {
+          "id": "tapping_bay",
+          "rect": [
+            0.65,
+            0.24,
+            0.92,
+            0.76,
+            0.68
+          ],
+          "roofs": [
+            "shed",
+            "gable_y"
+          ],
+          "windows": "blank",
+          "doors": "process"
+        }
+      ],
+      "fixtures": [
+        "double_stack",
+        "pipe_bank"
+      ],
+      "tags": [
+        "bof",
+        "converter",
+        "vertical_hall"
+      ],
+      "windows": "clerestory",
+      "doors": "process"
+    },
+    {
+      "id": "bof_parallel_process_halls",
+      "label": "BOF parallel process halls",
+      "main": [
+        0.1,
+        0.14,
+        0.48,
+        0.87,
+        1.0
+      ],
+      "main_roofs": [
+        "gable_y",
+        "monitor"
+      ],
+      "annexes": [
+        {
+          "id": "furnace_bay",
+          "rect": [
+            0.46,
+            0.14,
+            0.79,
+            0.87,
+            0.85
+          ],
+          "roofs": [
+            "gable_y",
+            "shed"
+          ],
+          "windows": "tall_factory",
+          "doors": "loading"
+        },
+        {
+          "id": "service_wing",
+          "rect": [
+            0.77,
+            0.29,
+            0.93,
+            0.71,
+            0.4
+          ],
+          "roofs": [
+            "flat",
+            "shed"
+          ],
+          "attach_to": "furnace_bay",
+          "windows": "sparse_utility",
+          "doors": "personnel"
+        }
+      ],
+      "fixtures": [
+        "roof_vent",
+        "pipe_bank"
+      ],
+      "tags": [
+        "bof",
+        "twin_bays",
+        "heavy_industrial"
+      ],
+      "windows": "clerestory",
+      "doors": "none"
+    },
+    {
+      "id": "bof_stepped_furnace_complex",
+      "label": "BOF stepped furnace complex",
+      "main": [
+        0.22,
+        0.11,
+        0.63,
+        0.84,
+        0.98
+      ],
+      "main_roofs": [
+        "gable_x",
+        "gable_y"
+      ],
+      "annexes": [
+        {
+          "id": "oxygen_plant",
+          "rect": [
+            0.61,
+            0.23,
+            0.91,
+            0.76,
+            0.73
+          ],
+          "roofs": [
+            "shed",
+            "flat"
+          ],
+          "windows": "sparse_utility",
+          "doors": "personnel"
+        },
+        {
+          "id": "transfer_house",
+          "rect": [
+            0.08,
+            0.35,
+            0.24,
+            0.7,
+            0.49
+          ],
+          "roofs": [
+            "flat",
+            "shed"
+          ],
+          "windows": "blank",
+          "doors": "process"
+        }
+      ],
+      "fixtures": [
+        "ridge_monitor",
+        "double_stack"
+      ],
+      "tags": [
+        "bof",
+        "stepped_masses",
+        "converter_building"
+      ],
+      "windows": "blank",
+      "doors": "process"
+    }
+  ]
+}

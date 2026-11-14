@@ -1,0 +1,9 @@
+{
+  "shapes": [
+    {"id":"spherical_pressure_vessel","type":"revolution","material":"metal","center":[0.42,0.42],"segments":32,
+      "profile":[[0.4,0.0],[0.43,0.12],[0.50,0.20],[0.60,0.24],[0.70,0.20],[0.77,0.12],[0.80,0.0]]},
+    {"id":"left_support","type":"beam","material":"frame","start":[0.30,0.30,0.05],"end":[0.30,0.30,0.45],"thickness":0.035},
+    {"id":"right_support","type":"beam","material":"frame","start":[0.55,0.55,0.05],"end":[0.55,0.55,0.45],"thickness":0.035},
+    {"id":"small_vessel","type":"cylinder","material":"concrete","bounds":[0.68,0.30,0.05,0.84,0.46,0.50]}
+  ]
+}

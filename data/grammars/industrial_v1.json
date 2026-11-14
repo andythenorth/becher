@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "coordinate_system": "unit ground footprint, z vertical, 2:1 dimetric camera",
+  "catalogue": "FIRS-approved A/B/E/F/G/H v0.14",
+  "families": [
+    {
+      "id": "broad_high_roof_hall",
+      "label": "A - broad high-roof hall",
+      "main": [
+        0,
+        0.17,
+        1,
+        0.84,
+        0.48
+      ],
+      "main_roofs": [
+        "gable_x",
+        "gable_y",
+        "monitor"
+      ],
+      "windows": "clerestory",
+      "doors": "loading",
+      "annexes": [
+        {
+          "id": "side_works",
+          "rect": [
+            0.13,
+            0.78,
+            0.68,
+            0.93,
+            0.26
+          ],
+          "roofs": [
+            "shed",
+            "flat"
+          ],
+          "windows": "sparse_utility",
+          "doors": "personnel",
+          "optional": true
+        }
+      ],
+      "fixtures": [
+        "ridge_monitor"
+      ],
+      "tags": [
+        "A",
+        "hall",
+        "edge_span_x",
+        "high_roof"
+      ],
+      "edge_span_axis": "x"
+    },
+    {
+      "id": "low_production_shed",
+      "label": "B - low production shed",
+      "main": [
+        0.07,
+        0,
+        0.94,
+        1,
+        0.34
+      ],
+      "main_roofs": [
+        "shed",
+        "gable_y",
+        "sawtooth"
+      ],
+      "windows": "blank",
+      "doors": "loading",
+      "annexes": [
+        {
+          "id": "loading_strip",
+          "rect": [
+            0.69,
+            0.18,
+            0.94,
+            0.68,
+            0.24
+          ],
+          "roofs": [
+            "flat",
+            "shed"
+          ],
+          "windows": "blank",
+          "doors": "loading",
+          "optional": true
+        }
+      ],
+      "fixtures": [
+        "roof_vent"
+      ],
+      "tags": [
+        "B",
+        "low_shed",
+        "edge_span_y"
+      ],
+      "edge_span_axis": "y"
+    },
+    {
+      "id": "flat_roof_factory_block",
+      "label": "E - flat-roof factory block",
+      "main": [
+        0.1,
+        0.08,
+        0.91,
+        0.89,
+        0.42
+      ],
+      "main_roofs": [
+        "flat",
+        "shed"
+      ],
+      "windows": "sparse_utility",
+      "doors": "process",
+      "annexes": [
+        {
+          "id": "plant_wing",
+          "rect": [
+            0.68,
+            0.2,
+            0.95,
+            0.75,
+            0.3
+          ],
+          "roofs": [
+            "flat",
+            "shed"
+          ],
+          "windows": "blank",
+          "doors": "none"
+        },
+        {
+          "id": "service_block",
+          "rect": [
+            0.15,
+            0.72,
+            0.45,
+            0.94,
+            0.27
+          ],
+          "roofs": [
+            "flat"
+          ],
+          "windows": "office",
+          "doors": "personnel",
+          "optional": true
+        }
+      ],
+      "fixtures": [
+        "roof_vent"
+      ],
+      "tags": [
+        "E",
+        "flat_roof",
+        "stepped_mass"
+      ]
+    },
+    {
+      "id": "multi_slope_industrial_hall",
+      "label": "F - multi-slope industrial hall",
+      "main": [
+        0,
+        0.16,
+        1,
+        0.85,
+        0.44
+      ],
+      "main_roofs": [
+        "sawtooth",
+        "monitor",
+        "gable_x"
+      ],
+      "windows": "clerestory",
+      "doors": "loading",
+      "annexes": [
+        {
+          "id": "parallel_bay",
+          "rect": [
+            0.07,
+            0.04,
+            0.65,
+            0.2,
+            0.37
+          ],
+          "roofs": [
+            "gable_x",
+            "shed",
+            "sawtooth"
+          ],
+          "windows": "tall_factory",
+          "doors": "none"
+        },
+        {
+          "id": "rear_shops",
+          "rect": [
+            0.58,
+            0.8,
+            0.91,
+            0.95,
+            0.29
+          ],
+          "roofs": [
+            "shed",
+            "flat"
+          ],
+          "windows": "blank",
+          "doors": "process",
+          "optional": true
+        }
+      ],
+      "fixtures": [],
+      "tags": [
+        "F",
+        "roof_spans",
+        "edge_span_x"
+      ],
+      "edge_span_axis": "x"
+    },
+    {
+      "id": "broad_brick_roof_hall",
+      "label": "G - broad brick-roof hall",
+      "main": [
+        0,
+        0.13,
+        1,
+        0.82,
+        0.47
+      ],
+      "main_roofs": [
+        "gable_y",
+        "gable_x",
+        "monitor"
+      ],
+      "windows": "tall_factory",
+      "doors": "loading",
+      "annexes": [
+        {
+          "id": "foundry_bay",
+          "rect": [
+            0.14,
+            0.77,
+            0.75,
+            0.95,
+            0.34
+          ],
+          "roofs": [
+            "gable_x",
+            "shed"
+          ],
+          "windows": "clerestory",
+          "doors": "process"
+        },
+        {
+          "id": "chimney_annex",
+          "rect": [
+            0.72,
+            0.21,
+            0.94,
+            0.43,
+            0.33
+          ],
+          "roofs": [
+            "flat",
+            "shed"
+          ],
+          "windows": "blank",
+          "doors": "none",
+          "optional": true
+        }
+      ],
+      "fixtures": [
+        "roof_vent"
+      ],
+      "tags": [
+        "G",
+        "masonry",
+        "edge_span_x"
+      ],
+      "edge_span_axis": "x"
+    },
+    {
+      "id": "low_masonry_works",
+      "label": "H - low masonry works",
+      "main": [
+        0.07,
+        0.1,
+        0.93,
+        0.9,
+        0.37
+      ],
+      "main_roofs": [
+        "gable_x",
+        "shed",
+        "flat"
+      ],
+      "windows": "sparse_utility",
+      "doors": "loading",
+      "annexes": [
+        {
+          "id": "kiln_room",
+          "rect": [
+            0.1,
+            0.65,
+            0.38,
+            0.96,
+            0.31
+          ],
+          "roofs": [
+            "shed",
+            "flat"
+          ],
+          "windows": "blank",
+          "doors": "process"
+        },
+        {
+          "id": "utility",
+          "rect": [
+            0.67,
+            0.12,
+            0.96,
+            0.39,
+            0.27
+          ],
+          "roofs": [
+            "flat",
+            "gable_y"
+          ],
+          "windows": "blank",
+          "doors": "personnel",
+          "optional": true
+        }
+      ],
+      "fixtures": [
+        "roof_vent"
+      ],
+      "tags": [
+        "H",
+        "masonry",
+        "low_wide"
+      ]
+    }
+  ]
+}

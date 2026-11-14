@@ -1,0 +1,281 @@
+{
+  "cases": {
+    "classic": {
+      "build_options": {
+        "candidate_mode": "classic",
+        "designs": 1,
+        "edge_contrast": "off",
+        "facade_mode": "boxes",
+        "roof_colours": "off",
+        "seed": 1267,
+        "semantic_colour": "on",
+        "semantic_hues": 4
+      },
+      "images": {
+        "0000_000": {
+          "file": "classic_0000_000.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "fcb8c89a0d9006bbe311ea253f9fe900b688d49f44736f276d6a1bd4b0c4b951",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_090": {
+          "file": "classic_0000_090.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "2ae821ff10ac9375c2c17a30ebfce2d93ec2dfdfe12924b24dec87b60aec0715",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_180": {
+          "file": "classic_0000_180.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "87871d58197e52d84284601e8d61ba72fff61b4ffc3b610b3cb8f1db3aa1abd5",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_270": {
+          "file": "classic_0000_270.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "b2c3a242e3ba6e4255a2198e8ffb6086b9c8dd8a4cedc3e7b8e1132675177b86",
+          "shape": [
+            128,
+            64
+          ]
+        }
+      },
+      "meshes": {
+        "0000": {
+          "component_ids": "1b4eca813a4eba2218030b6e258a0ee644d106f81f1c3def000a37a8ec7c8e5e",
+          "component_names": "0b524b59893ab52ff90bfead4a553583632920ac4066ad4c41ccba4a3a313f32",
+          "materials": "47cee554d405a7454d2a4efefdfca3713c4c39c02f3657e88cd808c03156cf02",
+          "normals": "86a9d60e3b5504fbcc4c3fbd664c82fa26c050b05ba7fa531311cedd766512ec",
+          "triangle_count": 460,
+          "vertices": "d6a1bc8be23aa51eee696dbf444147865b1b054fab2eb4ddf19f1a65dd3f61d1"
+        }
+      },
+      "scenes": {
+        "0000": "9305fba87629ad44dffe96b2060340481c8240b4e263b5e6275ac94af6138076"
+      }
+    },
+    "diverse": {
+      "build_options": {
+        "candidate_mode": "diverse",
+        "designs": 2,
+        "edge_contrast": "on",
+        "facade_mode": "decals",
+        "roof_colours": "on",
+        "seed": 8421
+      },
+      "images": {
+        "0000_000": {
+          "file": "diverse_0000_000.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "2381c746660f1f1bb81d507b68dff5f1bfd5f789040d7a3f4370a1341d52e1a8",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_090": {
+          "file": "diverse_0000_090.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "c9a949668285ab6a6fd10f2bc0a6880460e72eb4dd244502c2e9a81bbb898453",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_180": {
+          "file": "diverse_0000_180.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "d40515b965f447bc1daa211fb36fcc11021b9077e8947688ffcedef4d75176fa",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_270": {
+          "file": "diverse_0000_270.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "a7352d5699afee66b21d76a1421509dc921ebb1ef8f34b2fff93a64e47915cbe",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0006_000": {
+          "file": "diverse_0006_000.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "1a4e9e718ea27d3bb8d83185462ed83fb8e5c5c6bcf157e382da7ec1d3418468",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0006_090": {
+          "file": "diverse_0006_090.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "e9334a97de2d54f086bb814c26a9c413c952d754b3f013f0cb73ede58e5cb003",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0006_180": {
+          "file": "diverse_0006_180.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "4af6a88c8a66341cc6a006e73f1d8c5b93eed7c0089c9df0e83fd25693a1e4e1",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0006_270": {
+          "file": "diverse_0006_270.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "f4abde7d59c94d87478a7e5a7a40f4c9acae54d3bd2ed69fd392050efc42385c",
+          "shape": [
+            128,
+            64
+          ]
+        }
+      },
+      "meshes": {
+        "0000": {
+          "component_ids": "189b7f5f5bce3fcc46bfdfd5b62e5eda4c9594bc0ee9341f80a92d98a60a28ae",
+          "component_names": "ec8ecc3af6720aff17c31a4e5e49bdab226a4539476445bf7f01ce8d77882629",
+          "materials": "0fe920ef19756a8725f62122efc4206c2353ec661390672bbe7c925919d933da",
+          "normals": "cbd8ae549dec8fdc715eb23aa96bc8d8c7d91c7582b357242a7a4991b3294e44",
+          "triangle_count": 232,
+          "vertices": "85a1c7c9d4c5170027ced4ec17d806ff1a321799e572869bf7f682ae8fe1dcfd"
+        },
+        "0006": {
+          "component_ids": "bb340c51f8c0f862261c4bd388750a078e613ef47853d3de58b339821728e7c5",
+          "component_names": "1782ab7d0273f5efe74f49f16a54134f7f31b99292aecd288b1ca9a478e605fe",
+          "materials": "45afc91697564ff88f004ed7bfc323f115d744e6ad9184fe452c345de6a89991",
+          "normals": "3ee782ee5f1cfa88be0806b941d7bef68a111e68a05a51162c48be63be5ff2eb",
+          "triangle_count": 480,
+          "vertices": "91e18a14d5ccda3acfdcdc9d5c5a4eebb5ef3c522d7adb488200649895560941"
+        }
+      },
+      "scenes": {
+        "0000": "7605f1627fdd066b8914bfcb0007c9597ce67d5cc2396c9531edd9480b58e167",
+        "0006": "7f3beeb4f27c0ed586506865449363540116fd3798fc8796ef8014612711ad14"
+      }
+    },
+    "related": {
+      "build_options": {
+        "candidate_mode": "related",
+        "designs": 2,
+        "edge_contrast": "on",
+        "facade_mode": "decals",
+        "industry": "multi_slope_industrial_hall",
+        "roof_colours": "on",
+        "seed": 5027
+      },
+      "images": {
+        "0000_000": {
+          "file": "related_0000_000.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "12b0a4f38dbcf5cf588ab46e13b4bc69ca70c8e9eb648979058649b06c46df17",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_090": {
+          "file": "related_0000_090.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "fadbb5318f44210ad8643db0140df28ee3f08f44d0ea1e1c6388b5fe27e80d1d",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_180": {
+          "file": "related_0000_180.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "67620ba3a03c8b3b6bebea30579c0939c6bbb10ae741ebaeb72794debdce8d92",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0000_270": {
+          "file": "related_0000_270.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "0bf5b32a6127ff21426a88769ecb0fc2895deaf3d4ef45c434d3638358e9d4c7",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0001_000": {
+          "file": "related_0001_000.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "5e1ec9f14fb091960640ce1be01ef325e2f428a8e495ae858c60fe231da9b090",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0001_090": {
+          "file": "related_0001_090.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "1f1de01ea789344b06b8b243c822a5e7d9f38fbca2a38b2efb0d721e7d105ad0",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0001_180": {
+          "file": "related_0001_180.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "df754bbd79481975f13678789abe2e80d6bb3c1c1d1e03863b59f2e818e5f941",
+          "shape": [
+            128,
+            64
+          ]
+        },
+        "0001_270": {
+          "file": "related_0001_270.png",
+          "palette_sha256": "92c02d0a4e68560751fefb4acd939bf2641661e7c1e86f43a6e46b2e2d8094a9",
+          "pixels_sha256": "2327e294ec813c2ae44694ef06691380a98748b0d1bdb40c36693fb2120ceb29",
+          "shape": [
+            128,
+            64
+          ]
+        }
+      },
+      "meshes": {
+        "0000": {
+          "component_ids": "4c9b6d993f1597f183d34adc96977fc4afeda2dbe86f060e9d54acc76ab4c14f",
+          "component_names": "fb0867f2cff97729a57660e45dc7d7b152d3c826350031a2e5db1678d1d1f79b",
+          "materials": "8ac98ebd06d32ba8d056098a14375c8e87e4ac138f8b48af2475bf4deee1ded2",
+          "normals": "0f7f46920babcd53890fb6830f6cb2db451e4b33d3af4efd68caaeef25a397ff",
+          "triangle_count": 468,
+          "vertices": "c5d80e20886322ad76ba86711b4384f9549253019ea3a5ff226fc4384dd2b9fd"
+        },
+        "0001": {
+          "component_ids": "b14b62259a44c19d2eb917e157dfa5e8e533aa2ab5179ca14290481a2bd4706f",
+          "component_names": "5f36aae5ca7f7fa087584886193d9f0aad03832342deae0179d3fb115ae447eb",
+          "materials": "803a7b1d545c5c171f0834e4b40568f8ff61a5b4824f1df275b72d0b38ad69dd",
+          "normals": "933b7b1c9f88dfba12346b47f28e12ed21b8a443bdcc207f7408f11ca8701cba",
+          "triangle_count": 456,
+          "vertices": "e5a92f5adecc2343f4c77be8bd6ed97a086f299472b4ffde7c3f983c479c2acc"
+        }
+      },
+      "scenes": {
+        "0000": "f545884a309d8e9cdd61f1cc1a23a8a6e13707251123e9ff69b7d8ebf5396e17",
+        "0001": "0e42c5fdfe2e9f17ab0fb53609b812e38fd5b04368fdb1ea3b41c238c1ac032e"
+      }
+    }
+  },
+  "origin": "Becher v0.16.4 approved render/geometry baseline; reference files are not generated by tests"
+}
