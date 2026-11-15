@@ -37,7 +37,7 @@ favours less-used compositions.
 ## CLI
 
 ```sh
-python -m becher compose --vocabulary 'Grain handling' --seed 1267 --silhouette low --out output/grain
+python -m becher compose --vocabulary 'Dry material handling' --seed 1267 --silhouette low --out output/dry_material
 ```
 
 Use a fresh output directory. Each numbered row contains a `scene.json`

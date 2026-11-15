@@ -16,12 +16,12 @@ from src.mesh.compile import compile_scene
 from ui.__main__ import Handler, Review
 
 
-GRAIN = ['Grain handling']
+DRY_MATERIAL = ['Dry material handling']
 LIQUID = ['Liquid storage']
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.mark.parametrize('tags', [GRAIN, LIQUID, GRAIN + LIQUID])
+@pytest.mark.parametrize('tags', [DRY_MATERIAL, LIQUID, DRY_MATERIAL + LIQUID])
 @pytest.mark.parametrize('silhouette', ['low', 'high'])
 def test_seeded_batches(tags, silhouette):
     first = draft(tags, 1267, silhouette)
@@ -36,11 +36,13 @@ def test_seeded_batches(tags, silhouette):
 
 
 def test_wrapped_process_mixed_and_large_standalone_compile_inside_tile():
-    pool = candidates(['Wrapped process buildings', 'Chimneys'], 'low')
-    mixed = next(scene for scene in pool.values()
-                 if {'wrapped_process_rect_01_01', 'chimney_low_tapered'}
-                 <= set(scene['catalogue']['components']))
-    large = next(scene for scene in pool.values()
+    compact = candidates(['Compact process buildings', 'Chimneys'], 'low')
+    wide = candidates(['Large process buildings'], 'low')
+    mixed = next(scene for scene in compact.values()
+                 if 'chimney_low_tapered' in scene['catalogue']['components']
+                 and any(name.startswith('wrapped_process_compact_')
+                         for name in scene['catalogue']['components']))
+    large = next(scene for scene in wide.values()
                  if scene['catalogue']['components'] == ['wrapped_process_join_08_03'])
     for scene in (mixed, large):
         vertices = compile_scene(scene).vertices
@@ -81,7 +83,7 @@ def test_review_rerolls_only_one_row_and_exports_reproducible_batch(review_serve
     from src.authored_scenes import render_scene_files
 
     request = review_server
-    brief = {'vocabularies': GRAIN, 'seed': 1267, 'silhouette': 'low'}
+    brief = {'vocabularies': DRY_MATERIAL, 'seed': 1267, 'silhouette': 'low'}
     first = json.loads(request('/compose', brief))
     assert first['can_reroll']
     reroll = {'batch': first['id'], 'candidate': '03'}

@@ -264,7 +264,7 @@ async function loadInputs() {
       input.type = "checkbox";
       input.name = "vocabularies";
       input.value = name;
-      input.checked = name === "Grain handling";
+      input.checked = name === "Dry material handling";
       const label = document.createElement("label");
       label.append(input, name);
       vocabularies.append(label, document.createElement("br"));

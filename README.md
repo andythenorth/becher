@@ -14,7 +14,7 @@ python -m ui
 Open http://127.0.0.1:8765/. Select one or more vocabularies, choose a silhouette and seed, and render 16 tiles at four angles each. See [the UI guide](ui/README.md) for previews, rerolls and exports.
 
 ```sh
-python -m becher compose --vocabulary 'Wrapped process buildings' \
+python -m becher compose --vocabulary 'Compact process buildings' \
   --silhouette low --seed 1267 --out output/process
 ```
 
@@ -27,6 +27,8 @@ python -m becher --help
 ```
 
 The procedural pipeline writes its contact sheet to `review.png` in the output directory. Use `evaluate`, `vote`, `refill`, `selection` and `handoff` for saved procedural runs. Use `scenes` and `render-scene` for installed, standalone geometry.
+
+The **Compact process buildings** vocabulary favours blocks with space for a neighbour. Choose **Large process buildings** for wider designs, or select both. The compositor still checks every proposed placement.
 
 Assembly components and their vocabulary index live in `data/assemblies/`. Saved scenes live in `data/scenes/`. See [Architecture](ARCHITECTURE.md) for the rendering and data boundaries.
 
