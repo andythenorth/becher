@@ -197,84 +197,103 @@ def all_names(tags):
                    for name in items})
 
 
-def packed_sites(parts, names, turns, axis):
-    """Pack intact component footprints, centred in the tile.
+def _edge_sites(parts, names, turns, axis):
+    """Yield deterministic footprint-derived layouts, not a fixed site grid.
 
-    The component origin is irrelevant. The returned positions are derived
-    solely from the rotated authored footprints; no role or magic site list.
+    Each new item touches one existing footprint across GAP, with its
+    opposite-axis edges/centre/quarter-overlap aligned. This explores lateral,
+    corner and staggered arrangements and uses the actual rotated extents.
+    The complete assembly is translated into the tile after each placement;
+    absolute component origins and names do not influence candidate sites.
     """
-    bounds = [transformed_footprint(parts[n], (0, 0), t)
-              for n, t in zip(names, turns)]
-    widths = [b[2]-b[0] for b in bounds]
-    heights = [b[3]-b[1] for b in bounds]
-    if axis == 0:
-        if sum(widths)+GAP*(len(names)-1) > SITE_MAX-SITE_MIN+EPSILON or max(heights)>SITE_MAX-SITE_MIN+EPSILON:
+    if not 1 <= len(names) <= 3:
+        raise ValueError('Place one, two or three components')
+    boxes = [transformed_footprint(parts[n], (0, 0), t)
+             for n, t in zip(names, turns)]
+    extent = SITE_MAX - SITE_MIN
+    if any(max(b[2]-b[0], b[3]-b[1]) > extent + EPSILON for b in boxes):
+        return
+
+    def translated(box, x, y):
+        return (box[0]+x, box[1]+y, box[2]+x, box[3]+y)
+
+    def layout(placed, positions):
+        x0 = min(b[0] for b in placed)
+        y0 = min(b[1] for b in placed)
+        x1 = max(b[2] for b in placed)
+        y1 = max(b[3] for b in placed)
+        if x1-x0 > extent+EPSILON or y1-y0 > extent+EPSILON:
             return None
-        cursor = .5 - (sum(widths)+GAP*(len(names)-1))/2
-        sites=[]
-        for b,w in zip(bounds,widths):
-            sites.append((round(cursor-b[0],8), round(.5-(b[1]+b[3])/2,8)))
-            cursor += w+GAP
-        return sites
-    if sum(heights)+GAP*(len(names)-1) > SITE_MAX-SITE_MIN+EPSILON or max(widths)>SITE_MAX-SITE_MIN+EPSILON:
-        return None
-    cursor = .5 - (sum(heights)+GAP*(len(names)-1))/2
-    sites=[]
-    for b,h in zip(bounds,heights):
-        sites.append((round(.5-(b[0]+b[2])/2,8), round(cursor-b[1],8)))
-        cursor += h+GAP
-    return sites
+        dx, dy = .5-(x0+x1)/2, .5-(y0+y1)/2
+        return tuple((round(x+dx, 8), round(y+dy, 8)) for x,y in positions)
+
+    def attachments(box, reference):
+        # Four faces, prioritising the requested original packing axis.
+        sides = (('right', 'left', 'bottom', 'top') if axis == 0
+                 else ('bottom', 'top', 'right', 'left'))
+        for side in sides:
+            if side in ('right', 'left'):
+                x = (reference[2]+GAP-box[0] if side == 'right'
+                     else reference[0]-GAP-box[2])
+                # Align upper/lower edges, centre, and intermediate offsets.
+                for fraction in (.5, 0., 1., .25, .75):
+                    y = reference[1]+fraction*(reference[3]-reference[1]) - (
+                        box[1]+fraction*(box[3]-box[1]))
+                    yield x,y
+            else:
+                y = (reference[3]+GAP-box[1] if side == 'bottom'
+                     else reference[1]-GAP-box[3])
+                for fraction in (.5, 0., 1., .25, .75):
+                    x = reference[0]+fraction*(reference[2]-reference[0]) - (
+                        box[0]+fraction*(box[2]-box[0]))
+                    yield x,y
+
+    def explore(index, placed, positions):
+        if index == len(boxes):
+            sites = layout(placed, positions)
+            if sites is not None:
+                yield sites
+            return
+        seen = set()
+        for reference in placed:
+            for x,y in attachments(boxes[index], reference):
+                key = (round(x,8),round(y,8))
+                if key in seen:
+                    continue
+                seen.add(key)
+                new = translated(boxes[index], x, y)
+                candidate = placed + [new]
+                if (max(b[2] for b in candidate)-min(b[0] for b in candidate) > extent+EPSILON
+                    or max(b[3] for b in candidate)-min(b[1] for b in candidate) > extent+EPSILON):
+                    continue
+                # Different-level structures are ultimately checked in 3-D;
+                # here the edge-attachment search intentionally avoids XY overlap.
+                yield from explore(index+1, candidate, positions+[(x,y)])
+
+    initial = boxes[0]
+    if len(boxes) == 1:
+        yield ((round(.5-(initial[0]+initial[2])/2,8),
+                round(.5-(initial[1]+initial[3])/2,8)),)
+    else:
+        yield from explore(1,[initial],[(0.,0.)])
+
+
+def packed_sites(parts, names, turns, axis):
+    """Return the first footprint-derived placement (legacy public API)."""
+    return next(_edge_sites(parts,names,turns,axis),None)
 
 
 def packed_scene(parts, names, turns, axis):
-    sites = packed_sites(parts, names, turns, axis)
-    if sites is None:
-        return None
-    try:
-        return arbitrary_scene(tuple((n,x,y,t) for n,(x,y),t in zip(names,sites,turns)),parts)
-    except ValueError:
-        return None
-
-
-def corner_scene(parts, names, turns, axis):
-    """Pack three rectangular footprints into an L, without rescaling.
-
-    Two footprints share one side, with the third adjacent to the second
-    across the perpendicular axis. All primitives remain checked by the
-    normal arbitrary_scene collision and tile-boundary validator.
-    """
-    if len(names) != 3:
-        raise ValueError('Corner packing requires exactly three components')
-    bounds = [transformed_footprint(parts[n], (0, 0), t)
-              for n, t in zip(names, turns)]
-    # Map both orientations into a common (major, minor) coordinate system.
-    sizes = [(b[2]-b[0], b[3]-b[1]) if axis == 0
-             else (b[3]-b[1], b[2]-b[0]) for b in bounds]
-    (aw, ah), (bw, bh), (cw, ch) = sizes
-    width = max(aw + GAP + bw, aw + GAP + cw)
-    height = max(ah, bh + GAP + ch)
-    limit = SITE_MAX - SITE_MIN
-    if width > limit + EPSILON or height > limit + EPSILON:
-        return None
-    positions = [(0, (height-ah)/2),
-                 (aw+GAP, 0),
-                 (aw+GAP+(bw-cw)/2, bh+GAP)]
-    # Keep placements centred within the full tile, independent of origin.
-    offset_major = .5-width/2
-    offset_minor = .5-height/2
-    centres=[]
-    for b, (major, minor) in zip(bounds, positions):
-        if axis == 0:
-            centres.append((round(offset_major+major-b[0],8),
-                            round(offset_minor+minor-b[1],8)))
-        else:
-            centres.append((round(offset_minor+minor-b[0],8),
-                            round(offset_major+major-b[1],8)))
-    try:
-        return arbitrary_scene(tuple((name,x,y,t) for name,(x,y),t
-                                     in zip(names,centres,turns)),parts)
-    except ValueError:
-        return None
+    """Find a physically valid edge/corner/staggered placement."""
+    for attempt, sites in enumerate(_edge_sites(parts,names,turns,axis)):
+        if attempt >= (36 if len(names) == 3 else 12):
+            break
+        try:
+            return arbitrary_scene(tuple((n,x,y,t) for n,(x,y),t in
+                                         zip(names,sites,turns)),parts)
+        except ValueError:
+            continue
+    return None
 
 
 @lru_cache(maxsize=16)
@@ -319,8 +338,7 @@ def _general_candidates(names, silhouette):
         return abs(height-HIGH_PROFILE) <= EPSILON or (height >= HIGH_PROFILE) == (silhouette == 'high')
     feasible_pairs = []
     for a,b in combinations(packable,2):
-        # Different tank designs do not form an authored storage bank. Identical
-        # tanks are still repeated below; tanks still combine with machinery.
+        # Preserve the current exclusion of different tank designs.
         if parts[a].get('role') == parts[b].get('role') == 'tank':
             continue
         if not matches_profile(a,b):
@@ -356,71 +374,27 @@ def _general_candidates(names, silhouette):
             if found:
                 break
 
-    # Three-component searches are bounded by catalogue size, not all triples.
-    # Instead of looking at the first feasible pair for each component (which
-    # favours alphabetical neighbours), consider a spread of partners and try
-    # compact third components. This is generic footprint-guided placement;
-    # collision, clearance and silhouette validation stay in packed_scene.
-    if len(packable) > 2 and feasible_pairs:
-        footprint_area = {
-            name: (parts[name]['footprint'][2] - parts[name]['footprint'][0]) *
-                  (parts[name]['footprint'][3] - parts[name]['footprint'][1])
-            for name in packable
-        }
-        small = sorted(packable, key=lambda name: (footprint_area[name], name))
-        partners_by_name = {name: [] for name in packable}
-        for a, b in feasible_pairs:
-            partners_by_name[a].append(b)
-            partners_by_name[b].append(a)
-
-        for a in packable:
-            partners = partners_by_name[a]
-            if not partners:
+    # Triple diversity is bounded linearly with catalogue size, rather than
+    # attempting a cubic number of tuples. All pairings remain eligible above.
+    if len(packable)>2 and feasible_pairs:
+        for i,a in enumerate(packable):
+            partners = next(((x,y) for x,y in feasible_pairs if a in (x,y)), None)
+            if partners is None:
                 continue
-            # Sample the partner-size spectrum, without privileging any role.
-            partners = sorted(partners, key=lambda name: (footprint_area[name], name))
-            samples = [partners[i] for i in sorted({
-                0, len(partners)//4, len(partners)//2,
-                (3*len(partners))//4, len(partners)-1
-            })]
-            for b in samples:
-                # Prefer space-efficient additions first. A limited alternative
-                # set avoids the cubic exhaustive enumeration of triples.
-                attempts = 0
-                for c in small:
-                    if c in (a, b):
-                        continue
-                    tank_names = {n for n in (a, b, c) if parts[n].get('role') == 'tank'}
-                    if len(tank_names) > 1 or not matches_profile(a, b, c):
-                        continue
-                    attempts += 1
-                    if attempts > 12:
-                        break
-                    found = False
-                    # Moving the compact third component between the other two
-                    # also explores layouts blocked by centred three-in-a-row.
-                    for order in ((a,b,c), (a,c,b), (c,a,b)):
-                        for axis in (0, 1):
-                            for turns in ((0,0,0), (0,1,0), (1,0,0)):
-                                scene = packed_scene(parts, order, turns, axis)
-                                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
-                                    add(scene)
-                                    found = True
-                                    break
-                            if found:
-                                break
-                            for turns in ((0,0,0), (0,1,0), (1,0,0)):
-                                scene = corner_scene(parts, order, turns, axis)
-                                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
-                                    add(scene)
-                                    found = True
-                                    break
-                            if found:
-                                break
-                        if found:
-                            break
-                    if found:
-                        break
+            b = partners[1] if partners[0] == a else partners[0]
+            others = [n for n in packable if n not in (a,b)]
+            if not others:
+                continue
+            c = others[i % len(others)]
+            if sum(parts[n].get('role') == 'tank' for n in (a,b,c)) > 1:
+                continue
+            if not matches_profile(a,b,c):
+                continue
+            for axis in (0,1):
+                scene=packed_scene(parts,(a,b,c),(0,0,0),axis)
+                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+                    add(scene)
+                    break
     if not pool:
         raise ValueError('No compositions match this silhouette and vocabulary')
     return pool
