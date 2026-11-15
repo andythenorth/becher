@@ -289,16 +289,20 @@
     ]
   },
   "Mining and aggregates": {
-    "sheds": [],
-    "annexes": [],
+    "sheds": [
+      "quarry_mass_02_stepped_hall",
+      "quarry_mass_11_boiler",
+      "quarry_final_05_wide_boiler_hall",
+      "quarry_final_06_twin_stack_boiler",
+      "quarry_final_10_industrial_lift",
+      "quarry_final_enlarged_mine_hall_56",
+      "quarry_final_enlarged_mine_hall_57"
+    ],
+    "annexes": [
+      "quarry_final_balanced_headframe"
+    ],
     "storage": [],
-    "yards": [
-      "aggregate_bays",
-      "short_inclined_conveyor",
-      "mine_headframe",
-      "stepped_crusher_house",
-      "trough_fed_crusher"
-    ]
+    "yards": []
   },
   "Liquid processing": {
     "storage": [
