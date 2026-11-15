@@ -20,15 +20,10 @@ python -m becher compose --vocabulary 'Compact process buildings' \
 
 ## Other CLI workflows
 
-```sh
-python -m becher pipeline --seed 1267 --designs 12 --workers 4 \
-  --facade-mode decals --out output/pipeline
-python -m becher --help
-```
-
-The procedural pipeline writes its contact sheet to `review.png` in the output directory. Use `evaluate`, `vote`, `refill`, `selection` and `handoff` for saved procedural runs. Use `scenes` and `render-scene` for installed, standalone geometry.
-
-The **Compact process buildings** vocabulary favours blocks with space for a neighbour. Choose **Large process buildings** for wider designs, or select both. The compositor still checks every proposed placement.
+Use `scenes` and `render-scene` for installed standalone geometry. Existing
+procedural runs can still be opened with `evaluate`, `vote`, `refill`,
+`selection` and `handoff`. The grammar files supply the family catalogue used
+by `families` and saved-run refill.
 
 Assembly components and their vocabulary index live in `data/assemblies/`. Saved scenes live in `data/scenes/`. See [Architecture](ARCHITECTURE.md) for the rendering and data boundaries.
 

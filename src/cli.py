@@ -19,24 +19,6 @@ def main(argv=None):
     parser=argparse.ArgumentParser(prog='becher')
     sub=parser.add_subparsers(dest='cmd',required=True)
 
-    pipe=sub.add_parser('pipeline',help='generate, validate and render four-view architecture candidates')
-    pipe.add_argument('--seed',type=int,default=1267)
-    pipe.add_argument('--designs',type=int,default=12)
-    pipe.add_argument('--start',type=int,default=0)
-    pipe.add_argument('--workers',type=int,default=4)
-    pipe.add_argument('--grammars')
-    pipe.add_argument('--family', action='append', metavar='ID',
-                      help='repeat to select families (defaults to all primary factories)')
-    pipe.add_argument('--out',default='output/pipeline')
-    pipe.add_argument('--edge-contrast',choices=('on','off'),default='off')
-    pipe.add_argument('--semantic-colour',choices=('on','off'),default='on')
-    pipe.add_argument('--semantic-hues',type=int,choices=(3,4),default=3)
-    pipe.add_argument('--roof-colours',choices=('on','off'),default='off')
-    pipe.add_argument('--facade-mode',choices=('boxes','decals'),default='boxes')
-    pipe.add_argument('--no-buffers',action='store_true')
-    pipe.add_argument('--renderer',choices=('mesh',),default='mesh',
-                      help='frozen triangle mesh raycaster (only backend)')
-
     family_list=sub.add_parser('families',help='list the available candidate families as JSON')
     family_list.add_argument('--grammars')
 
@@ -148,15 +130,7 @@ def main(argv=None):
     pnt.add_argument('--out',required=True)
 
     args=parser.parse_args(argv)
-    if args.cmd=='pipeline':
-        from .pipeline import build
-        value=build(args.out,seed=args.seed,designs=args.designs,start=args.start,
-                    workers=args.workers,grammar_file=args.grammars,buffers=not args.no_buffers,
-                    edge_contrast=args.edge_contrast,semantic_colour=args.semantic_colour,
-                    semantic_hues=args.semantic_hues,roof_colours=args.roof_colours,facade_mode=args.facade_mode,
-                    renderer=args.renderer,
-                    family_ids=args.family)
-    elif args.cmd=='families':
+    if args.cmd=='families':
         from .sampling import catalogue
         primary, ancillary = catalogue(args.grammars)
         value = {

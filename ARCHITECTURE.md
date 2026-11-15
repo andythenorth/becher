@@ -1,8 +1,8 @@
 # Architecture
 
-## Active path
+## Procedural saved runs and regression fixtures
 
-`data/grammars/industrial_v1.json` and `data/grammars/ancillary_v1.json` → `src/architectures.py` / `src/sampling.py` / `src/feature_passes.py` → immutable building model → `src/mesh/compile.py` → frozen triangle mesh → `src/mesh/intersect.py` and `src/mesh/render.py` → indexed PNG, optional surface buffers and review output. `src/pipeline.py` coordinates deterministic candidate generation and output manifests.
+`data/grammars/industrial_v1.json` and `data/grammars/ancillary_v1.json` → `src/architectures.py` / `src/sampling.py` / `src/feature_passes.py` → immutable building model → `src/mesh/compile.py` → frozen triangle mesh → `src/mesh/intersect.py` and `src/mesh/render.py` → indexed PNG, optional surface buffers and review output. `src/pipeline.py` implements saved-run operations and can build procedural regression fixtures from Python. New batches in the UI use assembly composition.
 
 ## Assembly composition
 
