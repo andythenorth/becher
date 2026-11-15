@@ -8,7 +8,8 @@ import unittest
 from pathlib import Path
 import numpy as np
 from src.architectures import generate
-from src.architectural_renderer import cast, save
+from src.mesh.io import save
+from src.mesh.render import cast
 from src.edge_contrast import apply, edge_mask, visible_roles
 from src.geometry import MATERIAL_IDS, SURFACE_ROLES, VisibleSurfaces
 from src.palette import load_palette, open_indexed

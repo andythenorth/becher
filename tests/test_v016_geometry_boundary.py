@@ -144,3 +144,19 @@ def test_concave_sweep_rejects_nonplanar_and_crossed_caps():
     bowtie=[(.2,.2),(.8,.8),(.2,.8),(.8,.2)]
     with pytest.raises(ValueError):
         sweep_rings([[[x,y,z] for x,y in bowtie] for z in (.2,.8)])
+
+
+def test_affine_grid_bounds_preserve_nearest_hits():
+    mesh = compile_scene({'shapes': [
+        {'id': 'slab', 'type': 'box', 'bounds': [-.08, -.05, 0, 1.08, 1.05, .06]},
+        {'id': 'vessel', 'type': 'revolution', 'center': [.70, .38],
+         'profile': [[.06, .1], [.65, .1], [.78, .04]]},
+        {'id': 'rack', 'type': 'beam', 'start': [.20, .21, .32],
+         'end': [.81, .77, .66], 'thickness': .04},
+    ]})
+    for angle in (0, 90, 180, 270):
+        origins, direction = rays(angle)
+        full = trace(mesh, origins, direction)
+        bounded = trace(mesh, origins, direction, affine_grid=True)
+        for expected, actual in zip(full, bounded):
+            np.testing.assert_array_equal(actual, expected)

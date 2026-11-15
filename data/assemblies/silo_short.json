@@ -3,7 +3,7 @@
     {
       "id": "store_1_hopper",
       "type": "revolution",
-      "material": "pipe",
+      "material": "equipment",
       "center": [
         0.0,
         0.0
@@ -75,7 +75,7 @@
     {
       "id": "store_1_body",
       "type": "revolution",
-      "material": "metal",
+      "material": "equipment",
       "center": [
         0.0,
         0.0
@@ -95,7 +95,7 @@
     {
       "id": "store_1_cap",
       "type": "revolution",
-      "material": "metal",
+      "material": "equipment",
       "center": [
         0.0,
         0.0

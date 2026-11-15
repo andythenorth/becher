@@ -1,10 +1,6 @@
 """Artist-authored indexed overlay; zero means preserve the underlying pixel."""
-from .palette import save_indexed,open_indexed
+from .palette import open_indexed
 import numpy as np
-
-
-def make_blank(path,palette):
-    return save_indexed(path,np.zeros((128,64),dtype=np.uint8),palette)
 
 
 def apply(surfaces,parent,overlay_path,palette,allow_materials=None):

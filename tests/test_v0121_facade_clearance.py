@@ -5,7 +5,7 @@ import numpy as np
 from src.architectures import generate, library
 from src.feature_passes import build_features, is_feature
 from src.facade_profiles import panels, door_reservations, _wall_rect, _overlaps
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.geometry import SURFACE_ROLES, MATERIAL_IDS
 
 FAMILIES = Path(__file__).resolve().parents[1]/'examples'/'bof_industrial_facades.json'

@@ -5,7 +5,7 @@ import numpy as np
 import pytest
 from src.architectures import library,generate
 from src.feature_passes import build_features, is_feature
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.geometry import MATERIAL_IDS, SURFACE_ROLES
 
 GRAMMAR=Path(__file__).resolve().parents[1]/'examples'/'bof_industrial_facades.json'

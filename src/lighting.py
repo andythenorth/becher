@@ -26,7 +26,7 @@ def _unit_light(light):
     return light / ll
 
 
-def quantize(surfaces, light=SUN_FIVE):
+def quantize(surfaces, light=SUN_FIVE, steps=4):
     light = _unit_light(light)
     normal=surfaces.normal.astype(np.float64)
     length=np.linalg.norm(normal,axis=-1,keepdims=True)
@@ -37,7 +37,7 @@ def quantize(surfaces, light=SUN_FIVE):
     roofs=(surfaces.material==MATERIAL_IDS['roof']) & (normal[...,2]>.08)
     roof_brightness=np.clip(.48+.50*incident+.09*np.maximum(0,normal[...,2]),0,1)
     brightness=np.where(roofs,roof_brightness,brightness)
-    bands=np.minimum(3,(brightness*4).astype(np.uint8))
+    bands=np.minimum(steps-1,(brightness*steps).astype(np.uint8))
     bands[~surfaces.silhouette]=0
     return bands
 
@@ -64,6 +64,8 @@ def shade(surfaces,palette,light=SUN_FIVE):
             else:
                 tank_bands = len(colours) // 2
             pixels[sel] = colours[tank_bands]
+        elif name == 'equipment':
+            pixels[sel] = colours[quantize(surfaces, light, len(colours))[sel]]
         else:
             pixels[sel] = colours[bands[sel]]
     if not np.array_equal(pixels==0,surfaces.reference_pixels==0):

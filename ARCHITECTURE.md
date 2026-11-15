@@ -18,10 +18,8 @@ scene and reuses the other rows' exported files.
 - **Content:** `data/` holds current family definitions, parameter ranges, DOS palette, material lighting ramps and handoff profiles. Change design choices here where the existing schema permits.
 - **Geometry algorithms:** `src/architectures.py`, `src/geometry.py` and `src/mesh/author.py`, `src/mesh/solids.py`, `src/mesh/compile.py`. Add reusable construction rules here, not through renderer conditionals.
 - **Rendering:** `src/mesh/camera.py`, `src/mesh/intersect.py`, `src/mesh/render.py` and `src/lighting.py`. Generic nearest-hit triangle raycasting; four camera rotations; screen-relative high-elevation light.
-- **Appearance and production:** `src/palette.py`, `src/semantic_colour.py`, `src/roof_colour.py`, `src/edge_contrast.py`, `src/facade_decals.py`, `src/paint.py`, `src/handoff.py` and `src/pipeline_review.py`. Surface-buffer editing and artistic passes do not redefine the scene geometry.
+- **Appearance and production:** `src/palette.py`, `src/semantic_colour.py`, `src/roof_colour.py`, `src/edge_contrast.py`, `src/facade_decals.py`, `src/paint.py`, and `src/handoff.py`. Surface-buffer editing and artistic passes do not redefine the scene geometry.
 - **CLI:** `becher.py` is a one-line application entry point; `src/cli.py` defines the commands. `python -m becher` and `python becher.py` invoke the same implementation.
-
-`src/architectural_renderer.py` is a tiny compatibility name that forwards to the **current mesh renderer**, not an additional analytic renderer. Its callers can be consolidated later; it contains no ray-intersection logic.
 
 ## Preserved boundaries
 
@@ -29,6 +27,6 @@ One authoritative mesh compiler and one active generic raycaster. Geometry is bu
 
 ## Data and tests
 
-The current six-family industrial grammar lives in `data/grammars/industrial_v1.json`. The ancillary catalogue has separate data. Older grammars used for regression testing live only in `tests/fixtures/`; they are not active design choices. Retired experimental mine conversion tools and historical references are not distributed. Adding mine vocabulary requires new, reviewed geometry work.
+The current six-family industrial grammar lives in `data/grammars/industrial_v1.json`. The ancillary catalogue has separate data. Retired experimental mine conversion tools and historical references are not distributed. Adding mine vocabulary requires new, reviewed geometry work.
 
 For repository consolidation, the criterion is pixel-equivalent deterministic output from the preserved rendering path; feature work may intentionally change output but should introduce its own comparison.

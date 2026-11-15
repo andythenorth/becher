@@ -10,7 +10,7 @@
     {
       "id": "mass_0",
       "type": "box",
-      "material": "metal",
+      "material": "equipment",
       "bounds": [
         -0.16,
         -0.18,
@@ -36,7 +36,7 @@
     {
       "id": "mass_2",
       "type": "box",
-      "material": "metal",
+      "material": "equipment",
       "bounds": [
         0.11,
         -0.15,

@@ -218,8 +218,6 @@ def refill(run, *, workers=4, buffers=True, grammar_file=None, dry_run=False,
     pipeline._write_json(out/'manifest.json',manifest)
     # Keep original feedback entries, including the decision that caused refill.
     pipeline._write_contact_sheet(out,manifest)
-    from .pipeline_review import write_review
-    write_review(out)
     return {'rejected_active':rejected,
             'replaced':{old:new for old,new,*_ in built},
             'active_count':sum(x.get('active',True) for x in manifest['candidates'].values()),

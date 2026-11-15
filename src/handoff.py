@@ -14,7 +14,7 @@ from typing import Any
 import numpy as np
 from PIL import Image
 
-from .architectural_renderer import cast
+from .mesh.render import cast
 from .geometry import MATERIAL_IDS, VisibleSurfaces
 from .lighting import SUN_FIVE, shade, quantize
 from .palette import load_palette, ramp, save_indexed

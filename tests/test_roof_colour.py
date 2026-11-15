@@ -1,7 +1,7 @@
 import numpy as np
 from src.roof_colour import apply, roof_assignments
 from src.architectures import generate, library
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.palette import load_palette
 from src.edge_contrast import apply as edges
 from src.semantic_colour import apply as wall_colour

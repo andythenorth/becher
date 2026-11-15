@@ -13,7 +13,7 @@ from PIL import Image
 
 from src.architectures import library as _library, generate as _generate, Component
 from src.architectural_validation import validate
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.palette import load_palette
 
 

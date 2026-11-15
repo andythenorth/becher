@@ -111,7 +111,9 @@ def occupied_boxes(shape):
     if typ == 'rings':
         # Each swept interval gets its own volume, not the entire swept path.
         result = []
-        for a,b in zip(shape['rings'],shape['rings'][1:]):
+        rings = shape['rings']
+        following = rings[1:]+rings[:1] if shape.get('closed') else rings[1:]
+        for a,b in zip(rings,following):
             vs = a+b
             result.append(tuple(min(p[k] for p in vs) for k in range(3))+
                           tuple(max(p[k] for p in vs) for k in range(3)))
@@ -143,11 +145,12 @@ def transformed_footprint(part, centre, turns):
             max(x for x,y in xy)+centre[0],max(y for x,y in xy)+centre[1])
 
 
-def valid_addition(shapes, occupied, footprint_bounds):
-    if (footprint_bounds[0] < SITE_MIN-EPSILON or
-        footprint_bounds[1] < SITE_MIN-EPSILON or
-        footprint_bounds[2] > SITE_MAX+EPSILON or
-        footprint_bounds[3] > SITE_MAX+EPSILON):
+def valid_addition(shapes, occupied, footprint_bounds, *, whole_tile=False):
+    lower, upper = (0, 1) if whole_tile else (SITE_MIN, SITE_MAX)
+    if (footprint_bounds[0] < lower-EPSILON or
+        footprint_bounds[1] < lower-EPSILON or
+        footprint_bounds[2] > upper+EPSILON or
+        footprint_bounds[3] > upper+EPSILON):
         return False
     volumes = [box for shape in shapes for box in occupied_boxes(shape)]
     if any(box[0] < -EPSILON or box[1] < -EPSILON or
@@ -167,7 +170,8 @@ def arbitrary_scene(entries, parts):
         part = parts[name]
         piece = rigid_place(part, f'part_{index}_', (x,y), turns)
         area = transformed_footprint(part,(x,y),turns)
-        if not valid_addition(piece, occupied, area):
+        whole_tile = len(entries) == 1 and part.get('placement') == 'tile'
+        if not valid_addition(piece, occupied, area, whole_tile=whole_tile):
             raise ValueError(f'Incompatible geometry for {name} at {(x,y,turns)}')
         shapes.extend(piece)
         occupied.extend(box for shape in piece for box in occupied_boxes(shape))
@@ -247,7 +251,12 @@ def _general_candidates(names, silhouette):
     for name in names:
         part = parts[name]
         centre = transformed_footprint(part,(0,0),0)
-        at = (.5-(centre[0]+centre[2])/2,.5-(centre[1]+centre[3])/2)
+        if part.get('placement') == 'tile':
+            if (max(map(top,part['shapes'])) >= HIGH_PROFILE) != (silhouette == 'high'):
+                continue
+            at = (.5,.5)
+        else:
+            at = (.5-(centre[0]+centre[2])/2,.5-(centre[1]+centre[3])/2)
         try:
             add(arbitrary_scene(((name,*at,0),),parts))
         except ValueError:
@@ -256,8 +265,21 @@ def _general_candidates(names, silhouette):
     # Every unordered component pair is attempted with both packing axes and
     # all four orientations of each component. No category restrictions.
     # Stop after the first valid placement *matching the requested silhouette*.
+    def fits_packing_site(name):
+        left,front,right,back = parts[name]['footprint']
+        return max(right-left,back-front) <= SITE_MAX-SITE_MIN+EPSILON
+
+    packable = [name for name in names
+                if parts[name].get('placement') != 'tile' or fits_packing_site(name)]
+    heights = {name: max(map(top,parts[name]['shapes'])) for name in packable}
+
+    def matches_profile(*names):
+        height = max(heights[name] for name in names)
+        return abs(height-HIGH_PROFILE) <= EPSILON or (height >= HIGH_PROFILE) == (silhouette == 'high')
     feasible_pairs = []
-    for a,b in combinations(names,2):
+    for a,b in combinations(packable,2):
+        if not matches_profile(a,b):
+            continue
         selected = None
         for axis in (0,1):
             for ta in range(4):
@@ -275,7 +297,9 @@ def _general_candidates(names, silhouette):
             feasible_pairs.append((a,b))
 
     # Repeat identical parts where a second copy fits; no special casing.
-    for name in names:
+    for name in packable:
+        if not matches_profile(name):
+            continue
         for axis in (0,1):
             found = False
             for t in range(4):
@@ -289,16 +313,18 @@ def _general_candidates(names, silhouette):
 
     # Triple diversity is bounded linearly with catalogue size, rather than
     # attempting a cubic number of tuples. All pairings remain eligible above.
-    if len(names)>2 and feasible_pairs:
-        for i,a in enumerate(names):
+    if len(packable)>2 and feasible_pairs:
+        for i,a in enumerate(packable):
             partners = next(((x,y) for x,y in feasible_pairs if a in (x,y)), None)
             if partners is None:
                 continue
             b = partners[1] if partners[0] == a else partners[0]
-            others = [n for n in names if n not in (a,b)]
+            others = [n for n in packable if n not in (a,b)]
             if not others:
                 continue
             c = others[i % len(others)]
+            if not matches_profile(a,b,c):
+                continue
             for axis in (0,1):
                 scene=packed_scene(parts,(a,b,c),(0,0,0),axis)
                 if scene is not None and scene['catalogue']['silhouette'] == silhouette:

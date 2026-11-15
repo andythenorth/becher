@@ -75,3 +75,28 @@ def test_all_quarter_turns_are_available_for_packing():
     for turns in range(4):
         scene = packed_scene(parts,('tank','chimney_low_tapered'),(0,turns),0)
         assert scene is not None
+
+
+def test_tile_designs_can_share_a_tile_when_their_footprints_fit(monkeypatch):
+    from src import composition
+
+    def part(name, width, placement=None):
+        half = width / 2
+        footprint = [-half, -half, half, half]
+        return {
+            'placement': placement,
+            'footprint': footprint,
+            'shapes': [{'id': name, 'type': 'box', 'material': 'metal',
+                        'bounds': [-half, -half, 0, half, half, .2]}],
+        }
+
+    parts = {
+        'compact_wrapped_block': part('compact', .60, 'tile'),
+        'wide_wrapped_block': part('wide', .97, 'tile'),
+        'small_chimney': part('chimney', .12),
+    }
+    monkeypatch.setattr(composition, 'load_part', parts.__getitem__)
+    pool = composition._general_candidates(tuple(parts), 'low')
+    teams = [scene['catalogue']['components'] for scene in pool.values()]
+    assert ['compact_wrapped_block', 'small_chimney'] in teams
+    assert [team for team in teams if 'wide_wrapped_block' in team] == [['wide_wrapped_block']]

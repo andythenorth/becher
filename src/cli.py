@@ -82,11 +82,6 @@ def main(argv=None):
     rer.add_argument('--stage',required=True,choices=('windows','doors','equipment','greeble'))
     rer.add_argument('--counter',type=int)
 
-    rev=sub.add_parser('review',help='optional local candidate review app')
-    rev.add_argument('--run',default='output/pipeline')
-    rev.add_argument('--host',default='127.0.0.1')
-    rev.add_argument('--port',type=int,default=8000)
-
     ev=sub.add_parser('evaluate',help='deterministic validity and visual-diversity report')
     ev.add_argument('--run',default='output/pipeline')
     ev.add_argument('--similarity',type=float,default=.94)
@@ -232,9 +227,6 @@ def main(argv=None):
     elif args.cmd=='reroll':
         from .pipeline import branch
         value=branch(args.run,args.candidate,args.stage,counter=args.counter)
-    elif args.cmd=='review':
-        from .pipeline_review import serve
-        return serve(args.run,args.host,args.port)
     elif args.cmd=='evaluate':
         from .selection import evaluate
         value=evaluate(args.run,near_duplicate_iou=args.similarity,min_pixels=args.min_pixels)['summary']

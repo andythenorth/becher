@@ -5,7 +5,7 @@ from dataclasses import replace
 from src.architectures import generate
 from src.facade_decals import is_panel
 from src.feature_passes import build_features
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.geometry import MATERIAL_IDS, SURFACE_ROLES
 
 

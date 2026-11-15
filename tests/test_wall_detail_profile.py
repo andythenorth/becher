@@ -5,7 +5,7 @@ from pathlib import Path
 from PIL import Image
 import numpy as np
 from src.architectures import generate as _generate, library as _library
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.feature_passes import build_features, STAGES, is_feature, reroll
 from src.pipeline import build, load_scene, _load_manifest
 from src.palette import load_palette

@@ -94,25 +94,36 @@ def _cap_triangles(ring):
     return triangles,normal
 
 
-def sweep_rings(rings, material='metal', part='sweep'):
+def sweep_rings(rings, material='metal', part='sweep', *, closed=False):
     """Connect matching planar contour rings into a closed polygon shell.
 
     End caps use general simple-polygon triangulation. Side normals are based
     on contour edges rather than the centroid (which may lie in a recess).
     """
     rings=_sections(rings,rings)
-    cap_first,normal_first=_cap_triangles(rings[0])
-    cap_last,normal_last=_cap_triangles(rings[-1])
-    step=np.mean(rings[-1],axis=0)-np.mean(rings[0],axis=0)
-    if np.linalg.norm(step)<1e-9:
-        raise ValueError('Sweep rings must advance along a path')
-    sign_first=np.dot(normal_first,step)
-    sign_last=np.dot(normal_last,step)
-    if abs(sign_first)<1e-9 or abs(sign_last)<1e-9 or sign_first*sign_last<0:
-        raise ValueError('Sweep rings must have consistent orientation along path')
-    winding=1. if sign_first>0 else -1.
+    if closed:
+        if len(rings)<3:
+            raise ValueError('Closed sweep requires at least three rings')
+        _, first_normal = _cap_triangles(rings[0])
+        first_step = rings[1].mean(axis=0)-rings[0].mean(axis=0)
+        direction = np.dot(first_normal,first_step)
+        if abs(direction)<1e-9:
+            raise ValueError('Closed sweep must advance through the first ring')
+        winding = 1. if direction>0 else -1.
+    else:
+        cap_first,normal_first=_cap_triangles(rings[0])
+        cap_last,normal_last=_cap_triangles(rings[-1])
+        step=np.mean(rings[-1],axis=0)-np.mean(rings[0],axis=0)
+        if np.linalg.norm(step)<1e-9:
+            raise ValueError('Sweep rings must advance along a path')
+        sign_first=np.dot(normal_first,step)
+        sign_last=np.dot(normal_last,step)
+        if abs(sign_first)<1e-9 or abs(sign_last)<1e-9 or sign_first*sign_last<0:
+            raise ValueError('Sweep rings must have consistent orientation along path')
+        winding=1. if sign_first>0 else -1.
     output=[]
-    for a,b in zip(rings,rings[1:]):
+    following = rings[1:]+rings[:1] if closed else rings[1:]
+    for a,b in zip(rings,following):
         advance=np.mean(b,axis=0)-np.mean(a,axis=0)
         if np.linalg.norm(advance)<1e-9:
             raise ValueError('Adjacent sweep rings must be distinct')
@@ -123,6 +134,8 @@ def sweep_rings(rings, material='metal', part='sweep'):
             for v in ((a[j],a[k],b[k]),(a[j],b[k],b[j])):
                 f=_face(*v,material,part,outward=outward)
                 if f is not None:output.append(f)
+    if closed:
+        return output
     # Only two caps; intermediate rings are structural stations, not walls.
     for ring,triangles,outward in ((rings[0],cap_first,-step),
                                    (rings[-1],cap_last,step)):
@@ -229,7 +242,7 @@ def scene_faces(scene):
             out += revolution(shape['profile'], center=shape.get('center', (.5,.5)),
                               segments=shape.get('segments', 32), material=mat, part=part,
                               crease_rings=shape.get('crease_rings', ()))
-        elif kind=='rings':out+=sweep_rings(shape['rings'],mat,part)
+        elif kind=='rings':out+=sweep_rings(shape['rings'],mat,part,closed=shape.get('closed',False))
         elif kind=='triangles':out+=triangle_faces(shape['vertices'],material=mat,part=part,normals=shape.get('normals'))
         else:raise ValueError(f'Unknown geometry primitive: {kind}')
     if not out:raise ValueError('No valid triangles in scene')

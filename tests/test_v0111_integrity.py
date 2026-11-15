@@ -8,7 +8,7 @@ import pytest
 from src import pipeline
 from src.palette import load_palette, open_indexed
 from src.selection import vote, refill
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.edge_contrast import apply as edges
 from src.semantic_colour import apply as semantic
 from src.roof_colour import apply as roofs

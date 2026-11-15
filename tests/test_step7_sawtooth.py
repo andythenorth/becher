@@ -5,7 +5,7 @@ import hashlib
 import unittest
 import numpy as np
 from src.architectures import generate as _generate, library as _library
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.geometry import MATERIAL_IDS
 
 

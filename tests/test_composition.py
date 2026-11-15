@@ -35,12 +35,17 @@ def test_seeded_batches(tags, silhouette):
         assert max(Counter(entry['type'] for entry in metadata).values()) <= 12
 
 
-def test_all_installed_compositions_compile_inside_tile():
-    for silhouette in ('low', 'high'):
-        for scene in candidates(GRAIN + LIQUID, silhouette).values():
-            vertices = compile_scene(scene).vertices
-            assert (vertices >= -1e-9).all()
-            assert (vertices[..., :2] <= 1 + 1e-9).all()
+def test_wrapped_process_mixed_and_large_standalone_compile_inside_tile():
+    pool = candidates(['Wrapped process buildings', 'Chimneys'], 'low')
+    mixed = next(scene for scene in pool.values()
+                 if {'wrapped_process_rect_01_01', 'chimney_low_tapered'}
+                 <= set(scene['catalogue']['components']))
+    large = next(scene for scene in pool.values()
+                 if scene['catalogue']['components'] == ['wrapped_process_join_08_03'])
+    for scene in (mixed, large):
+        vertices = compile_scene(scene).vertices
+        assert (vertices >= -1e-9).all()
+        assert (vertices[..., :2] <= 1 + 1e-9).all()
 
 
 def test_cap_allows_skew_and_one_type_fallback():

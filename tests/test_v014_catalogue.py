@@ -3,7 +3,7 @@ from pathlib import Path
 from src.architectures import generate, library
 from src.architectural_validation import validate
 from src.feature_passes import build_features, validate_features
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.geometry import VisibleSurfaces
 
 ROOT = Path(__file__).resolve().parents[1]

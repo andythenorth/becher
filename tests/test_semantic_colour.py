@@ -4,7 +4,7 @@ import tempfile
 from pathlib import Path
 import numpy as np
 from src.architectures import generate
-from src.architectural_renderer import cast
+from src.mesh.render import cast
 from src.edge_contrast import apply as edge_apply
 from src.semantic_colour import (
     apply, assignment, WINDOW_RAMP, DOOR_RAMP, GREEBLE_RAMP,

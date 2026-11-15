@@ -1,60 +1,37 @@
 # Becher
 
-Procedural OpenTTD industrial sprites. Becher generates batches from selected building families using the mesh renderer and high-five-o’clock lighting.
+Becher builds indexed OpenTTD industrial sprites from authored components and procedural building geometry.
 
-## Run
+## Assembly batches
 
-Requires Python 3.10+, NumPy and Pillow. From the repository root:
+From the Becher checkout, use Python 3.10 or later with NumPy and Pillow installed.
 
-```bash
+```sh
 python -m pip install -e .
-python -m becher pipeline --seed 1267 --designs 12 \
-  --workers 4 --facade-mode decals --edge-contrast on --roof-colours on \
-  --out output/pipeline
+python -m ui
 ```
 
-`python becher.py ...` also works without installation when dependencies are available. Rendered sprites are indexed 64 × 128 PNGs with four rotations; `output/pipeline/review.png` provides a contact sheet.
+Open http://127.0.0.1:8765/. Select one or more vocabularies, choose a silhouette and seed, and render 16 tiles at four angles each. See [the UI guide](ui/README.md) for previews, rerolls and exports.
 
-For all commands and options: `python -m becher --help` and `python -m becher pipeline --help`.
-
-To generate from specific families, list their IDs with `python -m becher families`
-and pass one `--family` per selected family:
-
-```bash
-python -m becher pipeline --family broad_high_roof_hall --family tank_yard \
-  --seed 1267 --designs 12 --out output/selected-families
+```sh
+python -m becher compose --vocabulary 'Wrapped process buildings' \
+  --silhouette low --seed 1267 --out output/process
 ```
 
-The batch cycles through the eligible families in catalogue order, skips
-invalid designs, and applies seeded structural variation. The design count
-is the total for the batch. With no `--family` flags, all primary factory
-families are eligible.
+## Other CLI workflows
 
-Run `python -m ui` from the checkout and open <http://127.0.0.1:8765/> to
-choose families and review sprites in the browser.
+```sh
+python -m becher pipeline --seed 1267 --designs 12 --workers 4 \
+  --facade-mode decals --out output/pipeline
+python -m becher --help
+```
 
-Use a new output directory for generation with this policy. Older runs
-can still be reviewed, rerolled and exported. Refill requires a new-policy run.
+The procedural pipeline writes its contact sheet to `review.png` in the output directory. Use `evaluate`, `vote`, `refill`, `selection` and `handoff` for saved procedural runs. Use `scenes` and `render-scene` for installed, standalone geometry.
+
+Assembly components and their vocabulary index live in `data/assemblies/`. Saved scenes live in `data/scenes/`. See [Architecture](ARCHITECTURE.md) for the rendering and data boundaries.
 
 ## Tests
 
-```bash
-python -m pytest -q tests/test_golden_outputs.py
+```sh
 python -m pytest -q
 ```
-
-Five frozen building scenes exercise mesh compilation and rendering against
-the original mesh references and 20 indexed sprites. Sampling tests cover
-family selection, determinism and refill separately.
-
-## Layout
-
-- `purpose.md` — why Becher exists and what matters.
-- `ARCHITECTURE.md` — actual source structure and editing seams.
-- `AGENTS.md` — short guidance for agent-assisted work.
-- `src/` — application implementation, including `src/mesh/`.
-- `data/` — active authored grammar, materials and palette inputs.
-- `tests/` — behavioural, geometry and lighting regression tests.
-- `examples/` — small declarative geometry scenes and facade fixtures used by tests.
-
-Run outputs belong in `output/` (ignored locally); do not commit generated previews as source.

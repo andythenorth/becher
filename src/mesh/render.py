@@ -16,7 +16,7 @@ from ..lighting import shade, SUN_FIVE
 def cast_mesh(mesh,rotation,*,building=None,facade_mode="boxes"):
     start=perf_counter()
     origins,direction=rays(rotation)
-    depth,normal,material,part=trace(mesh,origins,direction)
+    depth,normal,material,part=trace(mesh,origins,direction,affine_grid=True)
     role=np.zeros(material.shape,np.uint8)
     role[material>0]=SURFACE_ROLES['wall']
     roof=material==MATERIAL_IDS['roof']

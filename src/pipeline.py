@@ -238,9 +238,6 @@ def build(out, *, seed=1267, designs=12, start=0, workers=4, grammar_file=None,
         if (old.get('seed'),old.get('start'),old.get('designs'),old.get('grammar_sha256'),old.get('edge_contrast','off'),old.get('semantic_colour','on'),old.get('semantic_hues',3),old.get('roof_colours','off'),old.get('facade_mode','boxes'),old.get('renderer','analytic')) != (seed,start,designs,grammar_sha,edge_contrast,semantic_colour,semantic_hues,roof_colours,facade_mode,renderer):
             raise ValueError('Output already contains a different run; select a new --out path')
         _assert_cached_sprites(out,old)
-        if not (out/'index.html').exists():
-            from .pipeline_review import write_review
-            write_review(out)
         return {**json.loads((out/'timing.json').read_text()),'cached':True}
 
     accepted,rejected,attempt=sample_candidates(
@@ -272,8 +269,6 @@ def build(out, *, seed=1267, designs=12, start=0, workers=4, grammar_file=None,
               'stages':list(STAGES),'nodes':nodes,'candidates':candidates}
     _write_json(out/'manifest.json',manifest)
     _write_json(out/'feedback.json',{'schema_version':1,'candidates':{}})
-    from .pipeline_review import write_review
-    write_review(out)
     _write_contact_sheet(out, manifest)
     render_ms=round((perf_counter()-t0)*1000,2)
     metrics={'designs':len(accepted),'sprites':4*len(accepted),'workers':workers,
@@ -310,10 +305,6 @@ def _ancestry_ids(nodes,node_id):
         result.append(node_id)
         node_id=nodes[node_id]['parent']
     return result
-
-
-def _ancestry(nodes,node_id):
-    return [nodes[i] for i in _ancestry_ids(nodes,node_id)[:-1]]
 
 
 def branch(out, candidate, stage, *, counter=None, workers=1, buffers=True, parent=None):
