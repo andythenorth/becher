@@ -1,0 +1,100 @@
+{
+  "role": "tank",
+  "footprint": [
+    -0.206,
+    -0.206,
+    0.206,
+    0.206
+  ],
+  "port": [
+    0.0,
+    0.0,
+    0.072
+  ],
+  "shapes": [
+    {
+      "id": "plinth",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0,
+          0.206
+        ],
+        [
+          0.022,
+          0.206
+        ]
+      ],
+      "segments": 28
+    },
+    {
+      "id": "shell",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.022,
+          0.194
+        ],
+        [
+          0.235,
+          0.194
+        ]
+      ],
+      "segments": 28
+    },
+    {
+      "id": "roof",
+      "type": "revolution",
+      "material": "metal",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.233,
+          0.194
+        ],
+        [
+          0.262,
+          0.16296
+        ],
+        [
+          0.295,
+          0.03104
+        ]
+      ],
+      "segments": 28
+    },
+    {
+      "id": "hatch",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.287,
+          0.02522
+        ],
+        [
+          0.299,
+          0.02522
+        ]
+      ],
+      "segments": 20
+    }
+  ]
+}

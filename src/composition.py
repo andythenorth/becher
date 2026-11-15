@@ -236,6 +236,47 @@ def packed_scene(parts, names, turns, axis):
         return None
 
 
+def corner_scene(parts, names, turns, axis):
+    """Pack three rectangular footprints into an L, without rescaling.
+
+    Two footprints share one side, with the third adjacent to the second
+    across the perpendicular axis. All primitives remain checked by the
+    normal arbitrary_scene collision and tile-boundary validator.
+    """
+    if len(names) != 3:
+        raise ValueError('Corner packing requires exactly three components')
+    bounds = [transformed_footprint(parts[n], (0, 0), t)
+              for n, t in zip(names, turns)]
+    # Map both orientations into a common (major, minor) coordinate system.
+    sizes = [(b[2]-b[0], b[3]-b[1]) if axis == 0
+             else (b[3]-b[1], b[2]-b[0]) for b in bounds]
+    (aw, ah), (bw, bh), (cw, ch) = sizes
+    width = max(aw + GAP + bw, aw + GAP + cw)
+    height = max(ah, bh + GAP + ch)
+    limit = SITE_MAX - SITE_MIN
+    if width > limit + EPSILON or height > limit + EPSILON:
+        return None
+    positions = [(0, (height-ah)/2),
+                 (aw+GAP, 0),
+                 (aw+GAP+(bw-cw)/2, bh+GAP)]
+    # Keep placements centred within the full tile, independent of origin.
+    offset_major = .5-width/2
+    offset_minor = .5-height/2
+    centres=[]
+    for b, (major, minor) in zip(bounds, positions):
+        if axis == 0:
+            centres.append((round(offset_major+major-b[0],8),
+                            round(offset_minor+minor-b[1],8)))
+        else:
+            centres.append((round(offset_minor+minor-b[0],8),
+                            round(offset_major+major-b[1],8)))
+    try:
+        return arbitrary_scene(tuple((name,x,y,t) for name,(x,y),t
+                                     in zip(names,centres,turns)),parts)
+    except ValueError:
+        return None
+
+
 @lru_cache(maxsize=16)
 def _general_candidates(names, silhouette):
     if silhouette not in ('low','high'):
@@ -278,6 +319,10 @@ def _general_candidates(names, silhouette):
         return abs(height-HIGH_PROFILE) <= EPSILON or (height >= HIGH_PROFILE) == (silhouette == 'high')
     feasible_pairs = []
     for a,b in combinations(packable,2):
+        # Different tank designs do not form an authored storage bank. Identical
+        # tanks are still repeated below; tanks still combine with machinery.
+        if parts[a].get('role') == parts[b].get('role') == 'tank':
+            continue
         if not matches_profile(a,b):
             continue
         selected = None
@@ -311,25 +356,71 @@ def _general_candidates(names, silhouette):
             if found:
                 break
 
-    # Triple diversity is bounded linearly with catalogue size, rather than
-    # attempting a cubic number of tuples. All pairings remain eligible above.
-    if len(packable)>2 and feasible_pairs:
-        for i,a in enumerate(packable):
-            partners = next(((x,y) for x,y in feasible_pairs if a in (x,y)), None)
-            if partners is None:
+    # Three-component searches are bounded by catalogue size, not all triples.
+    # Instead of looking at the first feasible pair for each component (which
+    # favours alphabetical neighbours), consider a spread of partners and try
+    # compact third components. This is generic footprint-guided placement;
+    # collision, clearance and silhouette validation stay in packed_scene.
+    if len(packable) > 2 and feasible_pairs:
+        footprint_area = {
+            name: (parts[name]['footprint'][2] - parts[name]['footprint'][0]) *
+                  (parts[name]['footprint'][3] - parts[name]['footprint'][1])
+            for name in packable
+        }
+        small = sorted(packable, key=lambda name: (footprint_area[name], name))
+        partners_by_name = {name: [] for name in packable}
+        for a, b in feasible_pairs:
+            partners_by_name[a].append(b)
+            partners_by_name[b].append(a)
+
+        for a in packable:
+            partners = partners_by_name[a]
+            if not partners:
                 continue
-            b = partners[1] if partners[0] == a else partners[0]
-            others = [n for n in packable if n not in (a,b)]
-            if not others:
-                continue
-            c = others[i % len(others)]
-            if not matches_profile(a,b,c):
-                continue
-            for axis in (0,1):
-                scene=packed_scene(parts,(a,b,c),(0,0,0),axis)
-                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
-                    add(scene)
-                    break
+            # Sample the partner-size spectrum, without privileging any role.
+            partners = sorted(partners, key=lambda name: (footprint_area[name], name))
+            samples = [partners[i] for i in sorted({
+                0, len(partners)//4, len(partners)//2,
+                (3*len(partners))//4, len(partners)-1
+            })]
+            for b in samples:
+                # Prefer space-efficient additions first. A limited alternative
+                # set avoids the cubic exhaustive enumeration of triples.
+                attempts = 0
+                for c in small:
+                    if c in (a, b):
+                        continue
+                    tank_names = {n for n in (a, b, c) if parts[n].get('role') == 'tank'}
+                    if len(tank_names) > 1 or not matches_profile(a, b, c):
+                        continue
+                    attempts += 1
+                    if attempts > 12:
+                        break
+                    found = False
+                    # Moving the compact third component between the other two
+                    # also explores layouts blocked by centred three-in-a-row.
+                    for order in ((a,b,c), (a,c,b), (c,a,b)):
+                        for axis in (0, 1):
+                            for turns in ((0,0,0), (0,1,0), (1,0,0)):
+                                scene = packed_scene(parts, order, turns, axis)
+                                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+                                    add(scene)
+                                    found = True
+                                    break
+                            if found:
+                                break
+                            for turns in ((0,0,0), (0,1,0), (1,0,0)):
+                                scene = corner_scene(parts, order, turns, axis)
+                                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+                                    add(scene)
+                                    found = True
+                                    break
+                            if found:
+                                break
+                        if found:
+                            break
+                    if found:
+                        break
     if not pool:
         raise ValueError('No compositions match this silhouette and vocabulary')
     return pool

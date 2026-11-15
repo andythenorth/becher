@@ -1,0 +1,174 @@
+{
+  "role": "tank",
+  "footprint": [
+    -0.21,
+    -0.136,
+    0.136,
+    0.136
+  ],
+  "port": [
+    0.0,
+    0.0,
+    0.072
+  ],
+  "shapes": [
+    {
+      "id": "plinth",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0,
+          0.136
+        ],
+        [
+          0.022,
+          0.136
+        ]
+      ],
+      "segments": 28
+    },
+    {
+      "id": "shell",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.022,
+          0.124
+        ],
+        [
+          0.44,
+          0.124
+        ]
+      ],
+      "segments": 28
+    },
+    {
+      "id": "roof",
+      "type": "revolution",
+      "material": "metal",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.438,
+          0.124
+        ],
+        [
+          0.467,
+          0.10416
+        ],
+        [
+          0.5,
+          0.01984
+        ]
+      ],
+      "segments": 28
+    },
+    {
+      "id": "hatch",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.492,
+          0.01612
+        ],
+        [
+          0.504,
+          0.01612
+        ]
+      ],
+      "segments": 20
+    },
+    {
+      "id": "service_base",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.21,
+        -0.086,
+        0,
+        -0.136,
+        0.086,
+        0.018
+      ]
+    },
+    {
+      "id": "service_tower",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.194,
+        -0.07,
+        0.018,
+        -0.152,
+        0.07,
+        0.485
+      ]
+    },
+    {
+      "id": "service_pipe_rise",
+      "type": "beam",
+      "material": "pipe",
+      "start": [
+        -0.152,
+        -0.01,
+        0.18
+      ],
+      "end": [
+        -0.152,
+        -0.01,
+        0.385
+      ],
+      "thickness": 0.034
+    },
+    {
+      "id": "service_pipe_link",
+      "type": "beam",
+      "material": "pipe",
+      "start": [
+        -0.152,
+        -0.01,
+        0.385
+      ],
+      "end": [
+        -0.08928,
+        -0.01,
+        0.385
+      ],
+      "thickness": 0.034
+    },
+    {
+      "id": "service_catwalk",
+      "type": "beam",
+      "material": "frame",
+      "start": [
+        -0.152,
+        0.02,
+        0.29
+      ],
+      "end": [
+        -0.0992,
+        0.02,
+        0.29
+      ],
+      "thickness": 0.022
+    }
+  ]
+}

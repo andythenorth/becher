@@ -194,27 +194,130 @@
     ]
   },
   "Liquid storage": {
+    "storage": [
+      "tank",
+      "domed_tank",
+      "storage_tank_quarter_tile",
+      "storage_tank_full_tile",
+      "storage_tank_small_low_01",
+      "storage_tank_small_low_03",
+      "storage_tank_small_high_02",
+      "storage_tank_medium_low_02",
+      "storage_tank_medium_high_02",
+      "storage_tank_large_low_02",
+      "storage_tank_large_high_03",
+      "storage_tank_service_low_02",
+      "storage_tank_service_high_02",
+      "storage_tank_pair_low_02",
+      "storage_tank_pair_high_02",
+      "storage_tank_quad_low_01",
+      "storage_tank_quad_high_01",
+      "storage_tank_horizontal_low_01",
+      "storage_tank_horizontal_low_02",
+      "storage_tank_horizontal_high_01",
+      "storage_tank_horizontal_high_02",
+      "storage_tank_horizontal_pair_low_01",
+      "storage_tank_horizontal_pair_high_01",
+      "storage_tank_horizontal_stack_high_01"
+    ],
+    "yards": [
+      "pump_skid",
+      "liquid_pipe_run_straight_01",
+      "liquid_pipe_run_straight_03",
+      "liquid_pipe_terminal_inlet_01",
+      "liquid_pipe_terminal_inlet_03"
+    ],
+    "sheds": [],
+    "annexes": []
+  },
+  "General industrial": {
     "sheds": [
       "gable_shed",
       "monitor_shed",
-      "gable_shed_tall",
-      "monitor_shed_tall",
+      "sawtooth_hall",
       "boiler_house",
-      "sawtooth_hall"
+      "twin_bay_shed",
+      "dispatch_shed",
+      "tall_mill"
     ],
     "annexes": [
-      "annex",
+      "office_annex",
       "loading_annex"
     ],
+    "storage": [],
+    "yards": [
+      "enclosed_lift_tower",
+      "cooling_cell"
+    ]
+  },
+  "Chimneys": {
+    "sheds": [],
+    "annexes": [],
+    "storage": [
+      "chimney_battered_base",
+      "chimney_soft_taper",
+      "chimney_soft_taper_medium",
+      "chimney_soft_taper_very_tall",
+      "chimney_square_pedestal",
+      "chimney_square_pedestal_medium",
+      "chimney_square_pedestal_short",
+      "chimney_square_pedestal_very_tall",
+      "chimney_stepped_stack",
+      "chimney_stepped_stack_medium",
+      "chimney_stepped_stack_very_tall",
+      "chimney_straight_on_plinth",
+      "chimney_twin_stack",
+      "chimney_low_tapered",
+      "chimney_low_straight"
+    ],
+    "yards": [
+      "chimney_battered_base",
+      "chimney_soft_taper",
+      "chimney_soft_taper_medium",
+      "chimney_soft_taper_very_tall",
+      "chimney_square_pedestal",
+      "chimney_square_pedestal_medium",
+      "chimney_square_pedestal_short",
+      "chimney_square_pedestal_very_tall",
+      "chimney_stepped_stack",
+      "chimney_stepped_stack_medium",
+      "chimney_stepped_stack_very_tall",
+      "chimney_straight_on_plinth",
+      "chimney_twin_stack",
+      "chimney_low_tapered",
+      "chimney_low_straight"
+    ]
+  },
+  "Mining and aggregates": {
+    "sheds": [],
+    "annexes": [],
+    "storage": [],
+    "yards": [
+      "aggregate_bays",
+      "short_inclined_conveyor",
+      "mine_headframe",
+      "stepped_crusher_house",
+      "trough_fed_crusher"
+    ]
+  },
+  "Liquid processing": {
     "storage": [
       "tank",
       "domed_tank",
       "tall_process_tank",
-      "storage_tank_quarter_tile"
+      "storage_tank_small_low_01",
+      "storage_tank_medium_low_02",
+      "storage_tank_service_low_02",
+      "storage_tank_horizontal_low_01",
+      "storage_tank_horizontal_pair_low_01",
+      "storage_tank_small_high_02",
+      "storage_tank_medium_high_02",
+      "storage_tank_service_high_02",
+      "storage_tank_horizontal_high_01",
+      "storage_tank_horizontal_pair_high_01",
+      "storage_tank_horizontal_stack_high_01"
     ],
     "yards": [
-      "storage_tank_full_tile",
-      "storage_tank_quarter_tile",
       "pump_skid",
       "vessel_and_tower_train",
       "three_stage_process_train",
@@ -293,76 +396,18 @@
       "liquid_pipe_traverse_through_03",
       "liquid_pipe_traverse_through_05",
       "liquid_pipe_traverse_through_06"
-    ]
-  },
-  "General industrial": {
+    ],
     "sheds": [
       "gable_shed",
       "monitor_shed",
-      "sawtooth_hall",
+      "gable_shed_tall",
+      "monitor_shed_tall",
       "boiler_house",
-      "twin_bay_shed",
-      "dispatch_shed",
-      "tall_mill"
+      "sawtooth_hall"
     ],
     "annexes": [
-      "office_annex",
+      "annex",
       "loading_annex"
-    ],
-    "storage": [],
-    "yards": [
-      "enclosed_lift_tower",
-      "cooling_cell"
-    ]
-  },
-  "Chimneys": {
-    "sheds": [],
-    "annexes": [],
-    "storage": [
-      "chimney_battered_base",
-      "chimney_soft_taper",
-      "chimney_soft_taper_medium",
-      "chimney_soft_taper_very_tall",
-      "chimney_square_pedestal",
-      "chimney_square_pedestal_medium",
-      "chimney_square_pedestal_short",
-      "chimney_square_pedestal_very_tall",
-      "chimney_stepped_stack",
-      "chimney_stepped_stack_medium",
-      "chimney_stepped_stack_very_tall",
-      "chimney_straight_on_plinth",
-      "chimney_twin_stack",
-      "chimney_low_tapered",
-      "chimney_low_straight"
-    ],
-    "yards": [
-      "chimney_battered_base",
-      "chimney_soft_taper",
-      "chimney_soft_taper_medium",
-      "chimney_soft_taper_very_tall",
-      "chimney_square_pedestal",
-      "chimney_square_pedestal_medium",
-      "chimney_square_pedestal_short",
-      "chimney_square_pedestal_very_tall",
-      "chimney_stepped_stack",
-      "chimney_stepped_stack_medium",
-      "chimney_stepped_stack_very_tall",
-      "chimney_straight_on_plinth",
-      "chimney_twin_stack",
-      "chimney_low_tapered",
-      "chimney_low_straight"
-    ]
-  },
-  "Mining and aggregates": {
-    "sheds": [],
-    "annexes": [],
-    "storage": [],
-    "yards": [
-      "aggregate_bays",
-      "short_inclined_conveyor",
-      "mine_headframe",
-      "stepped_crusher_house",
-      "trough_fed_crusher"
     ]
   }
 }
