@@ -13,8 +13,9 @@
     #previews:not([hidden]) { display: flex; gap: 0.5rem; }
     #previews figure { margin: 0; flex: none; }
     #previews img { display: block; image-rendering: pixelated; }
+    #component-sheet-image { display: block; max-width: 100%; height: auto; }
   </style>
-  <script src="/app.js?v=four-scale-inspector-v1" defer></script>
+  <script src="/app.js?v=random-seed-v1" defer></script>
 </head>
 <body>
   <h1>Becher</h1>
@@ -33,15 +34,24 @@
           </select>
         </label>
         <label>Seed <input id="assembly-seed" type="number" min="0" max="4294967295" value="1267" required></label>
+        <button id="randomize-seed" type="button">Randomize seed</button>
         <button id="render-scenes" type="submit" disabled>Render batch</button>
       </p>
     </fieldset>
   </form>
 
   <details id="component-preview" hidden>
-    <summary>Preview a component</summary>
+    <summary>Preview components</summary>
     <label>Component <select id="component-choice"></select></label>
     <button id="render-component" type="button">Render component</button>
+    <p><button id="render-component-sheets" type="button">Build labelled component sheets</button></p>
+    <p id="component-sheet-status" role="status"></p>
+    <section id="component-sheets" hidden>
+      <label>Sheet <select id="component-sheet-choice"></select></label>
+      <a id="save-component-sheet" download>Save this PNG</a>
+      <button id="copy-component-sheet" type="button">Copy this PNG</button>
+      <img id="component-sheet-image" alt="Labelled component overview sheet">
+    </section>
   </details>
 
   <pre id="status" role="status"></pre>

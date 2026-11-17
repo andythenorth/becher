@@ -281,6 +281,9 @@ async function loadInputs() {
   }
 }
 loadInputs();
+byId("randomize-seed").addEventListener("click", () => {
+  byId("assembly-seed").value = Math.floor(Math.random() * 4294967296);
+});
 function updateBackground() {
   for (const image of sheet.querySelectorAll("img")) {
     image.style.backgroundColor = background.value;
@@ -289,6 +292,51 @@ function updateBackground() {
     preview.style.backgroundColor = background.value;
   }
 }
+const componentSheetSection = byId("component-sheets");
+const componentSheetChoice = byId("component-sheet-choice");
+const componentSheetImage = byId("component-sheet-image");
+const componentSheetStatus = byId("component-sheet-status");
+let componentSheetEntries = [];
+function selectComponentSheet() {
+  const entry = componentSheetEntries[componentSheetChoice.selectedIndex];
+  if (!entry) return;
+  componentSheetImage.src = entry.url;
+  componentSheetImage.alt = `${entry.label} labelled component sheet`;
+  byId("save-component-sheet").href = `${entry.url}?download`;
+  byId("save-component-sheet").download = entry.name;
+  componentSheetStatus.textContent = `${entry.label}: ${entry.count ?? ""}`;
+}
+byId("render-component-sheets").addEventListener("click", async () => {
+  const button = byId("render-component-sheets");
+  button.disabled = true;
+  const componentCount = byId("component-choice").options.length;
+  componentSheetStatus.textContent = `Rendering ${componentCount} components at 0° for the overview sheets…`;
+  try {
+    const response = await fetch("/component-sheets", {method: "POST", headers: {"Content-Type": "application/json"}, body: "{}"});
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || "Could not render component sheets.");
+    componentSheetEntries = result.sheets;
+    componentSheetChoice.replaceChildren(...componentSheetEntries.map(item => new Option(item.label, item.name)));
+    componentSheetEntries[0].count = `${result.components} components; four rotations per entry`;
+    componentSheetSection.hidden = false;
+    selectComponentSheet();
+  } catch (error) {
+    componentSheetStatus.textContent = error.message;
+  } finally {
+    button.disabled = false;
+  }
+});
+componentSheetChoice.addEventListener("change", selectComponentSheet);
+byId("copy-component-sheet").addEventListener("click", async () => {
+  try {
+    const response = await fetch(componentSheetEntries[componentSheetChoice.selectedIndex].url);
+    const blob = await response.blob();
+    await navigator.clipboard.write([new ClipboardItem({"image/png": blob})]);
+    componentSheetStatus.textContent = "PNG copied to clipboard.";
+  } catch (error) {
+    componentSheetStatus.textContent = `Could not copy PNG: ${error.message}`;
+  }
+});
 background.addEventListener("change", updateBackground);
 updateBackground();
 byId("back").addEventListener("click", () => showSheet(true));

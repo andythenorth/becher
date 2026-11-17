@@ -18,9 +18,16 @@ Copy a sprite or contact sheet as an image. Save individual indexed PNGs,
 scene geometry JSON, a contact sheet, or a batch ZIP with 64 sprites and 16
 scene files. Contact sheets use the selected preview background.
 
-**Preview a component** renders one current file from `data/assemblies/` at
-four angles. It centres the component at its authored size without a seed or
-an added slab. The CLI equivalents are `python -m becher components` and
+**Preview components** still renders one current file from `data/assemblies/`
+at four angles, centred at its authored size without a seed or added slab.
+The low-priority **Build labelled component sheets** action renders one PNG
+with every installed component and one PNG per vocabulary, plus an unassigned
+sheet when needed. Each entry shows one representative 0° view; use the
+individual component preview for all four rotations. Choose a sheet to view,
+copy or save it. The CLI equivalent is
+`python -m becher component-sheets --out output/component-sheets`.
+
+The individual CLI commands are `python -m becher components` and
 `python -m becher render-component --component tank --out output/tank`.
 
 ## Composition

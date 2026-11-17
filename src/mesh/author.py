@@ -7,6 +7,7 @@ from __future__ import annotations
 import math
 import numpy as np
 from .solids import Face, _face, box, cylinder
+from .pixel_grid import radial_center
 
 
 def _sections(path, profiles):
@@ -159,7 +160,7 @@ def revolution(profile, *, center=(0.5,0.5), segments=32, material='metal', part
         raise ValueError('Invalid revolution profile')
     if not np.isfinite(values).all() or np.any(values[:,1]<0) or np.any(np.diff(values[:,0])<=0):
         raise ValueError('Revolution z values must increase; radii must be finite/nonnegative')
-    cx,cy=map(float,center)
+    cx,cy=radial_center(center)
     out=[]
     z=values[:,0];r=values[:,1]
     if not isinstance(crease_rings, (list, tuple)) or any(

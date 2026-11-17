@@ -37,6 +37,9 @@ def main(argv=None):
     component.add_argument('--component', required=True, help='component ID from the components command')
     component.add_argument('--out', required=True)
 
+    sheets = sub.add_parser('component-sheets', help='render labelled component sheets by vocabulary')
+    sheets.add_argument('--out', required=True, help='output directory for PNG sheets')
+
     sub.add_parser('vocabularies',help='list installed assembly vocabularies')
     compose = sub.add_parser('compose', help='assemble and render 16 seeded tiles')
     reroll_tile = sub.add_parser('reroll-tile', help='replace one row of a composition batch')
@@ -159,6 +162,12 @@ def main(argv=None):
         from .composition import render_component
         try:
             value = render_component(args.component, args.out)
+        except (ValueError, OSError, KeyError, TypeError) as error:
+            parser.error(str(error))
+    elif args.cmd == 'component-sheets':
+        from .component_sheets import render_sheets
+        try:
+            value = render_sheets(args.out)
         except (ValueError, OSError, KeyError, TypeError) as error:
             parser.error(str(error))
     elif args.cmd=='vocabularies':

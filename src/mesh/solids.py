@@ -7,6 +7,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import math
 import numpy as np
+from .pixel_grid import radial_center
 
 
 @dataclass(frozen=True)
@@ -92,7 +93,7 @@ def prism(section, axis, minimum, maximum, material, part, end_material=None):
 
 def cylinder(bounds, material, part, segments=32):
     x0,y0,z0,x1,y1,z1=bounds
-    cx=(x0+x1)*.5; cy=(y0+y1)*.5
+    cx,cy=radial_center(((x0+x1)*.5,(y0+y1)*.5))
     rx=(x1-x0)*.5; ry=(y1-y0)*.5
     if min(rx,ry,z1-z0)<=0:
         return []

@@ -52,8 +52,6 @@ def shade(surfaces,palette,light=SUN_FIVE):
         colours = ramp(RAMPS[name],palette)
         if name == 'tank_wall':
             # Use the sun's azimuth so its elevation does not compress the ramp.
-            # The default sun is about 16° off the camera's horizontal axis,
-            # giving a 106° span from the key to the far visible wall edge.
             horizontal = _unit_light(light)[:2]
             strength = np.linalg.norm(horizontal)
             if strength > 1e-10:
@@ -64,6 +62,25 @@ def shade(surfaces,palette,light=SUN_FIVE):
             else:
                 tank_bands = len(colours) // 2
             pixels[sel] = colours[tank_bands]
+        elif name == 'chimney':
+            # Round vertical surfaces need their own azimuth ramp: the high
+            # key-light elevation otherwise compresses most visible sides into
+            # the same two or three bands. Keep caps on the normal-based ramp.
+            horizontal = _unit_light(light)[:2]
+            strength = np.linalg.norm(horizontal)
+            side = np.abs(surfaces.normal[sel, 2]) < .90
+            selected_normals = surfaces.normal[sel]
+            colours = ramp(RAMPS[name],palette)
+            output = colours[np.minimum(len(colours)-1,
+                (bands[sel].astype(np.float64) * (len(colours)-1) / 3).astype(int))]
+            if strength > 1e-10 and np.any(side):
+                alignment = np.clip(selected_normals[side, :2] @ (horizontal / strength), -1, 1)
+                angle = np.arccos(alignment)
+                brightness = np.clip(1 - angle / np.deg2rad(165), 0, 1)
+                side_bands = np.minimum(len(colours) - 1,
+                    (brightness * len(colours)).astype(int))
+                output[side] = colours[side_bands]
+            pixels[sel] = output
         elif name == 'equipment':
             pixels[sel] = colours[quantize(surfaces, light, len(colours))[sel]]
         else:

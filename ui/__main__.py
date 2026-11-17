@@ -56,6 +56,7 @@ class Review:
         self.scratch = scratch
         self.project = project
         self.batches = {}
+        self.galleries = {}
         self.lock = Lock()
 
     def command(self, *args):
@@ -80,6 +81,17 @@ class Review:
             batch = Batch(batch_id, sprites)
             self.batches[batch_id] = batch
             return batch
+
+    def render_component_sheets(self):
+        gallery_id = uuid4().hex
+        output = self.scratch / f"component-sheets-{gallery_id}"
+        result = json.loads(self.command("component-sheets", "--out", str(output)))
+        with self.lock:
+            self.galleries[gallery_id] = {item["name"]: output / item["name"]
+                                          for item in result["sheets"]}
+        result["sheets"] = [dict(item, url=f"/component-gallery/{gallery_id}/{item['name']}")
+                            for item in result["sheets"]]
+        return result
 
     def compose(self, data):
         tags = data.get("vocabularies")
@@ -203,6 +215,14 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_bytes(path.read_bytes(), "image/png", filename)
                 return
 
+            match = re.fullmatch(r"/component-gallery/([a-f0-9]+)/([a-z0-9-]+\.png)", url.path)
+            if match:
+                gallery_id, filename = match.groups()
+                path = self.server.review.galleries[gallery_id][filename]
+                download = filename if url.query == "download" else None
+                self.send_bytes(path.read_bytes(), "image/png", download)
+                return
+
             match = re.fullmatch(r"/batch/([a-f0-9]+)\.zip", url.path)
             if match:
                 batch = self.server.review.get(match[1])
@@ -224,7 +244,9 @@ class Handler(BaseHTTPRequestHandler):
         if not self.check_host():
             return
         actions = {"/reroll": self.server.review.reroll,
-                   "/render-component": self.server.review.render_component, "/compose": self.server.review.compose}
+                   "/render-component": self.server.review.render_component,
+                   "/component-sheets": lambda _data: self.server.review.render_component_sheets(),
+                   "/compose": self.server.review.compose}
         if self.path not in actions:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
@@ -239,7 +261,8 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(data, dict):
                 raise ValueError("Expected a JSON object")
             start = perf_counter()
-            response = actions[self.path](data).response()
+            result = actions[self.path](data)
+            response = result.response() if isinstance(result, Batch) else result
             response["server_ms"] = round((perf_counter() - start) * 1000)
             status = HTTPStatus.OK
         except (ValueError, KeyError, OSError) as error:

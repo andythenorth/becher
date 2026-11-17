@@ -25,7 +25,10 @@ def rays(rotation, width=64, height=128):
     if rotation not in (0,90,180,270):
         raise ValueError('Expected 0,90,180,270')
     yy,xx=np.mgrid[0:height,0:width].astype(np.float64)
-    d=(xx-width*.5)/(width*.5)
+    # Pixel centres in an even-width image are symmetric around (width-1)/2.
+    # Using width/2 here put the camera axis on column 32 of a 64px sprite,
+    # shifting centred radial silhouettes by half a pixel.
+    d=(xx-(width-1)*.5)/(width*.5)
     scale=8.0
     ox=np.full_like(d,scale*.5)+d*.5
     oy=np.full_like(d,scale*.5)-d*.5
