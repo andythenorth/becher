@@ -413,5 +413,36 @@
       "annex",
       "loading_annex"
     ]
+  },
+  "Open industrial sheds": {
+    "sheds": [
+      "shed_open_gable_short_wide",
+      "shed_open_gable_long_narrow",
+      "shed_open_gable_tall",
+      "shed_open_mono_small",
+      "shed_open_mono_long",
+      "shed_open_barrel_short",
+      "shed_open_monitor_broad_low",
+      "shed_open_monitor_long_tall",
+      "shed_open_clerestory_offset",
+      "shed_open_sawtooth_three_tall",
+      "shed_open_sawtooth_four_broad",
+      "shed_open_sawtooth_five_long",
+      "shed_open_gable_micro_low",
+      "shed_open_mono_micro_low",
+      "shed_open_gable_short_narrow_low",
+      "shed_open_barrel_short_narrow_low",
+      "shed_open_gable_long_very_narrow_low",
+      "shed_open_mono_long_very_narrow_low",
+      "shed_open_barrel_long_narrow_mid",
+      "shed_open_gable_long_mid_narrow",
+      "shed_open_monitor_short_broad_high",
+      "shed_open_sawtooth_short_wide_low",
+      "shed_open_mono_long_broad_low",
+      "shed_open_monitor_long_broad_high",
+      "shed_open_sawtooth_long_broad_high",
+      "shed_open_gable_long_broad_high",
+      "shed_open_clerestory_long_mid_height"
+    ]
   }
 }
