@@ -23,7 +23,7 @@
     {
       "id": "column_a",
       "type": "revolution",
-      "material": "tank_wall",
+      "material": "equipment",
       "center": [
         -0.18600000000000003,
         0.0184
@@ -55,7 +55,7 @@
     {
       "id": "column_b",
       "type": "revolution",
-      "material": "tank_wall",
+      "material": "equipment",
       "center": [
         0.18600000000000003,
         0.0184
