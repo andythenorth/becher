@@ -40,6 +40,10 @@ def main(argv=None):
     sheets = sub.add_parser('component-sheets', help='render labelled component sheets by vocabulary')
     sheets.add_argument('--out', required=True, help='output directory for PNG sheets')
 
+    colours = sub.add_parser('suggest-colours', help='render optional indexed material guides from scene JSON')
+    colours.add_argument('--scene', required=True, help='path to existing scene.json')
+    colours.add_argument('--out', required=True, help='new output directory')
+
     sub.add_parser('vocabularies',help='list installed assembly vocabularies')
     compose = sub.add_parser('compose', help='assemble and render 16 seeded tiles')
     reroll_tile = sub.add_parser('reroll-tile', help='replace one row of a composition batch')
@@ -162,6 +166,12 @@ def main(argv=None):
         from .composition import render_component
         try:
             value = render_component(args.component, args.out)
+        except (ValueError, OSError, KeyError, TypeError) as error:
+            parser.error(str(error))
+    elif args.cmd == 'suggest-colours':
+        from .colour_suggestions import render
+        try:
+            value = render(args.scene, args.out)
         except (ValueError, OSError, KeyError, TypeError) as error:
             parser.error(str(error))
     elif args.cmd == 'component-sheets':

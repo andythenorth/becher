@@ -10,6 +10,12 @@ const imageCache = new Map();
 const installed = byId("installed");
 const vocabularies = byId("vocabularies");
 const componentLabels = new Map();
+// Source sprite URL identifies a row across rerolls; suggestions never affect
+// baseline sprites, the batch ZIP, or the seed-controlled composition.
+const colourSuggestions = new Map();
+const expandedColours = new Set();
+const colourBusy = new Set();
+let inspectorStyle = null;
 
 
 let batch;
@@ -22,14 +28,24 @@ function sprites() {
   return batch.candidates.flatMap(candidate => candidate.sprites);
 }
 
+function guidesFor(candidate) {
+  return colourSuggestions.get(candidate.sprites[0].url);
+}
+
 function selected() {
+  if (inspectorStyle) {
+    const candidate = batch.candidates[Math.floor(selection / 4)];
+    const guide = guidesFor(candidate)?.styles.find(style => style.id === inspectorStyle);
+    if (guide) return guide.sprites[selection % 4];
+  }
   return sprites()[selection];
 }
 
-function spriteLabel(index, sprite) {
+function spriteLabel(index, sprite, styleId = null) {
   const candidate = batch.candidates[Math.floor(index / 4)];
   const label = candidate.label ? `${candidate.key} · ${candidate.label}` : (componentLabels.get(candidate.key) ?? candidate.key.replaceAll("_", " "));
-  return `${label} · ${sprite.angle}°`;
+  const style = styleId && guidesFor(candidate)?.styles.find(entry => entry.id === styleId);
+  return `${label} · ${sprite.angle}°${style ? ` · ${style.label} (colour guide)` : ""}`;
 }
 
 function loadImage(url) {
@@ -39,6 +55,49 @@ function loadImage(url) {
     imageCache.set(url, image.decode().then(() => image));
   }
   return imageCache.get(url);
+}
+
+function addColourRow(rows, candidate, candidateIndex, guides) {
+  const detail = rows.insertRow();
+  detail.className = "colour-detail";
+  const cell = detail.insertCell();
+  cell.colSpan = 6;
+  const header = document.createElement("div");
+  header.className = "colour-header";
+  const note = document.createElement("span");
+  note.textContent = "Material suggestions only · original geometry and details retained";
+  const download = document.createElement("a");
+  download.href = guides.zip_url;
+  download.textContent = "Save colour guides ZIP (indexed PNGs + scene)";
+  header.append(note, download);
+  const options = document.createElement("div");
+  options.className = "colour-options";
+  guides.styles.forEach(style => {
+    const group = document.createElement("div");
+    group.className = "colour-option";
+    const name = document.createElement("strong");
+    name.textContent = style.label;
+    group.append(name);
+    const views = document.createElement("div");
+    views.className = "colour-views";
+    style.sprites.forEach((sprite, rotationIndex) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      const image = document.createElement("img");
+      image.alt = `${style.label} · ${sprite.angle}°`;
+      image.width = 64;
+      image.height = 128;
+      image.style.backgroundColor = background.value;
+      image.src = sprite.url;
+      button.title = `Inspect ${style.label} at ${sprite.angle}°`;
+      button.addEventListener("click", () => inspect(candidateIndex * 4 + rotationIndex, true, style.id));
+      button.append(image);
+      views.append(button);
+    });
+    group.append(views);
+    options.append(group);
+  });
+  cell.append(header, options);
 }
 
 function renderSheet() {
@@ -61,7 +120,7 @@ function renderSheet() {
       button.type = "button";
       button.dataset.sprite = index;
       button.setAttribute("aria-pressed", String(index === selection));
-      button.addEventListener("click", () => inspect(index, true));
+      button.addEventListener("click", () => inspect(index, true, null));
       image.alt = spriteLabel(index, sprite);
       image.width = 64;
       image.height = 128;
@@ -71,20 +130,65 @@ function renderSheet() {
       row.insertCell().append(button);
     });
     if (canReroll) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = "Reroll";
-      button.setAttribute("aria-label", `Reroll row ${candidate.key}`);
-      button.dataset.reroll = candidate.key;
-      button.disabled = busy;
-      button.addEventListener("click", () => {
+      const actions = row.insertCell();
+      const rerollButton = document.createElement("button");
+      rerollButton.type = "button";
+      rerollButton.textContent = "Reroll";
+      rerollButton.setAttribute("aria-label", `Reroll row ${candidate.key}`);
+      rerollButton.dataset.reroll = candidate.key;
+      rerollButton.disabled = busy;
+      rerollButton.addEventListener("click", () => {
         selection = candidateIndex * 4 + selection % 4;
+        inspectorStyle = null;
         showSheet();
         reroll(candidate.key);
       });
-      row.insertCell().append(button);
+      const colourButton = document.createElement("button");
+      colourButton.type = "button";
+      colourButton.dataset.colours = candidate.key;
+      const key = candidate.sprites[0].url;
+      const generated = colourSuggestions.has(key);
+      colourButton.textContent = generated
+        ? (expandedColours.has(key) ? "Hide colours" : "Show colours") : "Suggest colours";
+      colourButton.disabled = busy || colourBusy.has(key);
+      colourButton.addEventListener("click", () => suggestColours(candidate));
+      actions.append(rerollButton, " ", colourButton);
+      if (generated && expandedColours.has(key)) {
+        addColourRow(rows, candidate, candidateIndex, colourSuggestions.get(key));
+      }
     }
   });
+}
+
+async function suggestColours(candidate) {
+  const key = candidate.sprites[0].url;
+  if (colourSuggestions.has(key)) {
+    if (expandedColours.has(key)) expandedColours.delete(key);
+    else expandedColours.add(key);
+    renderSheet();
+    return;
+  }
+  if (busy || colourBusy.has(key)) return;
+  colourBusy.add(key);
+  renderSheet();
+  status.textContent = `Rendering colour guides for row ${candidate.key}…`;
+  try {
+    const response = await fetch("/suggest-colours", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({batch: batch.id, candidate: candidate.key}),
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error);
+    colourSuggestions.set(key, result);
+    expandedColours.add(key);
+    status.textContent = `${result.styles.length} colour guides for row ${candidate.key} · all four rotations · indexed DOS palette`;
+  } catch (error) {
+    status.textContent = error.message;
+  } finally {
+    colourBusy.delete(key);
+    renderSheet();
+  }
 }
 
 function showSheet(restoreFocus = false) {
@@ -98,11 +202,13 @@ function showSheet(restoreFocus = false) {
   }
 }
 
-async function inspect(index, moveFocus = false) {
+async function inspect(index, moveFocus = false, styleId = inspectorStyle) {
   const request = ++previewRequest;
   selection = (index + sprites().length) % sprites().length;
+  const candidate = batch.candidates[Math.floor(selection / 4)];
+  inspectorStyle = guidesFor(candidate)?.styles.some(style => style.id === styleId) ? styleId : null;
   const sprite = selected();
-  const label = spriteLabel(selection, sprite);
+  const label = spriteLabel(selection, sprite, inspectorStyle);
   sheet.hidden = true;
   inspector.hidden = false;
   byId("caption").textContent = label;
@@ -146,8 +252,13 @@ async function generate(settings, endpoint, replaceRow = false) {
     const data = await result.json();
     if (!result.ok) throw new Error(data.error);
     batch = data;
-    if (!replaceRow) imageCache.clear();
-    if (!replaceRow) selection = 0;
+    if (!replaceRow) {
+      imageCache.clear();
+      colourSuggestions.clear();
+      expandedColours.clear();
+      selection = 0;
+      inspectorStyle = null;
+    }
     renderSheet();
     if (replaceRow && !inspector.hidden) await inspect(selection);
     else showSheet(replaceRow);
@@ -234,7 +345,7 @@ installed.addEventListener("submit", event => {
 
 function setRerollDisabled(disabled) {
   byId("reroll").disabled = disabled;
-  for (const button of sheet.querySelectorAll("[data-reroll]")) button.disabled = disabled;
+  for (const button of sheet.querySelectorAll("[data-reroll], [data-colours]")) button.disabled = disabled;
 }
 
 function reroll(candidate) {

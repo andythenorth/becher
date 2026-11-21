@@ -10,7 +10,7 @@
     {
       "id": "wall_left",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         -0.39,
         -0.17,
@@ -23,7 +23,7 @@
     {
       "id": "wall_right",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         0.365,
         -0.17,

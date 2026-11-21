@@ -50,7 +50,7 @@
     {
       "id": "roof_1",
       "type": "revolution",
-      "material": "metal",
+      "material": "tank_wall",
       "center": [
         -0.12,
         0.0
@@ -114,7 +114,7 @@
     {
       "id": "roof_2",
       "type": "revolution",
-      "material": "metal",
+      "material": "tank_wall",
       "center": [
         0.12,
         0.0

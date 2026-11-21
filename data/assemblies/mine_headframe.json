@@ -10,7 +10,7 @@
     {
       "id": "mass_0",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         -0.35,
         -0.21,

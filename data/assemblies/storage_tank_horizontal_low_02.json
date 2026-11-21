@@ -10,7 +10,7 @@
     {
       "id": "vessel_0",
       "type": "rings",
-      "material": "pipe",
+      "material": "tank_wall",
       "closed": false,
       "rings": [
         [
@@ -1080,7 +1080,7 @@
     {
       "id": "dorsal_pipe_0",
       "type": "beam",
-      "material": "metal",
+      "material": "pipe",
       "start": [
         -0.2272,
         0,

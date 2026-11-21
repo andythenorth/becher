@@ -3,7 +3,7 @@
     {
       "id": "hall_walls",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         -0.4,
         -0.18,

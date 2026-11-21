@@ -8,6 +8,14 @@
     td button[aria-pressed="true"] { outline: 2px solid currentColor; }
     th[scope="row"] { max-width: 18rem; text-align: left; }
     td img { display: block; }
+    .colour-detail > td { padding: .5rem; border-bottom: 2px solid #999; }
+    .colour-header { display: flex; gap: 1.5rem; align-items: baseline; flex-wrap: wrap; margin-bottom: .5rem; }
+    .colour-options { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .colour-option { padding: .35rem; border: 1px solid #aaa; }
+    .colour-option strong { display: block; margin-bottom: .35rem; }
+    .colour-views { display: flex; flex-wrap: wrap; gap: .2rem; }
+    .colour-views button { padding: 2px; }
+    .colour-views img { image-rendering: pixelated; }
     #status { white-space: pre-wrap; }
     #previews { overflow-x: auto; }
     #previews:not([hidden]) { display: flex; gap: 0.5rem; }
@@ -15,7 +23,7 @@
     #previews img { display: block; image-rendering: pixelated; }
     #component-sheet-image { display: block; max-width: 100%; height: auto; }
   </style>
-  <script src="/app.js?v=random-seed-v1" defer></script>
+  <script src="/app.js?v=colour-guides-v1" defer></script>
 </head>
 <body>
   <h1>Becher</h1>

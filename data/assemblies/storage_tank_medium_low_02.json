@@ -55,7 +55,7 @@
     {
       "id": "roof",
       "type": "revolution",
-      "material": "metal",
+      "material": "tank_wall",
       "center": [
         0.0,
         0.0

@@ -18,7 +18,7 @@
         0.15,
         0.18
       ],
-      "material": "metal"
+      "material": "wall"
     },
     {
       "id": "headframe_top",

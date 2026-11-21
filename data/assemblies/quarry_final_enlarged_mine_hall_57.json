@@ -471,7 +471,7 @@
     {
       "id": "hall_bay_0",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         -0.3711053,
         -0.0361493,
@@ -545,7 +545,7 @@
     {
       "id": "hall_bay_1",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         -0.1942781,
         -0.0361493,
@@ -619,7 +619,7 @@
     {
       "id": "hall_bay_2",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         0.0318964,
         -0.0361493,
@@ -693,7 +693,7 @@
     {
       "id": "intake",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         0.3320916,
         0.0635995,
@@ -719,7 +719,7 @@
     {
       "id": "12_large process halls_compact_ground_annex",
       "type": "box",
-      "material": "metal",
+      "material": "wall",
       "bounds": [
         -0.3935646,
         -0.2969264,

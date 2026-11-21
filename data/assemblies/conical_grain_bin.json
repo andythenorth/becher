@@ -10,7 +10,7 @@
     {
       "id": "body",
       "type": "revolution",
-      "material": "equipment",
+      "material": "tank_wall",
       "center": [
         0,
         0
@@ -30,7 +30,7 @@
     {
       "id": "cap",
       "type": "revolution",
-      "material": "equipment",
+      "material": "tank_wall",
       "center": [
         0,
         0
@@ -54,7 +54,7 @@
     {
       "id": "hopper",
       "type": "revolution",
-      "material": "equipment",
+      "material": "tank_wall",
       "center": [
         0,
         0

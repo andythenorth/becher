@@ -18,7 +18,7 @@
         -0.015,
         0.53
       ],
-      "material": "metal"
+      "material": "wall"
     },
     {
       "id": "boiler_roof0",
@@ -92,7 +92,7 @@
         0.26,
         0.53
       ],
-      "material": "metal"
+      "material": "wall"
     },
     {
       "id": "boiler_roof1",

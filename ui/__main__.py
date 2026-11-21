@@ -57,6 +57,7 @@ class Review:
         self.project = project
         self.batches = {}
         self.galleries = {}
+        self.colour_suggestions = {}  # (source batch, candidate) -> rendered styles
         self.lock = Lock()
 
     def command(self, *args):
@@ -153,6 +154,34 @@ class Review:
                 raise ValueError("Reroll is available for generated batches")
             return self.reroll_composition(batch, data.get("candidate"))
 
+    def suggest_colours(self, data):
+        with self.lock:
+            batch = self.get(data.get("batch"))
+            candidate = data.get("candidate")
+            if not batch.compose_args or candidate not in batch.sprites:
+                raise ValueError("Choose a generated composition row")
+            source_id = batch.sprite_batch(candidate)
+            key = (source_id, candidate)
+            if key not in self.colour_suggestions:
+                source = batch.sprites[candidate][0].with_name("scene.json")
+                output = self.scratch / f"colours-{source_id}" / candidate
+                result = json.loads(self.command("suggest-colours", "--scene", str(source),
+                                                 "--out", str(output)))
+                self.colour_suggestions[key] = (result, output, source)
+            result, _, _ = self.colour_suggestions[key]
+            return {
+                "candidate": candidate,
+                "source": source_id,
+                "styles": [
+                    {"id": entry["id"], "label": entry["label"],
+                     "sprites": [{"angle": angle,
+                                  "url": f"/colour-sprite/{source_id}/{candidate}/{entry['id']}/{angle}"}
+                                 for angle in ROTATIONS]}
+                    for entry in result["styles"]
+                ],
+                "zip_url": f"/colour-batch/{source_id}/{candidate}.zip",
+            }
+
     def get(self, batch_id):
         if not isinstance(batch_id, str) or batch_id not in self.batches:
             raise ValueError("Unknown batch")
@@ -215,6 +244,32 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_bytes(path.read_bytes(), "image/png", filename)
                 return
 
+            match = re.fullmatch(r"/colour-sprite/([a-f0-9]+)/([a-z0-9_]+)/([a-z0-9_]+)/(0|90|180|270)", url.path)
+            if match:
+                source_id, candidate, style, angle = match.groups()
+                result, output, _ = self.server.review.colour_suggestions[(source_id, candidate)]
+                if style not in {entry["id"] for entry in result["styles"]}:
+                    raise KeyError(style)
+                path = output / style / f"r{int(angle):03d}.png"
+                filename = f"{candidate}_{style}_r{int(angle):03d}.png" if url.query == "download" else None
+                self.send_bytes(path.read_bytes(), "image/png", filename)
+                return
+
+            match = re.fullmatch(r"/colour-batch/([a-f0-9]+)/([a-z0-9_]+)\.zip", url.path)
+            if match:
+                source_id, candidate = match.groups()
+                result, output, scene = self.server.review.colour_suggestions[(source_id, candidate)]
+                stream = BytesIO()
+                with ZipFile(stream, "w", compression=ZIP_STORED) as archive:
+                    archive.write(scene, "scene.json")
+                    archive.write(output / "suggestions.json", "suggestions.json")
+                    for entry in result["styles"]:
+                        for angle in ROTATIONS:
+                            path = output / entry["id"] / f"r{angle:03d}.png"
+                            archive.write(path, f"{entry['id']}/{path.name}")
+                self.send_bytes(stream.getvalue(), "application/zip", f"becher-colours-{candidate}.zip")
+                return
+
             match = re.fullmatch(r"/component-gallery/([a-f0-9]+)/([a-z0-9-]+\.png)", url.path)
             if match:
                 gallery_id, filename = match.groups()
@@ -243,7 +298,8 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         if not self.check_host():
             return
-        actions = {"/reroll": self.server.review.reroll,
+        actions = {"/suggest-colours": self.server.review.suggest_colours,
+                   "/reroll": self.server.review.reroll,
                    "/render-component": self.server.review.render_component,
                    "/component-sheets": lambda _data: self.server.review.render_component_sheets(),
                    "/compose": self.server.review.compose}

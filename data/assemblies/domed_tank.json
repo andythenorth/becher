@@ -30,7 +30,7 @@
     {
       "id": "cap",
       "type": "revolution",
-      "material": "metal",
+      "material": "tank_wall",
       "center": [
         0,
         0

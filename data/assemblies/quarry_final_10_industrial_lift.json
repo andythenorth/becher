@@ -18,7 +18,7 @@
         0.02,
         0.54
       ],
-      "material": "metal"
+      "material": "wall"
     },
     {
       "id": "plant_roof0",
@@ -92,7 +92,7 @@
         0.27,
         0.57
       ],
-      "material": "metal"
+      "material": "wall"
     },
     {
       "id": "plant_roof1",
@@ -166,7 +166,7 @@
         0.16,
         0.79
       ],
-      "material": "metal"
+      "material": "wall"
     },
     {
       "id": "headcap",

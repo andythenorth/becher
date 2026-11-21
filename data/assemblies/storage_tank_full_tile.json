@@ -74,7 +74,7 @@
         ]
       ],
       "segments": 32,
-      "material": "metal"
+      "material": "tank_wall"
     },
     {
       "id": "hatch",

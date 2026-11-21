@@ -15,10 +15,11 @@ scene and reuses the other rows' exported files.
 
 ## Editing seams
 
-- **Content:** `data/` holds current family definitions, parameter ranges, DOS palette, material lighting ramps and handoff profiles. Change design choices here where the existing schema permits.
+- **Content:** `data/` holds current family definitions, parameter ranges, DOS palette, material lighting ramps and handoff profiles. Source assembly shapes declare their own material IDs: `wall` means building fabric, `roof` covering, `tank_wall` a vessel shell and `pipe` pipework. Optional colour suggestions reinterpret those IDs directly, without component-name overrides. Change design choices here where the existing schema permits.
 - **Geometry algorithms:** `src/architectures.py`, `src/geometry.py` and `src/mesh/author.py`, `src/mesh/solids.py`, `src/mesh/compile.py`. Add reusable construction rules here, not through renderer conditionals.
 - **Rendering:** `src/mesh/camera.py`, `src/mesh/intersect.py`, `src/mesh/render.py` and `src/lighting.py`. Generic nearest-hit triangle raycasting; four camera rotations; screen-relative high-elevation light.
-- **Appearance and production:** `src/palette.py`, `src/semantic_colour.py`, `src/roof_colour.py`, `src/edge_contrast.py`, `src/facade_decals.py`, `src/paint.py`, and `src/handoff.py`. Surface-buffer editing and artistic passes do not redefine the scene geometry.
+- **Appearance and production:** `src/palette.py`, `src/semantic_colour.py`, `src/roof_colour.py`, `src/edge_contrast.py`, `src/facade_decals.py`, `src/paint.py`, `src/handoff.py`, and optional `src/colour_suggestions.py` (on-demand
+  scene-based indexed material guides). Surface-buffer editing and artistic passes do not redefine the scene geometry.
 - **CLI:** `becher.py` is a one-line application entry point; `src/cli.py` defines the commands. `python -m becher` and `python becher.py` invoke the same implementation.
 
 ## Preserved boundaries
