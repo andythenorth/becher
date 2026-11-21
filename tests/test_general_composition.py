@@ -2,15 +2,23 @@
 import pytest
 
 from src.composition import (arbitrary_scene, candidates, load_part,
-                             rigid_place, occupied_boxes, volumes_overlap)
+                             rigid_place, occupied_boxes, volumes_overlap,
+                             vocabularies)
 from src.mesh.compile import compile_scene
 
 
-def test_mine_can_combine_with_chimney_from_another_vocabulary():
+def test_reviewed_headframe_can_combine_with_chimney_from_another_vocabulary():
     pool = candidates(['Mining and aggregates','Chimneys'],'high')
+    mining_annexes = vocabularies()['Mining and aggregates']['annexes']
+    headframes = {name for name in mining_annexes
+                  if name == 'quarry_final_balanced_headframe'
+                  or name.startswith('quarry_headframe_')}
+    assert 'quarry_final_balanced_headframe' in headframes
+    assert 'mine_headframe' not in mining_annexes
     examples = [scene for scene in pool.values()
-                if {'mine_headframe','chimney_low_tapered'} <= set(scene['catalogue']['components'])]
-    assert examples, 'A mine and a chimney must be able to share a collision-free tile'
+                if 'chimney_low_tapered' in scene['catalogue']['components']
+                and headframes.intersection(scene['catalogue']['components'])]
+    assert examples, 'A current headframe and chimney must be able to share a tile'
     mesh = compile_scene(examples[0])
     assert (mesh.vertices[..., :2] >= -1e-8).all()
     assert (mesh.vertices[..., :2] <= 1+1e-8).all()

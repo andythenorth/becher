@@ -3,7 +3,7 @@
 import pytest
 
 from src.composition import (
-    candidates, corner_scene, draft, load_part, occupied_boxes, volumes_overlap,
+    candidates, packed_scene, draft, load_part, occupied_boxes, volumes_overlap,
     vocabularies,
 )
 from src.mesh.compile import compile_scene
@@ -35,7 +35,7 @@ def test_corner_packing_obeys_volume_collision_and_bounds():
              'storage_tank_small_low_01')
     parts = {name: load_part(name) for name in names}
     for axis in (0, 1):
-        scene = corner_scene(parts, names, (0, 0, 0), axis)
+        scene = packed_scene(parts, names, (0, 0, 0), axis)
         if scene is None:
             continue
         geometry = [s for s in scene['shapes'] if not s['id'] == 'slab']

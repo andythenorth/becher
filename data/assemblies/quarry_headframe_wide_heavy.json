@@ -1,0 +1,300 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.35,
+    -0.21,
+    0.366,
+    0.205
+  ],
+  "shapes": [
+    {
+      "id": "shaft_house",
+      "type": "box",
+      "bounds": [
+        -0.35,
+        -0.21,
+        0.0,
+        -0.07,
+        0.16,
+        0.18
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "leg_back_left",
+      "type": "beam",
+      "start": [
+        -0.02,
+        -0.15,
+        0.0
+      ],
+      "end": [
+        -0.02,
+        -0.15,
+        0.75
+      ],
+      "thickness": 0.043,
+      "material": "frame"
+    },
+    {
+      "id": "leg_back_right",
+      "type": "beam",
+      "start": [
+        0.32,
+        -0.15,
+        0.0
+      ],
+      "end": [
+        0.32,
+        -0.15,
+        0.75
+      ],
+      "thickness": 0.043,
+      "material": "frame"
+    },
+    {
+      "id": "cross_back_lower",
+      "type": "beam",
+      "start": [
+        -0.03,
+        -0.15,
+        0.2625
+      ],
+      "end": [
+        0.33,
+        -0.15,
+        0.2625
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "cross_back_upper",
+      "type": "beam",
+      "start": [
+        -0.03,
+        -0.15,
+        0.525
+      ],
+      "end": [
+        0.33,
+        -0.15,
+        0.525
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "brace_back",
+      "type": "beam",
+      "start": [
+        -0.02,
+        -0.15,
+        0.2625
+      ],
+      "end": [
+        0.32,
+        -0.15,
+        0.525
+      ],
+      "thickness": 0.03,
+      "material": "frame"
+    },
+    {
+      "id": "leg_front_left",
+      "type": "beam",
+      "start": [
+        -0.02,
+        0.15,
+        0.0
+      ],
+      "end": [
+        -0.02,
+        0.15,
+        0.75
+      ],
+      "thickness": 0.043,
+      "material": "frame"
+    },
+    {
+      "id": "leg_front_right",
+      "type": "beam",
+      "start": [
+        0.32,
+        0.15,
+        0.0
+      ],
+      "end": [
+        0.32,
+        0.15,
+        0.75
+      ],
+      "thickness": 0.043,
+      "material": "frame"
+    },
+    {
+      "id": "cross_front_lower",
+      "type": "beam",
+      "start": [
+        -0.03,
+        0.15,
+        0.2625
+      ],
+      "end": [
+        0.33,
+        0.15,
+        0.2625
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "cross_front_upper",
+      "type": "beam",
+      "start": [
+        -0.03,
+        0.15,
+        0.525
+      ],
+      "end": [
+        0.33,
+        0.15,
+        0.525
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "brace_front",
+      "type": "beam",
+      "start": [
+        -0.02,
+        0.15,
+        0.2625
+      ],
+      "end": [
+        0.32,
+        0.15,
+        0.525
+      ],
+      "thickness": 0.03,
+      "material": "frame"
+    },
+    {
+      "id": "depth_top_left",
+      "type": "beam",
+      "start": [
+        -0.02,
+        -0.15,
+        0.75
+      ],
+      "end": [
+        -0.02,
+        0.15,
+        0.75
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "depth_top_right",
+      "type": "beam",
+      "start": [
+        0.32,
+        -0.15,
+        0.75
+      ],
+      "end": [
+        0.32,
+        0.15,
+        0.75
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "backstay_front",
+      "type": "beam",
+      "start": [
+        -0.17,
+        0.09,
+        0.18
+      ],
+      "end": [
+        0.005,
+        0.15,
+        0.75
+      ],
+      "thickness": 0.055,
+      "material": "frame"
+    },
+    {
+      "id": "backstay_back",
+      "type": "beam",
+      "start": [
+        -0.17,
+        -0.09,
+        0.18
+      ],
+      "end": [
+        0.005,
+        -0.15,
+        0.75
+      ],
+      "thickness": 0.055,
+      "material": "frame"
+    },
+    {
+      "id": "wide_sheave_deck",
+      "type": "box",
+      "bounds": [
+        -0.05,
+        -0.18,
+        0.72,
+        0.35,
+        0.18,
+        0.79
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "winder_1",
+      "type": "box",
+      "bounds": [
+        0.0068,
+        -0.16,
+        0.79,
+        0.1368,
+        0.16,
+        0.91
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "winder_2",
+      "type": "box",
+      "bounds": [
+        0.1632,
+        -0.16,
+        0.79,
+        0.2932,
+        0.16,
+        0.91
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "flat_top",
+      "type": "box",
+      "bounds": [
+        -0.06,
+        -0.19,
+        0.91,
+        0.36,
+        0.19,
+        0.96
+      ],
+      "material": "roof"
+    }
+  ]
+}

@@ -299,7 +299,13 @@
       "quarry_final_enlarged_mine_hall_57"
     ],
     "annexes": [
-      "quarry_final_balanced_headframe"
+      "quarry_final_balanced_headframe",
+      "quarry_headframe_compact_low",
+      "quarry_headframe_tall_narrow",
+      "quarry_headframe_wide_heavy",
+      "quarry_headframe_enclosed_winder",
+      "quarry_headframe_deep_twin",
+      "quarry_headframe_open_gantry"
     ],
     "storage": [],
     "yards": []

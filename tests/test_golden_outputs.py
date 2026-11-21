@@ -1,4 +1,4 @@
-"""Approved v0.16.4 output oracle. Never regenerate in an ordinary test run.
+"""Approved output oracle (rebased 2026-11-21). Never regenerate in an ordinary test run.
 
 Frozen building scenes exercise mesh compilation and raster output.
 Fixture hashes authenticate the inputs against the original baseline. A failed

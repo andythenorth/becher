@@ -1,0 +1,274 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.35,
+    -0.21,
+    0.281,
+    0.185
+  ],
+  "shapes": [
+    {
+      "id": "shaft_house",
+      "type": "box",
+      "bounds": [
+        -0.35,
+        -0.21,
+        0.0,
+        -0.07,
+        0.16,
+        0.18
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "leg_back_left",
+      "type": "beam",
+      "start": [
+        0.065,
+        -0.13,
+        0.0
+      ],
+      "end": [
+        0.065,
+        -0.13,
+        0.93
+      ],
+      "thickness": 0.043,
+      "material": "frame"
+    },
+    {
+      "id": "leg_back_right",
+      "type": "beam",
+      "start": [
+        0.235,
+        -0.13,
+        0.0
+      ],
+      "end": [
+        0.235,
+        -0.13,
+        0.93
+      ],
+      "thickness": 0.043,
+      "material": "frame"
+    },
+    {
+      "id": "cross_back_lower",
+      "type": "beam",
+      "start": [
+        0.055,
+        -0.13,
+        0.3255
+      ],
+      "end": [
+        0.245,
+        -0.13,
+        0.3255
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "cross_back_upper",
+      "type": "beam",
+      "start": [
+        0.055,
+        -0.13,
+        0.651
+      ],
+      "end": [
+        0.245,
+        -0.13,
+        0.651
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "brace_back",
+      "type": "beam",
+      "start": [
+        0.065,
+        -0.13,
+        0.3255
+      ],
+      "end": [
+        0.235,
+        -0.13,
+        0.651
+      ],
+      "thickness": 0.03,
+      "material": "frame"
+    },
+    {
+      "id": "leg_front_left",
+      "type": "beam",
+      "start": [
+        0.065,
+        0.13,
+        0.0
+      ],
+      "end": [
+        0.065,
+        0.13,
+        0.93
+      ],
+      "thickness": 0.043,
+      "material": "frame"
+    },
+    {
+      "id": "leg_front_right",
+      "type": "beam",
+      "start": [
+        0.235,
+        0.13,
+        0.0
+      ],
+      "end": [
+        0.235,
+        0.13,
+        0.93
+      ],
+      "thickness": 0.043,
+      "material": "frame"
+    },
+    {
+      "id": "cross_front_lower",
+      "type": "beam",
+      "start": [
+        0.055,
+        0.13,
+        0.3255
+      ],
+      "end": [
+        0.245,
+        0.13,
+        0.3255
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "cross_front_upper",
+      "type": "beam",
+      "start": [
+        0.055,
+        0.13,
+        0.651
+      ],
+      "end": [
+        0.245,
+        0.13,
+        0.651
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "brace_front",
+      "type": "beam",
+      "start": [
+        0.065,
+        0.13,
+        0.3255
+      ],
+      "end": [
+        0.235,
+        0.13,
+        0.651
+      ],
+      "thickness": 0.03,
+      "material": "frame"
+    },
+    {
+      "id": "depth_top_left",
+      "type": "beam",
+      "start": [
+        0.065,
+        -0.13,
+        0.93
+      ],
+      "end": [
+        0.065,
+        0.13,
+        0.93
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "depth_top_right",
+      "type": "beam",
+      "start": [
+        0.235,
+        -0.13,
+        0.93
+      ],
+      "end": [
+        0.235,
+        0.13,
+        0.93
+      ],
+      "thickness": 0.036,
+      "material": "frame"
+    },
+    {
+      "id": "backstay_front",
+      "type": "beam",
+      "start": [
+        -0.17,
+        0.09,
+        0.18
+      ],
+      "end": [
+        0.09,
+        0.13,
+        0.93
+      ],
+      "thickness": 0.055,
+      "material": "frame"
+    },
+    {
+      "id": "backstay_back",
+      "type": "beam",
+      "start": [
+        -0.17,
+        -0.09,
+        0.18
+      ],
+      "end": [
+        0.09,
+        -0.13,
+        0.93
+      ],
+      "thickness": 0.055,
+      "material": "frame"
+    },
+    {
+      "id": "wheel_block",
+      "type": "box",
+      "bounds": [
+        0.078,
+        -0.15,
+        0.85,
+        0.222,
+        0.15,
+        0.97
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "top_roof",
+      "type": "box",
+      "bounds": [
+        0.03,
+        -0.165,
+        0.955,
+        0.27,
+        0.165,
+        1.035
+      ],
+      "material": "roof"
+    }
+  ]
+}

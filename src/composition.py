@@ -374,27 +374,44 @@ def _general_candidates(names, silhouette):
             if found:
                 break
 
-    # Triple diversity is bounded linearly with catalogue size, rather than
-    # attempting a cubic number of tuples. All pairings remain eligible above.
-    if len(packable)>2 and feasible_pairs:
-        for i,a in enumerate(packable):
-            partners = next(((x,y) for x,y in feasible_pairs if a in (x,y)), None)
-            if partners is None:
-                continue
-            b = partners[1] if partners[0] == a else partners[0]
-            others = [n for n in packable if n not in (a,b)]
-            if not others:
-                continue
-            c = others[i % len(others)]
-            if sum(parts[n].get('role') == 'tank' for n in (a,b,c)) > 1:
-                continue
-            if not matches_profile(a,b,c):
-                continue
-            for axis in (0,1):
-                scene=packed_scene(parts,(a,b,c),(0,0,0),axis)
-                if scene is not None and scene['catalogue']['silhouette'] == silhouette:
-                    add(scene)
-                    break
+    # Explore several differently sized partners for each component rather than
+    # always taking its first feasible pair. This keeps triple discovery linear
+    # in catalogue size while reaching compact/large mixed arrangements.
+    if len(packable) > 2 and feasible_pairs:
+        area = {
+            name: (parts[name]['footprint'][2] - parts[name]['footprint'][0]) *
+                  (parts[name]['footprint'][3] - parts[name]['footprint'][1])
+            for name in packable
+        }
+
+        def samples(items, count):
+            if len(items) <= count:
+                return items
+            return [items[i * (len(items) - 1) // (count - 1)]
+                    for i in range(count)]
+
+        for a in packable:
+            partners = sorted({y if x == a else x for x, y in feasible_pairs
+                               if a in (x, y)}, key=lambda name: (area[name], name))
+            for b in (samples(partners, 3)[1:] if len(partners) >= 3
+                      else partners):
+                others = sorted((n for n in packable if n not in (a, b)),
+                                key=lambda name: (area[name], name))
+                for c in others[:1]:
+                    if sum(parts[n].get('role') == 'tank' for n in (a, b, c)) > 1:
+                        continue
+                    if not matches_profile(a, b, c):
+                        continue
+                    # The footprint search never overlaps components in XY.
+                    if area[a] + area[b] + area[c] > (SITE_MAX - SITE_MIN) ** 2:
+                        continue
+                    for axis in (0, 1):
+                        scene = packed_scene(parts, (a, b, c), (0, 0, 0), axis)
+                        if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+                            add(scene)
+                            break
+                    if scene is not None and scene['catalogue']['silhouette'] == silhouette:
+                        break
     if not pool:
         raise ValueError('No compositions match this silhouette and vocabulary')
     return pool
