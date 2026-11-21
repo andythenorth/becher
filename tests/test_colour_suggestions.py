@@ -11,7 +11,10 @@ from src.colour_suggestions import STYLES, ROTATIONS, recolour, render
 from src.geometry import MATERIAL_IDS
 from src.mesh.compile import compile_scene
 from src.mesh.render import cast_mesh
-from src.palette import load_palette
+from src.palette import load_palette, ramp
+from src.lighting import RAMPS, SUN_FIVE, shade
+from src.mesh.camera import rotate_xy
+from src.composition import load_part, rigid_place
 
 
 def sample_scene():
@@ -135,5 +138,48 @@ def test_recolours_the_enclosed_silo_building_and_horizontal_storage_vessel():
     for style in STYLES:
         result = recolour(surfaces, 0, style)
         assert np.count_nonzero(result[wall] != surfaces.reference_pixels[wall]) > 40
-        assert np.count_nonzero(result[tank] != surfaces.reference_pixels[tank]) > 20
+        # The existing green tank ramp is a valid suggestion for brick walls.
+        # Do not demand a colour difference when its indices are identical.
+        reference_ramp = ramp(RAMPS['tank_wall'], load_palette())
+        if tuple(STYLES[style]['tank_wall']) == tuple(reference_ramp):
+            assert np.array_equal(result[tank], surfaces.reference_pixels[tank])
+        else:
+            assert np.count_nonzero(result[tank] != surfaces.reference_pixels[tank]) > 20
         assert np.array_equal(result == 0, surfaces.reference_pixels == 0)
+
+
+@pytest.mark.parametrize('component', [
+    'storage_tank_full_tile',
+    'storage_tank_horizontal_low_01',
+    'liquid_pipe_bund_rect_side_06',
+])
+@pytest.mark.parametrize('rotation', ROTATIONS)
+def test_recolour_uses_exact_default_material_shading_bands(component, rotation):
+    """Every tank pixel must retain its original eight-band shade assignment."""
+    scene = {'shapes': rigid_place(load_part(component), '', (.5, .5))}
+    surfaces, _ = cast_mesh(compile_scene(scene), rotation)
+    tank = surfaces.material == MATERIAL_IDS['tank_wall']
+    assert tank.any()
+    palette = load_palette()
+    default = ramp(RAMPS['tank_wall'], palette)
+    assert len(default) == 8 and len(set(default)) == 8
+    original = surfaces.reference_pixels.copy()
+    assert np.array_equal(
+        shade(surfaces, palette, light=rotate_xy(SUN_FIVE, rotation)), original)
+    for style, spec in STYLES.items():
+        actual = recolour(surfaces, rotation, style)
+        assert len(spec['tank_wall']) == len(default)
+        for band, default_index in enumerate(default):
+            mask = tank & (original == default_index)
+            assert np.all(actual[mask] == spec['tank_wall'][band]), (
+                component, rotation, style, band)
+        assert np.array_equal(actual == 0, original == 0)
+
+
+def test_shader_rejects_wrong_length_or_invalid_palette_index():
+    surfaces, _ = cast_mesh(compile_scene(sample_scene()), 0)
+    palette = load_palette()
+    with pytest.raises(ValueError, match='Invalid indexed ramp'):
+        shade(surfaces, palette, index_ramps={'tank_wall': (16, 18, 20, 22)})
+    with pytest.raises(ValueError, match='Invalid DOS palette indices'):
+        shade(surfaces, palette, index_ramps={'roof': (0, 4, 6, 8)})

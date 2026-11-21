@@ -13,8 +13,7 @@ from pathlib import Path
 
 import numpy as np
 
-from .geometry import MATERIAL_IDS
-from .lighting import SUN_FIVE, quantize
+from .lighting import SUN_FIVE, shade
 from .mesh.camera import rotate_xy
 from .mesh.compile import compile_scene
 from .mesh.render import cast_mesh
@@ -30,54 +29,54 @@ STYLES = {
         'label': 'Brick + slate',
         'wall': (227, 228, 229, 230),
         'roof': (3, 4, 6, 8),
-        'tank_wall': (97, 99, 101, 103),
+        'tank_wall': (96, 97, 98, 99, 100, 101, 102, 103),
         'pipe': (17, 19, 21, 23),
     },
     'concrete': {
         'label': 'Concrete',
         'wall': (18, 19, 21, 23),
         'roof': (3, 5, 7, 9),
-        'tank_wall': (106, 108, 110, 111),
+        'tank_wall': (104, 105, 106, 107, 108, 109, 110, 111),
         'pipe': (97, 99, 100, 102),
     },
     'blue_cladding': {
         'label': 'Blue-grey cladding',
         'wall': (154, 155, 156, 158),
         'roof': (3, 4, 6, 8),
-        'tank_wall': (16, 18, 20, 22),
+        'tank_wall': (16, 17, 18, 19, 20, 21, 22, 23),
         'pipe': (97, 99, 101, 103),
     },
     'cream_green': {
         'label': 'Cream + green roof',
         'wall': (35, 36, 38, 39),
         'roof': (88, 90, 92, 94),
-        'tank_wall': (16, 18, 20, 22),
+        'tank_wall': (16, 17, 18, 19, 20, 21, 22, 23),
         'pipe': (97, 99, 100, 102),
     },
     'weathered_steel': {
         'label': 'Weathered steel',
         'wall': (104, 106, 109, 111),
         'roof': (3, 5, 7, 9),
-        'tank_wall': (16, 18, 20, 22),
+        'tank_wall': (16, 17, 18, 19, 20, 21, 22, 23),
         'pipe': (17, 19, 21, 23),
     },
 }
 
 
-def recolour(surfaces, rotation, style):
-    """Return 8-bit indexed guide without modifying the source or silhouette.
+def recolour(surfaces, rotation, style, palette=None):
+    """Render material studies through the same shader as the original sprite.
 
-    The material IDs come directly from each shape in the authored scene.
-    No component name matching, vocabulary exclusions or primitive guessing.
+    All geometry, normals, material-specific lighting and non-recoloured
+    materials are identical to the regular render; only DOS ramps differ.
     """
     if style not in STYLES:
         raise ValueError(f'Unknown colour suggestion: {style}')
-    pixels = surfaces.reference_pixels.copy()
-    bands = quantize(surfaces, light=rotate_xy(SUN_FIVE, rotation))
+    palette = load_palette() if palette is None else palette
     spec = STYLES[style]
-    for material in ('wall', 'roof', 'tank_wall', 'pipe'):
-        selected = surfaces.material == MATERIAL_IDS[material]
-        pixels[selected] = np.asarray(spec[material], dtype=np.uint8)[bands[selected]]
+    indices = {material: spec[material]
+               for material in ('wall', 'roof', 'tank_wall', 'pipe')}
+    pixels = shade(surfaces, palette, light=rotate_xy(SUN_FIVE, rotation),
+                   index_ramps=indices)
     if not np.array_equal(pixels == 0, surfaces.reference_pixels == 0):
         raise ValueError('Colour suggestion changed silhouette')
     return pixels
@@ -95,7 +94,7 @@ def render(scene_file, output):
         surfaces, _ = cast_mesh(mesh, rotation)
         for style in STYLES:
             path = destination / style / f'r{rotation:03d}.png'
-            save_indexed(path, recolour(surfaces, rotation, style), palette)
+            save_indexed(path, recolour(surfaces, rotation, style, palette), palette)
     result = {'palette': 'data/ttd-dos.act', 'purpose': 'colour reference only',
               'styles': [
                   {'id': name, 'label': spec['label'],

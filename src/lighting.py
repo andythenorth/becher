@@ -42,26 +42,45 @@ def quantize(surfaces, light=SUN_FIVE, steps=4):
     return bands
 
 
-def shade(surfaces,palette,light=SUN_FIVE):
+def shade(surfaces, palette, light=SUN_FIVE, *, index_ramps=None):
+    """Apply normal material lighting, optionally substituting DOS index ramps.
+
+    A recolour changes the palette indices, not the material-specific lighting
+    calculation. Each replacement ramp must have the same number of shades as
+    the ordinary material ramp (eight for tank_wall, four for wall/roof/pipe).
+    """
+    index_ramps = {} if index_ramps is None else index_ramps
+    for name, indices in index_ramps.items():
+        if name not in RAMPS or len(indices) != len(RAMPS[name]):
+            raise ValueError(f'Invalid indexed ramp for material {name}')
+        if any(not isinstance(i, (int, np.integer)) or not 1 <= i <= 255 for i in indices):
+            raise ValueError(f'Invalid DOS palette indices for {name}')
     bands=quantize(surfaces,light)
     pixels=np.zeros_like(surfaces.reference_pixels)
     for name,code in MATERIAL_IDS.items():
         sel=surfaces.material==code
         if not np.any(sel):
             continue
-        colours = ramp(RAMPS[name],palette)
+        colours = (np.asarray(index_ramps[name], dtype=np.uint8)
+                   if name in index_ramps else ramp(RAMPS[name], palette))
         if name == 'tank_wall':
-            # Use the sun's azimuth so its elevation does not compress the ramp.
+            # Vertical cylinder walls need an azimuth ramp, but top faces and
+            # shoulders must use their actual surface normals. Treating all
+            # tank normals as horizontal makes lids dark and sides dome-like.
+            selected_normals = surfaces.normal[sel]
+            # Cap top/shoulder highlights below the brightest wall stripe.
+            cap_bands = np.minimum(quantize(surfaces, light, len(colours))[sel], len(colours) - 3)
+            output = colours[cap_bands]
+            sides = np.abs(selected_normals[:, 2]) < 0.18
             horizontal = _unit_light(light)[:2]
             strength = np.linalg.norm(horizontal)
-            if strength > 1e-10:
-                alignment = np.clip(surfaces.normal[sel, :2] @ (horizontal / strength), -1, 1)
+            if strength > 1e-10 and np.any(sides):
+                alignment = np.clip(selected_normals[sides, :2] @ (horizontal / strength), -1, 1)
                 angle = np.arccos(alignment)
-                brightness = np.clip(1 - angle / np.deg2rad(106), 0, 1)
-                tank_bands = np.minimum(len(colours) - 1, (brightness * len(colours)).astype(int))
-            else:
-                tank_bands = len(colours) // 2
-            pixels[sel] = colours[tank_bands]
+                brightness = np.clip(1 - angle / np.deg2rad(90), 0, 1)
+                side_bands = np.minimum(len(colours) - 1, (brightness * len(colours)).astype(int))
+                output[sides] = colours[side_bands]
+            pixels[sel] = output
         elif name == 'chimney':
             # Round vertical surfaces need their own azimuth ramp: the high
             # key-light elevation otherwise compresses most visible sides into
@@ -70,7 +89,6 @@ def shade(surfaces,palette,light=SUN_FIVE):
             strength = np.linalg.norm(horizontal)
             side = np.abs(surfaces.normal[sel, 2]) < .90
             selected_normals = surfaces.normal[sel]
-            colours = ramp(RAMPS[name],palette)
             output = colours[np.minimum(len(colours)-1,
                 (bands[sel].astype(np.float64) * (len(colours)-1) / 3).astype(int))]
             if strength > 1e-10 and np.any(side):
