@@ -216,7 +216,8 @@
     "yards": [
       "grain_elevator",
       "enclosed_silo_block",
-      "enclosed_silo_service_spine"
+      "enclosed_silo_service_spine",
+      "short_inclined_conveyor"
     ]
   },
   "Liquid storage": {
@@ -306,8 +307,8 @@
       "mine_screen_hall_massive",
       "mine_screen_hall_grounded",
       "mine_coal_breaker_asymmetric",
-      "mine_crusher_house_heavy",
-      "mine_screening_shed_low"
+      "mine_screening_shed_low",
+      "trough_fed_crusher"
     ],
     "annexes": [
       "quarry_final_balanced_headframe",
@@ -318,7 +319,9 @@
       "quarry_headframe_deep_twin",
       "quarry_headframe_open_gantry"
     ],
-    "storage": [],
+    "storage": [
+      "aggregate_bays"
+    ],
     "yards": [
       "mine_washery_gallery",
       "mine_sorting_tower_sidebay"
