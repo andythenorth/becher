@@ -1,0 +1,274 @@
+{
+  "role": "silo",
+  "footprint": [
+    -0.319,
+    -0.317,
+    0.319,
+    0.317
+  ],
+  "shapes": [
+    {
+      "id": "foot",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.312,
+        -0.31,
+        0.0,
+        0.312,
+        0.31,
+        0.069
+      ]
+    },
+    {
+      "id": "foot_upstand",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.294,
+        -0.292,
+        0.069,
+        0.294,
+        0.292,
+        0.096
+      ]
+    },
+    {
+      "id": "frame_pier_0_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.264,
+        -0.259,
+        0.097,
+        -0.186,
+        -0.181,
+        0.61
+      ]
+    },
+    {
+      "id": "frame_pier_0_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.264,
+        0.181,
+        0.097,
+        -0.186,
+        0.259,
+        0.61
+      ]
+    },
+    {
+      "id": "frame_pier_1_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.186,
+        -0.259,
+        0.097,
+        0.264,
+        -0.181,
+        0.61
+      ]
+    },
+    {
+      "id": "frame_pier_1_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.186,
+        0.181,
+        0.097,
+        0.264,
+        0.259,
+        0.61
+      ]
+    },
+    {
+      "id": "frame_toprail_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.264,
+        -0.261,
+        0.558,
+        0.264,
+        -0.179,
+        0.623
+      ]
+    },
+    {
+      "id": "frame_toprail_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.264,
+        0.179,
+        0.558,
+        0.264,
+        0.261,
+        0.623
+      ]
+    },
+    {
+      "id": "frame_topcross_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.263,
+        -0.259,
+        0.56,
+        -0.187,
+        0.259,
+        0.623
+      ]
+    },
+    {
+      "id": "frame_topcross_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.187,
+        -0.259,
+        0.56,
+        0.263,
+        0.259,
+        0.623
+      ]
+    },
+    {
+      "id": "frame_brace_back",
+      "type": "beam",
+      "material": "frame",
+      "start": [
+        -0.225,
+        0.22,
+        0.217
+      ],
+      "end": [
+        0.225,
+        0.22,
+        0.55
+      ],
+      "thickness": 0.028
+    },
+    {
+      "id": "frame_brace_side",
+      "type": "beam",
+      "material": "frame",
+      "start": [
+        0.225,
+        -0.22,
+        0.227
+      ],
+      "end": [
+        0.225,
+        0.22,
+        0.55
+      ],
+      "thickness": 0.025
+    },
+    {
+      "id": "cement_hopper_cone",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.285,
+          0.026
+        ],
+        [
+          0.335,
+          0.07684
+        ],
+        [
+          0.62,
+          0.226
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "cement_hopper_shoulder",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.608,
+          0.241
+        ],
+        [
+          0.647,
+          0.241
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "cement_hopper_barrel",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.626,
+          0.226
+        ],
+        [
+          1.22,
+          0.226
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "cement_hopper_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          1.218,
+          0.233
+        ],
+        [
+          1.236,
+          0.21018
+        ],
+        [
+          1.239,
+          0.009
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "loading_bay",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.076,
+        -0.082,
+        0.17,
+        0.076,
+        0.082,
+        0.299
+      ]
+    }
+  ]
+}

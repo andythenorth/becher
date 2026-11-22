@@ -211,13 +211,23 @@
       "joined_silo_pair",
       "silo_short",
       "joined_silo_pair_short",
-      "conical_grain_bin"
+      "conical_grain_bin",
+      "silo_heavy_grain_broad",
+      "silo_heavy_cement_service",
+      "silo_heavy_pair_gallery",
+      "silo_heavy_quad_battery",
+      "silo_heavy_hopper_portal",
+      "silo_heavy_hopper_wide",
+      "silo_heavy_hopper_shared_pair",
+      "silo_heavy_hopper_twin_gallery"
     ],
     "yards": [
       "grain_elevator",
       "enclosed_silo_block",
       "enclosed_silo_service_spine",
-      "short_inclined_conveyor"
+      "short_inclined_conveyor",
+      "silo_heavy_triple_mill",
+      "silo_heavy_three_elevator"
     ]
   },
   "Liquid storage": {

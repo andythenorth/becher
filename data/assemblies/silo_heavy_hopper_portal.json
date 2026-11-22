@@ -1,0 +1,238 @@
+{
+  "role": "silo",
+  "footprint": [
+    -0.302,
+    -0.299,
+    0.302,
+    0.299
+  ],
+  "shapes": [
+    {
+      "id": "concrete_pad",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.295,
+        -0.292,
+        0.0,
+        0.295,
+        0.292,
+        0.068
+      ]
+    },
+    {
+      "id": "concrete_pad_upstand",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.277,
+        -0.274,
+        0.068,
+        0.277,
+        0.274,
+        0.095
+      ]
+    },
+    {
+      "id": "heavy_frame_pier_0_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.2475,
+        -0.2435,
+        0.091,
+        -0.1785,
+        -0.1745,
+        0.56
+      ]
+    },
+    {
+      "id": "heavy_frame_pier_0_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.2475,
+        0.1745,
+        0.091,
+        -0.1785,
+        0.2435,
+        0.56
+      ]
+    },
+    {
+      "id": "heavy_frame_pier_1_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.1785,
+        -0.2435,
+        0.091,
+        0.2475,
+        -0.1745,
+        0.56
+      ]
+    },
+    {
+      "id": "heavy_frame_pier_1_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.1785,
+        0.1745,
+        0.091,
+        0.2475,
+        0.2435,
+        0.56
+      ]
+    },
+    {
+      "id": "heavy_frame_toprail_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.2475,
+        -0.25,
+        0.508,
+        0.2475,
+        -0.168,
+        0.573
+      ]
+    },
+    {
+      "id": "heavy_frame_toprail_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.2475,
+        0.168,
+        0.508,
+        0.2475,
+        0.25,
+        0.573
+      ]
+    },
+    {
+      "id": "heavy_frame_topcross_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.251,
+        -0.2435,
+        0.51,
+        -0.175,
+        0.2435,
+        0.573
+      ]
+    },
+    {
+      "id": "heavy_frame_topcross_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.175,
+        -0.2435,
+        0.51,
+        0.251,
+        0.2435,
+        0.573
+      ]
+    },
+    {
+      "id": "grain_hopper_cone",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.255,
+          0.026
+        ],
+        [
+          0.305,
+          0.07072
+        ],
+        [
+          0.579,
+          0.208
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "grain_hopper_shoulder",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.567,
+          0.223
+        ],
+        [
+          0.606,
+          0.223
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "grain_hopper_barrel",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.585,
+          0.208
+        ],
+        [
+          1.17,
+          0.208
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "grain_hopper_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          1.167,
+          0.215
+        ],
+        [
+          1.221,
+          0.009
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "discharge",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.068,
+        -0.072,
+        0.17,
+        0.068,
+        0.072,
+        0.3
+      ]
+    }
+  ]
+}

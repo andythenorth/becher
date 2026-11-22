@@ -10,7 +10,6 @@ from src.mesh.render import cast_mesh
 
 MINING = (
     "mine_washery_gallery",
-    "mine_crusher_house_heavy",
     "mine_sorting_tower_sidebay",
     "mine_screening_shed_low",
     "mine_coal_breaker_asymmetric",

@@ -1,0 +1,354 @@
+{
+  "role": "silo",
+  "footprint": [
+    -0.421,
+    -0.281,
+    0.421,
+    0.281
+  ],
+  "shapes": [
+    {
+      "id": "main_slab",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.414,
+        -0.274,
+        0.0,
+        0.414,
+        0.274,
+        0.068
+      ]
+    },
+    {
+      "id": "main_slab_upstand",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.396,
+        -0.256,
+        0.068,
+        0.396,
+        0.256,
+        0.095
+      ]
+    },
+    {
+      "id": "bin0_ground_skirt",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        -0.245,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.118,
+          0.128
+        ],
+        [
+          0.263,
+          0.128
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin0_body",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        -0.245,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.191,
+          0.115
+        ],
+        [
+          0.96,
+          0.115
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin0_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        -0.245,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.957,
+          0.122
+        ],
+        [
+          0.976,
+          0.10925
+        ],
+        [
+          0.977,
+          0.008
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin0_head_ring",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        -0.245,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.904,
+          0.126
+        ],
+        [
+          0.922,
+          0.126
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin1_ground_skirt",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.0,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.118,
+          0.128
+        ],
+        [
+          0.263,
+          0.128
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin1_body",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.191,
+          0.115
+        ],
+        [
+          0.96,
+          0.115
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin1_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        0.0,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.957,
+          0.122
+        ],
+        [
+          0.976,
+          0.10925
+        ],
+        [
+          0.977,
+          0.008
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin1_head_ring",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.0,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.904,
+          0.126
+        ],
+        [
+          0.922,
+          0.126
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin2_ground_skirt",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.245,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.118,
+          0.128
+        ],
+        [
+          0.263,
+          0.128
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin2_body",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.245,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.191,
+          0.115
+        ],
+        [
+          0.96,
+          0.115
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin2_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        0.245,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.957,
+          0.122
+        ],
+        [
+          0.976,
+          0.10925
+        ],
+        [
+          0.977,
+          0.008
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin2_head_ring",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.245,
+        -0.068
+      ],
+      "profile": [
+        [
+          0.904,
+          0.126
+        ],
+        [
+          0.922,
+          0.126
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "elevator_housing",
+      "type": "box",
+      "material": "wall",
+      "bounds": [
+        -0.157,
+        0.128,
+        0.098,
+        0.115,
+        0.25,
+        1.13
+      ]
+    },
+    {
+      "id": "elevator_housing_roof",
+      "type": "box",
+      "material": "roof",
+      "bounds": [
+        -0.176,
+        0.108,
+        1.121,
+        0.134,
+        0.27,
+        1.175
+      ]
+    },
+    {
+      "id": "elevator_housing_door",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.132,
+        0.125,
+        0.128,
+        -0.047,
+        0.136,
+        0.298
+      ]
+    },
+    {
+      "id": "top_transfer",
+      "type": "box",
+      "material": "roof",
+      "bounds": [
+        -0.387,
+        -0.074,
+        0.94,
+        0.395,
+        0.072,
+        1.025
+      ]
+    },
+    {
+      "id": "lower_access",
+      "type": "box",
+      "material": "wall",
+      "bounds": [
+        -0.352,
+        0.117,
+        0.09,
+        -0.17,
+        0.255,
+        0.38
+      ]
+    }
+  ]
+}

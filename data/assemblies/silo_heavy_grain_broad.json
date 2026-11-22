@@ -1,0 +1,137 @@
+{
+  "role": "silo",
+  "footprint": [
+    -0.275,
+    -0.275,
+    0.275,
+    0.275
+  ],
+  "shapes": [
+    {
+      "id": "concrete_foot",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.268,
+        -0.268,
+        0.0,
+        0.268,
+        0.268,
+        0.064
+      ]
+    },
+    {
+      "id": "concrete_foot_upstand",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.25,
+        -0.25,
+        0.064,
+        0.25,
+        0.25,
+        0.091
+      ]
+    },
+    {
+      "id": "grain_bin_ground_skirt",
+      "type": "revolution",
+      "material": "concrete",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.132,
+          0.24
+        ],
+        [
+          0.277,
+          0.24
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "grain_bin_body",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.205,
+          0.227
+        ],
+        [
+          1.05,
+          0.227
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "grain_bin_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          1.047,
+          0.233
+        ],
+        [
+          1.125,
+          0.01
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "grain_bin_head_ring",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.994,
+          0.238
+        ],
+        [
+          1.012,
+          0.238
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "foot_collar",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.0,
+        0.0
+      ],
+      "profile": [
+        [
+          0.184,
+          0.235
+        ],
+        [
+          0.21,
+          0.235
+        ]
+      ],
+      "segments": 24
+    }
+  ]
+}

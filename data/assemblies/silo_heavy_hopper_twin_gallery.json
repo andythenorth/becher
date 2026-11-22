@@ -1,0 +1,330 @@
+{
+  "role": "silo",
+  "footprint": [
+    -0.438,
+    -0.254,
+    0.438,
+    0.254
+  ],
+  "shapes": [
+    {
+      "id": "pad",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.431,
+        -0.247,
+        0.0,
+        0.431,
+        0.247,
+        0.072
+      ]
+    },
+    {
+      "id": "pad_upstand",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.413,
+        -0.229,
+        0.072,
+        0.413,
+        0.229,
+        0.099
+      ]
+    },
+    {
+      "id": "column_0_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.377,
+        -0.193,
+        0.1,
+        -0.311,
+        -0.127,
+        0.51
+      ]
+    },
+    {
+      "id": "column_0_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.377,
+        0.127,
+        0.1,
+        -0.311,
+        0.193,
+        0.51
+      ]
+    },
+    {
+      "id": "column_1_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.033,
+        -0.193,
+        0.1,
+        0.033,
+        -0.127,
+        0.51
+      ]
+    },
+    {
+      "id": "column_1_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.033,
+        0.127,
+        0.1,
+        0.033,
+        0.193,
+        0.51
+      ]
+    },
+    {
+      "id": "column_2_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.311,
+        -0.193,
+        0.1,
+        0.377,
+        -0.127,
+        0.51
+      ]
+    },
+    {
+      "id": "column_2_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.311,
+        0.127,
+        0.1,
+        0.377,
+        0.193,
+        0.51
+      ]
+    },
+    {
+      "id": "portal_bar_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.389,
+        -0.199,
+        0.47,
+        0.389,
+        -0.121,
+        0.535
+      ]
+    },
+    {
+      "id": "portal_bar_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.389,
+        0.121,
+        0.47,
+        0.389,
+        0.199,
+        0.535
+      ]
+    },
+    {
+      "id": "bin0_cone",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        -0.221,
+        0.0
+      ],
+      "profile": [
+        [
+          0.255,
+          0.026
+        ],
+        [
+          0.305,
+          0.06188
+        ],
+        [
+          0.524,
+          0.182
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin0_shoulder",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        -0.221,
+        0.0
+      ],
+      "profile": [
+        [
+          0.512,
+          0.197
+        ],
+        [
+          0.551,
+          0.197
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin0_barrel",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        -0.221,
+        0.0
+      ],
+      "profile": [
+        [
+          0.53,
+          0.182
+        ],
+        [
+          1.03,
+          0.182
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin0_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        -0.221,
+        0.0
+      ],
+      "profile": [
+        [
+          1.028,
+          0.189
+        ],
+        [
+          1.046,
+          0.16926
+        ],
+        [
+          1.049,
+          0.009
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin1_cone",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.221,
+        0.0
+      ],
+      "profile": [
+        [
+          0.255,
+          0.026
+        ],
+        [
+          0.305,
+          0.06188
+        ],
+        [
+          0.524,
+          0.182
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin1_shoulder",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.221,
+        0.0
+      ],
+      "profile": [
+        [
+          0.512,
+          0.197
+        ],
+        [
+          0.551,
+          0.197
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin1_barrel",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.221,
+        0.0
+      ],
+      "profile": [
+        [
+          0.53,
+          0.182
+        ],
+        [
+          1.03,
+          0.182
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "bin1_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        0.221,
+        0.0
+      ],
+      "profile": [
+        [
+          1.028,
+          0.189
+        ],
+        [
+          1.046,
+          0.16926
+        ],
+        [
+          1.049,
+          0.009
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "feed_covered",
+      "type": "box",
+      "material": "roof",
+      "bounds": [
+        -0.408,
+        -0.058,
+        1.009,
+        0.408,
+        0.058,
+        1.09
+      ]
+    }
+  ]
+}

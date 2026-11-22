@@ -1,0 +1,382 @@
+{
+  "role": "silo",
+  "footprint": [
+    -0.435,
+    -0.277,
+    0.435,
+    0.277
+  ],
+  "shapes": [
+    {
+      "id": "shared_foot",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.428,
+        -0.27,
+        0.0,
+        0.428,
+        0.27,
+        0.063
+      ]
+    },
+    {
+      "id": "shared_foot_upstand",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.41,
+        -0.252,
+        0.063,
+        0.41,
+        0.252,
+        0.09
+      ]
+    },
+    {
+      "id": "pier_0_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.382,
+        -0.225,
+        0.09,
+        -0.308,
+        -0.151,
+        0.572
+      ]
+    },
+    {
+      "id": "pier_0_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.382,
+        0.151,
+        0.09,
+        -0.308,
+        0.225,
+        0.572
+      ]
+    },
+    {
+      "id": "pier_1_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.037,
+        -0.225,
+        0.09,
+        0.037,
+        -0.151,
+        0.572
+      ]
+    },
+    {
+      "id": "pier_1_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        -0.037,
+        0.151,
+        0.09,
+        0.037,
+        0.225,
+        0.572
+      ]
+    },
+    {
+      "id": "pier_2_0",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.308,
+        -0.225,
+        0.09,
+        0.382,
+        -0.151,
+        0.572
+      ]
+    },
+    {
+      "id": "pier_2_1",
+      "type": "box",
+      "material": "concrete",
+      "bounds": [
+        0.308,
+        0.151,
+        0.09,
+        0.382,
+        0.225,
+        0.572
+      ]
+    },
+    {
+      "id": "top_rail_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.39,
+        -0.23,
+        0.512,
+        0.39,
+        -0.146,
+        0.586
+      ]
+    },
+    {
+      "id": "top_rail_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.39,
+        0.146,
+        0.512,
+        0.39,
+        0.23,
+        0.586
+      ]
+    },
+    {
+      "id": "cross_rail_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.383,
+        -0.226,
+        0.515,
+        -0.307,
+        0.226,
+        0.584
+      ]
+    },
+    {
+      "id": "cross_rail_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.038,
+        -0.226,
+        0.515,
+        0.038,
+        0.226,
+        0.584
+      ]
+    },
+    {
+      "id": "cross_rail_2",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.307,
+        -0.226,
+        0.515,
+        0.383,
+        0.226,
+        0.584
+      ]
+    },
+    {
+      "id": "paired0_cone",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        -0.178,
+        0.0
+      ],
+      "profile": [
+        [
+          0.255,
+          0.026
+        ],
+        [
+          0.305,
+          0.0544
+        ],
+        [
+          0.578,
+          0.16
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "paired0_shoulder",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        -0.178,
+        0.0
+      ],
+      "profile": [
+        [
+          0.566,
+          0.175
+        ],
+        [
+          0.605,
+          0.175
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "paired0_barrel",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        -0.178,
+        0.0
+      ],
+      "profile": [
+        [
+          0.584,
+          0.16
+        ],
+        [
+          1.17,
+          0.16
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "paired0_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        -0.178,
+        0.0
+      ],
+      "profile": [
+        [
+          1.168,
+          0.167
+        ],
+        [
+          1.186,
+          0.1488
+        ],
+        [
+          1.189,
+          0.009
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "outlet_0",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        -0.225,
+        -0.051,
+        0.16,
+        -0.131,
+        0.051,
+        0.267
+      ]
+    },
+    {
+      "id": "paired1_cone",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.178,
+        0.0
+      ],
+      "profile": [
+        [
+          0.255,
+          0.026
+        ],
+        [
+          0.305,
+          0.0544
+        ],
+        [
+          0.578,
+          0.16
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "paired1_shoulder",
+      "type": "revolution",
+      "material": "frame",
+      "center": [
+        0.178,
+        0.0
+      ],
+      "profile": [
+        [
+          0.566,
+          0.175
+        ],
+        [
+          0.605,
+          0.175
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "paired1_barrel",
+      "type": "revolution",
+      "material": "tank_wall",
+      "center": [
+        0.178,
+        0.0
+      ],
+      "profile": [
+        [
+          0.584,
+          0.16
+        ],
+        [
+          1.17,
+          0.16
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "paired1_roof",
+      "type": "revolution",
+      "material": "roof",
+      "center": [
+        0.178,
+        0.0
+      ],
+      "profile": [
+        [
+          1.168,
+          0.167
+        ],
+        [
+          1.186,
+          0.1488
+        ],
+        [
+          1.189,
+          0.009
+        ]
+      ],
+      "segments": 24
+    },
+    {
+      "id": "outlet_1",
+      "type": "box",
+      "material": "frame",
+      "bounds": [
+        0.131,
+        -0.051,
+        0.16,
+        0.225,
+        0.051,
+        0.267
+      ]
+    }
+  ]
+}
