@@ -1,0 +1,261 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.2856,
+    -0.147,
+    0.2856,
+    0.147
+  ],
+  "shapes": [
+    {
+      "id": "pipe_rack_pier00",
+      "type": "box",
+      "bounds": [
+        -0.2566,
+        -0.1198,
+        0,
+        -0.1906,
+        -0.0538,
+        0.24
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "pipe_rack_pier00_foot",
+      "type": "box",
+      "bounds": [
+        -0.27508,
+        -0.13828,
+        0,
+        -0.17212,
+        -0.03532,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pipe_rack_pier01",
+      "type": "box",
+      "bounds": [
+        -0.2566,
+        0.0538,
+        0,
+        -0.1906,
+        0.1198,
+        0.24
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "pipe_rack_pier01_foot",
+      "type": "box",
+      "bounds": [
+        -0.27508,
+        0.03532,
+        0,
+        -0.17212,
+        0.13828,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pipe_rack_trans0",
+      "type": "box",
+      "bounds": [
+        -0.2566,
+        -0.0868,
+        0.215,
+        -0.1906,
+        0.0868,
+        0.245
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "pipe_rack_pier10",
+      "type": "box",
+      "bounds": [
+        0.1906,
+        -0.1198,
+        0,
+        0.2566,
+        -0.0538,
+        0.24
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "pipe_rack_pier10_foot",
+      "type": "box",
+      "bounds": [
+        0.17212,
+        -0.13828,
+        0,
+        0.27508,
+        -0.03532,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pipe_rack_pier11",
+      "type": "box",
+      "bounds": [
+        0.1906,
+        0.0538,
+        0,
+        0.2566,
+        0.1198,
+        0.24
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "pipe_rack_pier11_foot",
+      "type": "box",
+      "bounds": [
+        0.17212,
+        0.03532,
+        0,
+        0.27508,
+        0.13828,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pipe_rack_trans1",
+      "type": "box",
+      "bounds": [
+        0.1906,
+        -0.0868,
+        0.215,
+        0.2566,
+        0.0868,
+        0.245
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "pipe_rack_beam0",
+      "type": "box",
+      "bounds": [
+        -0.2467,
+        -0.10726,
+        0.2,
+        0.2467,
+        -0.06634,
+        0.228
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "pipe_rack_beam1",
+      "type": "box",
+      "bounds": [
+        -0.2467,
+        0.06634,
+        0.2,
+        0.2467,
+        0.10726,
+        0.228
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "pipe_rack_pipe0",
+      "type": "box",
+      "bounds": [
+        -0.2236,
+        -0.0572,
+        0.269,
+        0.2236,
+        -0.0252,
+        0.301
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "pipe_rack_down0",
+      "type": "beam",
+      "start": [
+        0.2096,
+        -0.0412,
+        0.285
+      ],
+      "end": [
+        0.2096,
+        -0.0412,
+        0.09
+      ],
+      "thickness": 0.0264,
+      "material": "pipe"
+    },
+    {
+      "id": "pipe_rack_outlet0",
+      "type": "box",
+      "bounds": [
+        0.2096,
+        -0.0572,
+        0.075,
+        0.2786,
+        -0.0252,
+        0.106
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "pipe_rack_pipe1",
+      "type": "box",
+      "bounds": [
+        -0.2236,
+        -0.016,
+        0.286,
+        0.2236,
+        0.016,
+        0.318
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "pipe_rack_pipe2",
+      "type": "box",
+      "bounds": [
+        -0.2236,
+        0.0252,
+        0.269,
+        0.2236,
+        0.0572,
+        0.301
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "manifold",
+      "type": "box",
+      "bounds": [
+        -0.156,
+        -0.112,
+        0.279,
+        -0.0676,
+        0.1064,
+        0.358
+      ],
+      "material": "equipment"
+    },
+    {
+      "id": "valve_top",
+      "type": "box",
+      "bounds": [
+        -0.13,
+        -0.026,
+        0.355,
+        -0.0936,
+        0.026,
+        0.395
+      ],
+      "material": "metal"
+    }
+  ]
+}

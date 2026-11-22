@@ -1,0 +1,864 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.337,
+    -0.182,
+    0.337,
+    0.182
+  ],
+  "shapes": [
+    {
+      "id": "house_0_pier_0_0",
+      "type": "box",
+      "bounds": [
+        -0.2647,
+        -0.122,
+        0,
+        -0.2097,
+        -0.067,
+        0.425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_0_pier_0_0_foot",
+      "type": "box",
+      "bounds": [
+        -0.2801,
+        -0.1374,
+        0,
+        -0.1943,
+        -0.0516,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "house_0_masonry_pier_0_0",
+      "type": "box",
+      "bounds": [
+        -0.2772,
+        -0.1335,
+        0.023,
+        -0.1972,
+        -0.0555,
+        0.13
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_0_pier_0_1",
+      "type": "box",
+      "bounds": [
+        -0.2647,
+        0.067,
+        0,
+        -0.2097,
+        0.122,
+        0.425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_0_pier_0_1_foot",
+      "type": "box",
+      "bounds": [
+        -0.2801,
+        0.0516,
+        0,
+        -0.1943,
+        0.1374,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "house_0_masonry_pier_0_1",
+      "type": "box",
+      "bounds": [
+        -0.2772,
+        0.0555,
+        0.023,
+        -0.1972,
+        0.1335,
+        0.13
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_0_pier_1_0",
+      "type": "box",
+      "bounds": [
+        -0.2127,
+        -0.122,
+        0,
+        -0.1577,
+        -0.067,
+        0.425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_0_pier_1_0_foot",
+      "type": "box",
+      "bounds": [
+        -0.2281,
+        -0.1374,
+        0,
+        -0.1423,
+        -0.0516,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "house_0_masonry_pier_1_0",
+      "type": "box",
+      "bounds": [
+        -0.2252,
+        -0.1335,
+        0.023,
+        -0.1452,
+        -0.0555,
+        0.13
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_0_pier_1_1",
+      "type": "box",
+      "bounds": [
+        -0.2127,
+        0.067,
+        0,
+        -0.1577,
+        0.122,
+        0.425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_0_pier_1_1_foot",
+      "type": "box",
+      "bounds": [
+        -0.2281,
+        0.0516,
+        0,
+        -0.1423,
+        0.1374,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "house_0_masonry_pier_1_1",
+      "type": "box",
+      "bounds": [
+        -0.2252,
+        0.0555,
+        0.023,
+        -0.1452,
+        0.1335,
+        0.13
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_0_underbeam",
+      "type": "box",
+      "bounds": [
+        -0.2632,
+        -0.1155,
+        0.36,
+        -0.1592,
+        0.1155,
+        0.38
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "house_0_base",
+      "type": "box",
+      "bounds": [
+        -0.2872,
+        -0.1115,
+        0.398,
+        -0.1352,
+        0.1115,
+        0.425
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "house_0_walls",
+      "type": "box",
+      "bounds": [
+        -0.2772,
+        -0.1015,
+        0.425,
+        -0.1452,
+        0.1015,
+        0.589
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_0_roof",
+      "type": "rings",
+      "material": "roof",
+      "rings": [
+        [
+          [
+            -0.2972,
+            -0.1185,
+            0.579
+          ],
+          [
+            -0.2972,
+            0.1185,
+            0.579
+          ],
+          [
+            -0.2972,
+            0.1185,
+            0.601
+          ],
+          [
+            -0.2972,
+            0.0,
+            0.65
+          ],
+          [
+            -0.2972,
+            -0.1185,
+            0.601
+          ]
+        ],
+        [
+          [
+            -0.1252,
+            -0.1185,
+            0.579
+          ],
+          [
+            -0.1252,
+            0.1185,
+            0.579
+          ],
+          [
+            -0.1252,
+            0.1185,
+            0.601
+          ],
+          [
+            -0.1252,
+            0.0,
+            0.65
+          ],
+          [
+            -0.1252,
+            -0.1185,
+            0.601
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "house_0_glazing0_0",
+      "type": "box",
+      "bounds": [
+        -0.2432,
+        -0.1045,
+        0.472,
+        -0.1792,
+        -0.0965,
+        0.536
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "house_0_glazing1_0",
+      "type": "box",
+      "bounds": [
+        -0.2432,
+        0.0965,
+        0.472,
+        -0.1792,
+        0.1045,
+        0.536
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "house_0_door",
+      "type": "box",
+      "bounds": [
+        -0.1532,
+        -0.02639,
+        0.441,
+        -0.1432,
+        0.02842,
+        0.53
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_1_pier_0_0",
+      "type": "box",
+      "bounds": [
+        0.1577,
+        -0.122,
+        0,
+        0.2127,
+        -0.067,
+        0.425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_1_pier_0_0_foot",
+      "type": "box",
+      "bounds": [
+        0.1423,
+        -0.1374,
+        0,
+        0.2281,
+        -0.0516,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "house_1_masonry_pier_0_0",
+      "type": "box",
+      "bounds": [
+        0.1452,
+        -0.1335,
+        0.023,
+        0.2252,
+        -0.0555,
+        0.13
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_1_pier_0_1",
+      "type": "box",
+      "bounds": [
+        0.1577,
+        0.067,
+        0,
+        0.2127,
+        0.122,
+        0.425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_1_pier_0_1_foot",
+      "type": "box",
+      "bounds": [
+        0.1423,
+        0.0516,
+        0,
+        0.2281,
+        0.1374,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "house_1_masonry_pier_0_1",
+      "type": "box",
+      "bounds": [
+        0.1452,
+        0.0555,
+        0.023,
+        0.2252,
+        0.1335,
+        0.13
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_1_pier_1_0",
+      "type": "box",
+      "bounds": [
+        0.2097,
+        -0.122,
+        0,
+        0.2647,
+        -0.067,
+        0.425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_1_pier_1_0_foot",
+      "type": "box",
+      "bounds": [
+        0.1943,
+        -0.1374,
+        0,
+        0.2801,
+        -0.0516,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "house_1_masonry_pier_1_0",
+      "type": "box",
+      "bounds": [
+        0.1972,
+        -0.1335,
+        0.023,
+        0.2772,
+        -0.0555,
+        0.13
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_1_pier_1_1",
+      "type": "box",
+      "bounds": [
+        0.2097,
+        0.067,
+        0,
+        0.2647,
+        0.122,
+        0.425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "house_1_pier_1_1_foot",
+      "type": "box",
+      "bounds": [
+        0.1943,
+        0.0516,
+        0,
+        0.2801,
+        0.1374,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "house_1_masonry_pier_1_1",
+      "type": "box",
+      "bounds": [
+        0.1972,
+        0.0555,
+        0.023,
+        0.2772,
+        0.1335,
+        0.13
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_1_underbeam",
+      "type": "box",
+      "bounds": [
+        0.1592,
+        -0.1155,
+        0.36,
+        0.2632,
+        0.1155,
+        0.38
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "house_1_base",
+      "type": "box",
+      "bounds": [
+        0.1352,
+        -0.1115,
+        0.398,
+        0.2872,
+        0.1115,
+        0.425
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "house_1_walls",
+      "type": "box",
+      "bounds": [
+        0.1452,
+        -0.1015,
+        0.425,
+        0.2772,
+        0.1015,
+        0.589
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "house_1_roof",
+      "type": "rings",
+      "material": "roof",
+      "rings": [
+        [
+          [
+            0.1252,
+            -0.1185,
+            0.579
+          ],
+          [
+            0.1252,
+            0.1185,
+            0.579
+          ],
+          [
+            0.1252,
+            0.1185,
+            0.601
+          ],
+          [
+            0.1252,
+            0.0,
+            0.65
+          ],
+          [
+            0.1252,
+            -0.1185,
+            0.601
+          ]
+        ],
+        [
+          [
+            0.2972,
+            -0.1185,
+            0.579
+          ],
+          [
+            0.2972,
+            0.1185,
+            0.579
+          ],
+          [
+            0.2972,
+            0.1185,
+            0.601
+          ],
+          [
+            0.2972,
+            0.0,
+            0.65
+          ],
+          [
+            0.2972,
+            -0.1185,
+            0.601
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "house_1_glazing0_0",
+      "type": "box",
+      "bounds": [
+        0.1792,
+        -0.1045,
+        0.472,
+        0.2432,
+        -0.0965,
+        0.536
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "house_1_glazing1_0",
+      "type": "box",
+      "bounds": [
+        0.1792,
+        0.0965,
+        0.472,
+        0.2432,
+        0.1045,
+        0.536
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "house_1_door",
+      "type": "box",
+      "bounds": [
+        0.2692,
+        -0.02639,
+        0.441,
+        0.2792,
+        0.02842,
+        0.53
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "bridging_run_pier00",
+      "type": "box",
+      "bounds": [
+        -0.1737,
+        -0.0985,
+        0,
+        -0.1167,
+        -0.0415,
+        0.32
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "bridging_run_pier00_foot",
+      "type": "box",
+      "bounds": [
+        -0.18966,
+        -0.11446,
+        0,
+        -0.10074,
+        -0.02554,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "bridging_run_pier01",
+      "type": "box",
+      "bounds": [
+        -0.1737,
+        0.0415,
+        0,
+        -0.1167,
+        0.0985,
+        0.32
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "bridging_run_pier01_foot",
+      "type": "box",
+      "bounds": [
+        -0.18966,
+        0.02554,
+        0,
+        -0.10074,
+        0.11446,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "bridging_run_trans0",
+      "type": "box",
+      "bounds": [
+        -0.1737,
+        -0.07,
+        0.295,
+        -0.1167,
+        0.07,
+        0.325
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "bridging_run_pier10",
+      "type": "box",
+      "bounds": [
+        0.1167,
+        -0.0985,
+        0,
+        0.1737,
+        -0.0415,
+        0.32
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "bridging_run_pier10_foot",
+      "type": "box",
+      "bounds": [
+        0.10074,
+        -0.11446,
+        0,
+        0.18966,
+        -0.02554,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "bridging_run_pier11",
+      "type": "box",
+      "bounds": [
+        0.1167,
+        0.0415,
+        0,
+        0.1737,
+        0.0985,
+        0.32
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "bridging_run_pier11_foot",
+      "type": "box",
+      "bounds": [
+        0.10074,
+        0.02554,
+        0,
+        0.18966,
+        0.11446,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "bridging_run_trans1",
+      "type": "box",
+      "bounds": [
+        0.1167,
+        -0.07,
+        0.295,
+        0.1737,
+        0.07,
+        0.325
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "bridging_run_beam0",
+      "type": "box",
+      "bounds": [
+        -0.16515,
+        -0.08767,
+        0.28,
+        0.16515,
+        -0.05233,
+        0.308
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "bridging_run_beam1",
+      "type": "box",
+      "bounds": [
+        -0.16515,
+        0.05233,
+        0.28,
+        0.16515,
+        0.08767,
+        0.308
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "bridging_run_pipe0",
+      "type": "box",
+      "bounds": [
+        -0.1452,
+        -0.046,
+        0.349,
+        0.1452,
+        -0.014,
+        0.381
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "bridging_run_down0",
+      "type": "beam",
+      "start": [
+        0.1312,
+        -0.03,
+        0.365
+      ],
+      "end": [
+        0.1312,
+        -0.03,
+        0.09
+      ],
+      "thickness": 0.0264,
+      "material": "pipe"
+    },
+    {
+      "id": "bridging_run_outlet0",
+      "type": "box",
+      "bounds": [
+        0.1312,
+        -0.046,
+        0.075,
+        0.2002,
+        -0.014,
+        0.106
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "bridging_run_pipe1",
+      "type": "box",
+      "bounds": [
+        -0.1452,
+        -0.016,
+        0.366,
+        0.1452,
+        0.016,
+        0.398
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "bridging_run_pipe2",
+      "type": "box",
+      "bounds": [
+        -0.1452,
+        0.014,
+        0.349,
+        0.1452,
+        0.046,
+        0.381
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "terminal_pipe0",
+      "type": "box",
+      "bounds": [
+        -0.2046,
+        -0.064,
+        0.359,
+        0.2046,
+        -0.036,
+        0.389
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "terminal_pipe1",
+      "type": "box",
+      "bounds": [
+        -0.2046,
+        -0.014,
+        0.359,
+        0.2046,
+        0.014,
+        0.389
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "terminal_pipe2",
+      "type": "box",
+      "bounds": [
+        -0.2046,
+        0.036,
+        0.359,
+        0.2046,
+        0.064,
+        0.389
+      ],
+      "material": "pipe"
+    }
+  ]
+}

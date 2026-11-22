@@ -1,0 +1,709 @@
+{
+  "role": "structure",
+  "footprint": [
+    -0.357,
+    -0.267,
+    0.357,
+    0.267
+  ],
+  "shapes": [
+    {
+      "id": "rack_pier00",
+      "type": "box",
+      "bounds": [
+        -0.322,
+        -0.1806,
+        0,
+        -0.252,
+        -0.1106,
+        0.38
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "rack_pier00_foot",
+      "type": "box",
+      "bounds": [
+        -0.3416,
+        -0.2002,
+        0,
+        -0.2324,
+        -0.091,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "rack_pier01",
+      "type": "box",
+      "bounds": [
+        -0.322,
+        0.1106,
+        0,
+        -0.252,
+        0.1806,
+        0.38
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "rack_pier01_foot",
+      "type": "box",
+      "bounds": [
+        -0.3416,
+        0.091,
+        0,
+        -0.2324,
+        0.2002,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "rack_trans0",
+      "type": "box",
+      "bounds": [
+        -0.322,
+        -0.1456,
+        0.355,
+        -0.252,
+        0.1456,
+        0.385
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "rack_pier10",
+      "type": "box",
+      "bounds": [
+        -0.0385,
+        -0.1806,
+        0,
+        0.0315,
+        -0.1106,
+        0.38
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "rack_pier10_foot",
+      "type": "box",
+      "bounds": [
+        -0.0581,
+        -0.2002,
+        0,
+        0.0511,
+        -0.091,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "rack_pier11",
+      "type": "box",
+      "bounds": [
+        -0.0385,
+        0.1106,
+        0,
+        0.0315,
+        0.1806,
+        0.38
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "rack_pier11_foot",
+      "type": "box",
+      "bounds": [
+        -0.0581,
+        0.091,
+        0,
+        0.0511,
+        0.2002,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "rack_trans1",
+      "type": "box",
+      "bounds": [
+        -0.0385,
+        -0.1456,
+        0.355,
+        0.0315,
+        0.1456,
+        0.385
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "rack_pier20",
+      "type": "box",
+      "bounds": [
+        0.245,
+        -0.1806,
+        0,
+        0.315,
+        -0.1106,
+        0.38
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "rack_pier20_foot",
+      "type": "box",
+      "bounds": [
+        0.2254,
+        -0.2002,
+        0,
+        0.3346,
+        -0.091,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "rack_pier21",
+      "type": "box",
+      "bounds": [
+        0.245,
+        0.1106,
+        0,
+        0.315,
+        0.1806,
+        0.38
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "rack_pier21_foot",
+      "type": "box",
+      "bounds": [
+        0.2254,
+        0.091,
+        0,
+        0.3346,
+        0.2002,
+        0.024
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "rack_trans2",
+      "type": "box",
+      "bounds": [
+        0.245,
+        -0.1456,
+        0.355,
+        0.315,
+        0.1456,
+        0.385
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "rack_beam0",
+      "type": "box",
+      "bounds": [
+        -0.3115,
+        -0.1673,
+        0.34,
+        0.3045,
+        -0.1239,
+        0.368
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "rack_beam1",
+      "type": "box",
+      "bounds": [
+        -0.3115,
+        0.1239,
+        0.34,
+        0.3045,
+        0.1673,
+        0.368
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "rack_pipe0",
+      "type": "box",
+      "bounds": [
+        -0.287,
+        -0.0964,
+        0.409,
+        0.28,
+        -0.0644,
+        0.441
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "rack_down0",
+      "type": "beam",
+      "start": [
+        0.266,
+        -0.0804,
+        0.425
+      ],
+      "end": [
+        0.266,
+        -0.0804,
+        0.09
+      ],
+      "thickness": 0.0264,
+      "material": "pipe"
+    },
+    {
+      "id": "rack_outlet0",
+      "type": "box",
+      "bounds": [
+        0.266,
+        -0.0964,
+        0.075,
+        0.335,
+        -0.0644,
+        0.106
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "rack_pipe1",
+      "type": "box",
+      "bounds": [
+        -0.287,
+        -0.016,
+        0.426,
+        0.28,
+        0.016,
+        0.458
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "rack_pipe2",
+      "type": "box",
+      "bounds": [
+        -0.287,
+        0.0644,
+        0.409,
+        0.28,
+        0.0964,
+        0.441
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "left_hall_base",
+      "type": "box",
+      "bounds": [
+        -0.29,
+        -0.244,
+        0.371,
+        0.255,
+        -0.0316,
+        0.398
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "left_hall_walls",
+      "type": "box",
+      "bounds": [
+        -0.28,
+        -0.234,
+        0.398,
+        0.245,
+        -0.0416,
+        0.58
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "left_hall_roof",
+      "type": "rings",
+      "material": "roof",
+      "rings": [
+        [
+          [
+            -0.3,
+            -0.251,
+            0.57
+          ],
+          [
+            -0.3,
+            -0.0246,
+            0.57
+          ],
+          [
+            -0.3,
+            -0.0246,
+            0.592
+          ],
+          [
+            -0.3,
+            -0.1378,
+            0.641
+          ],
+          [
+            -0.3,
+            -0.251,
+            0.592
+          ]
+        ],
+        [
+          [
+            0.265,
+            -0.251,
+            0.57
+          ],
+          [
+            0.265,
+            -0.0246,
+            0.57
+          ],
+          [
+            0.265,
+            -0.0246,
+            0.592
+          ],
+          [
+            0.265,
+            -0.1378,
+            0.641
+          ],
+          [
+            0.265,
+            -0.251,
+            0.592
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "left_hall_glazing0_0",
+      "type": "box",
+      "bounds": [
+        -0.2245,
+        -0.237,
+        0.463,
+        -0.1605,
+        -0.229,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "left_hall_glazing1_0",
+      "type": "box",
+      "bounds": [
+        -0.2245,
+        -0.0466,
+        0.463,
+        -0.1605,
+        -0.0386,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "left_hall_glazing0_1",
+      "type": "box",
+      "bounds": [
+        -0.0495,
+        -0.237,
+        0.463,
+        0.0145,
+        -0.229,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "left_hall_glazing1_1",
+      "type": "box",
+      "bounds": [
+        -0.0495,
+        -0.0466,
+        0.463,
+        0.0145,
+        -0.0386,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "left_hall_glazing0_2",
+      "type": "box",
+      "bounds": [
+        0.1255,
+        -0.237,
+        0.463,
+        0.1895,
+        -0.229,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "left_hall_glazing1_2",
+      "type": "box",
+      "bounds": [
+        0.1255,
+        -0.0466,
+        0.463,
+        0.1895,
+        -0.0386,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "left_hall_door",
+      "type": "box",
+      "bounds": [
+        0.237,
+        -0.16281,
+        0.414,
+        0.247,
+        -0.11086,
+        0.503
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "right_hall_base",
+      "type": "box",
+      "bounds": [
+        -0.178,
+        0.0316,
+        0.371,
+        0.29,
+        0.244,
+        0.398
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "right_hall_walls",
+      "type": "box",
+      "bounds": [
+        -0.168,
+        0.0416,
+        0.398,
+        0.28,
+        0.234,
+        0.58
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "right_hall_roof",
+      "type": "rings",
+      "material": "roof",
+      "rings": [
+        [
+          [
+            -0.188,
+            0.0246,
+            0.57
+          ],
+          [
+            -0.188,
+            0.251,
+            0.57
+          ],
+          [
+            -0.188,
+            0.251,
+            0.592
+          ],
+          [
+            -0.188,
+            0.1378,
+            0.641
+          ],
+          [
+            -0.188,
+            0.0246,
+            0.592
+          ]
+        ],
+        [
+          [
+            0.3,
+            0.0246,
+            0.57
+          ],
+          [
+            0.3,
+            0.251,
+            0.57
+          ],
+          [
+            0.3,
+            0.251,
+            0.592
+          ],
+          [
+            0.3,
+            0.1378,
+            0.641
+          ],
+          [
+            0.3,
+            0.0246,
+            0.592
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "right_hall_glazing0_0",
+      "type": "box",
+      "bounds": [
+        -0.12533,
+        0.0386,
+        0.463,
+        -0.06133,
+        0.0466,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "right_hall_glazing1_0",
+      "type": "box",
+      "bounds": [
+        -0.12533,
+        0.229,
+        0.463,
+        -0.06133,
+        0.237,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "right_hall_glazing0_1",
+      "type": "box",
+      "bounds": [
+        0.024,
+        0.0386,
+        0.463,
+        0.088,
+        0.0466,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "right_hall_glazing1_1",
+      "type": "box",
+      "bounds": [
+        0.024,
+        0.229,
+        0.463,
+        0.088,
+        0.237,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "right_hall_glazing0_2",
+      "type": "box",
+      "bounds": [
+        0.17333,
+        0.0386,
+        0.463,
+        0.23733,
+        0.0466,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "right_hall_glazing1_2",
+      "type": "box",
+      "bounds": [
+        0.17333,
+        0.229,
+        0.463,
+        0.23733,
+        0.237,
+        0.527
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "right_hall_door",
+      "type": "box",
+      "bounds": [
+        0.272,
+        0.11279,
+        0.414,
+        0.282,
+        0.16474,
+        0.503
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "centre_transfer_pipe",
+      "type": "box",
+      "bounds": [
+        -0.112,
+        -0.029,
+        0.44,
+        0.21,
+        0.029,
+        0.488
+      ],
+      "material": "pipe"
+    },
+    {
+      "id": "side_drum",
+      "type": "revolution",
+      "center": [
+        0.259,
+        0
+      ],
+      "segments": 12,
+      "material": "equipment",
+      "crease_rings": [
+        1
+      ],
+      "profile": [
+        [
+          0.035,
+          0.04
+        ],
+        [
+          0.22820000000000001,
+          0.04
+        ],
+        [
+          0.265,
+          0.031200000000000002
+        ]
+      ]
+    },
+    {
+      "id": "side_drum_cap",
+      "type": "box",
+      "bounds": [
+        0.245,
+        -0.014,
+        0.265,
+        0.273,
+        0.014,
+        0.283
+      ],
+      "material": "metal"
+    }
+  ]
+}
