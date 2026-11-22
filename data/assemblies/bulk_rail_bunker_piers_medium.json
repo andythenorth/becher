@@ -1,0 +1,128 @@
+{
+  "shapes": [
+    {
+      "id": "back_wall",
+      "type": "box",
+      "bounds": [
+        -0.28147,
+        0.0945,
+        0.0,
+        0.28147,
+        0.182,
+        0.328
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "loading_pier_0",
+      "type": "box",
+      "bounds": [
+        -0.278,
+        -0.175,
+        0.0,
+        -0.18418,
+        0.119,
+        0.41
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "loading_pier_1",
+      "type": "box",
+      "bounds": [
+        -0.04865,
+        -0.175,
+        0.0,
+        0.04865,
+        0.119,
+        0.41
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "loading_pier_2",
+      "type": "box",
+      "bounds": [
+        0.18418,
+        -0.175,
+        0.0,
+        0.278,
+        0.119,
+        0.41
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "lower_deck",
+      "type": "box",
+      "bounds": [
+        -0.28147,
+        -0.189,
+        0.3362,
+        0.28147,
+        0.189,
+        0.4346
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "bin_mass",
+      "type": "box",
+      "bounds": [
+        -0.2919,
+        -0.203,
+        0.4264,
+        0.2919,
+        0.203,
+        0.656
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "bin_cap",
+      "type": "box",
+      "bounds": [
+        -0.29885,
+        -0.21,
+        0.656,
+        0.29885,
+        0.21,
+        0.6888
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "loading_dark_gate_1",
+      "type": "box",
+      "bounds": [
+        -0.1668,
+        -0.182,
+        0.0246,
+        -0.06255,
+        -0.1722,
+        0.2132
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "loading_dark_gate_2",
+      "type": "box",
+      "bounds": [
+        0.06255,
+        -0.182,
+        0.0246,
+        0.1668,
+        -0.1722,
+        0.2132
+      ],
+      "material": "frame"
+    }
+  ],
+  "role": "structure",
+  "footprint": [
+    -0.30441,
+    -0.2156,
+    0.30441,
+    0.2156
+  ]
+}

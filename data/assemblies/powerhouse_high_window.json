@@ -1,0 +1,614 @@
+{
+  "shapes": [
+    {
+      "id": "power_building",
+      "type": "box",
+      "bounds": [
+        -0.345,
+        -0.225,
+        0.0,
+        0.345,
+        0.225,
+        0.73
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "power_heavy_plinth",
+      "type": "box",
+      "bounds": [
+        -0.351,
+        -0.231,
+        0,
+        0.351,
+        0.231,
+        0.035
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_0_0",
+      "type": "box",
+      "bounds": [
+        -0.358,
+        -0.237,
+        0.035,
+        -0.332,
+        -0.221,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_0_1",
+      "type": "box",
+      "bounds": [
+        -0.1855,
+        -0.237,
+        0.035,
+        -0.1595,
+        -0.221,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_0_2",
+      "type": "box",
+      "bounds": [
+        -0.013,
+        -0.237,
+        0.035,
+        0.013,
+        -0.221,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_0_3",
+      "type": "box",
+      "bounds": [
+        0.1595,
+        -0.237,
+        0.035,
+        0.1855,
+        -0.221,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_0_4",
+      "type": "box",
+      "bounds": [
+        0.332,
+        -0.237,
+        0.035,
+        0.358,
+        -0.221,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_glass_0_0_0",
+      "type": "box",
+      "bounds": [
+        -0.32394,
+        -0.234,
+        0.075,
+        -0.19356,
+        -0.216,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_glass_0_0_1",
+      "type": "box",
+      "bounds": [
+        -0.15144,
+        -0.234,
+        0.075,
+        -0.02106,
+        -0.216,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_glass_0_0_2",
+      "type": "box",
+      "bounds": [
+        0.02106,
+        -0.234,
+        0.075,
+        0.15144,
+        -0.216,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_glass_0_0_3",
+      "type": "box",
+      "bounds": [
+        0.19356,
+        -0.234,
+        0.075,
+        0.32394,
+        -0.216,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_pier_1_0",
+      "type": "box",
+      "bounds": [
+        -0.358,
+        0.221,
+        0.035,
+        -0.332,
+        0.237,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_1_1",
+      "type": "box",
+      "bounds": [
+        -0.1855,
+        0.221,
+        0.035,
+        -0.1595,
+        0.237,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_1_2",
+      "type": "box",
+      "bounds": [
+        -0.013,
+        0.221,
+        0.035,
+        0.013,
+        0.237,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_1_3",
+      "type": "box",
+      "bounds": [
+        0.1595,
+        0.221,
+        0.035,
+        0.1855,
+        0.237,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_pier_1_4",
+      "type": "box",
+      "bounds": [
+        0.332,
+        0.221,
+        0.035,
+        0.358,
+        0.237,
+        0.746
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_glass_1_0_0",
+      "type": "box",
+      "bounds": [
+        -0.32394,
+        0.216,
+        0.075,
+        -0.19356,
+        0.234,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_glass_1_0_1",
+      "type": "box",
+      "bounds": [
+        -0.15144,
+        0.216,
+        0.075,
+        -0.02106,
+        0.234,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_glass_1_0_2",
+      "type": "box",
+      "bounds": [
+        0.02106,
+        0.216,
+        0.075,
+        0.15144,
+        0.234,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_glass_1_0_3",
+      "type": "box",
+      "bounds": [
+        0.19356,
+        0.216,
+        0.075,
+        0.32394,
+        0.234,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_endpier_0_0",
+      "type": "box",
+      "bounds": [
+        -0.357,
+        -0.235,
+        0.035,
+        -0.341,
+        -0.215,
+        0.745
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_endpier_0_1",
+      "type": "box",
+      "bounds": [
+        -0.357,
+        -0.085,
+        0.035,
+        -0.341,
+        -0.065,
+        0.745
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_endpier_0_2",
+      "type": "box",
+      "bounds": [
+        -0.357,
+        0.065,
+        0.035,
+        -0.341,
+        0.085,
+        0.745
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_endpier_0_3",
+      "type": "box",
+      "bounds": [
+        -0.357,
+        0.215,
+        0.035,
+        -0.341,
+        0.235,
+        0.745
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_endglass_0_0_0",
+      "type": "box",
+      "bounds": [
+        -0.354,
+        -0.2059,
+        0.075,
+        -0.336,
+        -0.0941,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_endglass_0_0_1",
+      "type": "box",
+      "bounds": [
+        -0.354,
+        -0.0559,
+        0.075,
+        -0.336,
+        0.0559,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_endglass_0_0_2",
+      "type": "box",
+      "bounds": [
+        -0.354,
+        0.0941,
+        0.075,
+        -0.336,
+        0.2059,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_endpier_1_0",
+      "type": "box",
+      "bounds": [
+        0.341,
+        -0.235,
+        0.035,
+        0.357,
+        -0.215,
+        0.745
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_endpier_1_1",
+      "type": "box",
+      "bounds": [
+        0.341,
+        -0.085,
+        0.035,
+        0.357,
+        -0.065,
+        0.745
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_endpier_1_2",
+      "type": "box",
+      "bounds": [
+        0.341,
+        0.065,
+        0.035,
+        0.357,
+        0.085,
+        0.745
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_endpier_1_3",
+      "type": "box",
+      "bounds": [
+        0.341,
+        0.215,
+        0.035,
+        0.357,
+        0.235,
+        0.745
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_endglass_1_0_0",
+      "type": "box",
+      "bounds": [
+        0.336,
+        -0.2059,
+        0.075,
+        0.354,
+        -0.0941,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_endglass_1_0_1",
+      "type": "box",
+      "bounds": [
+        0.336,
+        -0.0559,
+        0.075,
+        0.354,
+        0.0559,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_endglass_1_0_2",
+      "type": "box",
+      "bounds": [
+        0.336,
+        0.0941,
+        0.075,
+        0.354,
+        0.2059,
+        0.6465
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "power_roof",
+      "type": "box",
+      "bounds": [
+        -0.357,
+        -0.237,
+        0.722,
+        0.357,
+        0.237,
+        0.755
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_coping_side_0",
+      "type": "box",
+      "bounds": [
+        -0.363,
+        -0.24,
+        0.749,
+        0.363,
+        -0.21,
+        0.772
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_coping_side_1",
+      "type": "box",
+      "bounds": [
+        -0.363,
+        0.21,
+        0.749,
+        0.363,
+        0.24,
+        0.772
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_coping_end_0",
+      "type": "box",
+      "bounds": [
+        -0.36,
+        -0.24,
+        0.749,
+        -0.33,
+        0.24,
+        0.772
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "power_coping_end_1",
+      "type": "box",
+      "bounds": [
+        0.33,
+        -0.24,
+        0.749,
+        0.36,
+        0.24,
+        0.772
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "service_shell",
+      "type": "box",
+      "bounds": [
+        0.21,
+        -0.26,
+        0,
+        0.42,
+        0.17,
+        0.28
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "service_cap",
+      "type": "box",
+      "bounds": [
+        0.204,
+        -0.267,
+        0.274,
+        0.432,
+        0.18,
+        0.304
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "service_window_0",
+      "type": "box",
+      "bounds": [
+        0.26,
+        -0.275,
+        0.1,
+        0.29,
+        -0.26,
+        0.22
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "service_window_1",
+      "type": "box",
+      "bounds": [
+        0.315,
+        -0.275,
+        0.1,
+        0.345,
+        -0.26,
+        0.22
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "service_window_2",
+      "type": "box",
+      "bounds": [
+        0.37,
+        -0.275,
+        0.1,
+        0.4,
+        -0.26,
+        0.22
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "service_pier_0.215",
+      "type": "box",
+      "bounds": [
+        0.203,
+        -0.27,
+        0.025,
+        0.227,
+        -0.25,
+        0.3
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "service_pier_0.417",
+      "type": "box",
+      "bounds": [
+        0.405,
+        -0.27,
+        0.025,
+        0.429,
+        -0.25,
+        0.3
+      ],
+      "material": "concrete"
+    }
+  ],
+  "role": "shed",
+  "footprint": [
+    -0.369,
+    -0.281,
+    0.438,
+    0.246
+  ],
+  "catalogue": {
+    "label": "Powerhouse \u2014 tall window panels and low service wing",
+    "status": "prototype_only",
+    "theme": "1920s\u20131950s daylight factories"
+  }
+}

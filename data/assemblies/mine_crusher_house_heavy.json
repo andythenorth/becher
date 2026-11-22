@@ -1,0 +1,105 @@
+{
+  "shapes": [
+    {
+      "id": "crusher_housing",
+      "type": "box",
+      "bounds": [
+        -0.35,
+        -0.29,
+        0,
+        0.17,
+        0.27,
+        0.62
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "tall_feed_hood",
+      "type": "box",
+      "bounds": [
+        -0.2,
+        -0.2,
+        0.62,
+        0.14,
+        0.18,
+        0.86
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "cap",
+      "type": "box",
+      "bounds": [
+        -0.22,
+        -0.22,
+        0.86,
+        0.16,
+        0.2,
+        0.91
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "main_roof",
+      "type": "box",
+      "bounds": [
+        -0.37,
+        -0.31,
+        0.62,
+        0.19,
+        0.29,
+        0.66
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "output_gate",
+      "type": "box",
+      "bounds": [
+        0.172,
+        -0.23,
+        0.11,
+        0.37,
+        0.06,
+        0.31
+      ],
+      "material": "equipment"
+    },
+    {
+      "id": "inclined_delivery",
+      "type": "beam",
+      "start": [
+        0.15,
+        0.1,
+        0.51
+      ],
+      "end": [
+        0.39,
+        0.1,
+        0.22
+      ],
+      "thickness": 0.09,
+      "material": "pipe"
+    },
+    {
+      "id": "crush_side_window",
+      "type": "box",
+      "bounds": [
+        -0.358,
+        -0.12,
+        0.3,
+        -0.34,
+        0.07,
+        0.38
+      ],
+      "material": "glass"
+    }
+  ],
+  "role": "structure",
+  "footprint": [
+    -0.378,
+    -0.318,
+    0.443,
+    0.298
+  ]
+}

@@ -31,34 +31,34 @@ from .authored_scenes import render_geometry
 # vocabularies can reasonably suggest. Each tuple is (vocabulary, weight).
 # One module means catalogue edits do not propagate into unrelated code.
 RECIPES = {
-    'Appliance Factory': (('General industrial', 8), ('Large process buildings', 3), ('Compact process buildings', 1)),
-    'Assembly Plant': (('General industrial', 8), ('Large process buildings', 4), ('Compact process buildings', 1)),
-    'Body Plant': (('General industrial', 8), ('Large process buildings', 3)),
-    'Carbon Black Plant': (('Liquid processing', 6), ('Liquid storage', 3), ('Chimneys', 1), ('General industrial', 2)),
+    'Appliance Factory': (('Industrial buildings', 8), ('Large process buildings', 3), ('Compact process buildings', 1)),
+    'Assembly Plant': (('Industrial buildings', 8), ('Large process buildings', 4), ('Compact process buildings', 1)),
+    'Body Plant': (('Industrial buildings', 8), ('Large process buildings', 3)),
+    'Carbon Black Plant': (('Liquid processing', 6), ('Liquid storage', 3), ('Chimneys', 1), ('Industrial buildings', 2)),
     'Chemical Plant': (('Liquid processing', 7), ('Liquid storage', 4), ('Compact process buildings', 3), ('Chimneys', 1)),
     'Chlor-alkali Plant': (('Liquid processing', 7), ('Liquid storage', 4), ('Compact process buildings', 2)),
-    'Coal Mine': (('Mining and aggregates', 9), ('Dry material handling', 4), ('General industrial', 1)),
-    'Concrete Plant': (('Dry material handling', 7), ('General industrial', 4), ('Mining and aggregates', 2)),
-    'Copper Mine': (('Mining and aggregates', 9), ('Dry material handling', 4), ('General industrial', 1)),
+    'Coal Mine': (('Mining and aggregates', 9), ('Dry material handling', 4), ('Industrial buildings', 1)),
+    'Concrete Plant': (('Dry material handling', 7), ('Industrial buildings', 4), ('Mining and aggregates', 2)),
+    'Copper Mine': (('Mining and aggregates', 9), ('Dry material handling', 4), ('Industrial buildings', 1)),
     'Cryo Plant': (('Liquid processing', 6), ('Liquid storage', 4), ('Compact process buildings', 2)),
-    'Dairy': (('General industrial', 6), ('Liquid storage', 2), ('Compact process buildings', 2)),
-    'Elastomer Products Plant': (('General industrial', 6), ('Liquid processing', 3), ('Compact process buildings', 2)),
-    'Engine Plant': (('General industrial', 8), ('Large process buildings', 3)),
-    'Flour Mill': (('Dry material handling', 9), ('General industrial', 3), ('Chimneys', 1)),
-    'Food Processing Plant': (('General industrial', 7), ('Dry material handling', 3), ('Liquid storage', 1)),
+    'Dairy': (('Industrial buildings', 6), ('Liquid storage', 2), ('Compact process buildings', 2)),
+    'Elastomer Products Plant': (('Industrial buildings', 6), ('Liquid processing', 3), ('Compact process buildings', 2)),
+    'Engine Plant': (('Industrial buildings', 8), ('Large process buildings', 3)),
+    'Flour Mill': (('Dry material handling', 9), ('Industrial buildings', 3), ('Chimneys', 1)),
+    'Food Processing Plant': (('Industrial buildings', 7), ('Dry material handling', 3), ('Liquid storage', 1)),
     'Iron Ore Mine': (('Mining and aggregates', 9), ('Dry material handling', 4)),
     'Limestone Mine': (('Mining and aggregates', 9), ('Dry material handling', 4)),
-    'Liquids Terminal': (('Liquid storage', 9), ('Liquid processing', 3), ('General industrial', 1)),
-    'Metal Works': (('General industrial', 6), ('Large process buildings', 4), ('Chimneys', 1)),
-    'Paper Mill': (('Large process buildings', 6), ('General industrial', 5), ('Dry material handling', 2), ('Chimneys', 1)),
-    'Pipe Shop': (('General industrial', 8), ('Large process buildings', 3)),
+    'Liquids Terminal': (('Liquid storage', 9), ('Liquid processing', 3), ('Industrial buildings', 1)),
+    'Metal Works': (('Industrial buildings', 6), ('Large process buildings', 4), ('Chimneys', 1)),
+    'Paper Mill': (('Large process buildings', 6), ('Industrial buildings', 5), ('Dry material handling', 2), ('Chimneys', 1)),
+    'Pipe Shop': (('Industrial buildings', 8), ('Large process buildings', 3)),
     'Potash Mine': (('Mining and aggregates', 9), ('Dry material handling', 4)),
-    'Power Systems Factory': (('General industrial', 8), ('Large process buildings', 3)),
-    'Precision Parts Plant': (('General industrial', 8), ('Compact process buildings', 3)),
+    'Power Systems Factory': (('Industrial buildings', 8), ('Large process buildings', 3)),
+    'Precision Parts Plant': (('Industrial buildings', 8), ('Compact process buildings', 3)),
     'Quarry': (('Mining and aggregates', 9), ('Dry material handling', 4)),
-    'Slag Grinding Plant': (('Dry material handling', 8), ('Mining and aggregates', 3), ('General industrial', 2)),
-    'Tracked Vehicle Factory': (('General industrial', 8), ('Large process buildings', 3)),
-    'Tyre Plant': (('General industrial', 7), ('Liquid processing', 2), ('Compact process buildings', 2)),
+    'Slag Grinding Plant': (('Dry material handling', 8), ('Mining and aggregates', 3), ('Industrial buildings', 2)),
+    'Tracked Vehicle Factory': (('Industrial buildings', 8), ('Large process buildings', 3)),
+    'Tyre Plant': (('Industrial buildings', 7), ('Liquid processing', 2), ('Compact process buildings', 2)),
 }
 
 FOOTPRINTS = ((6, 3), (5, 4), (3, 6))
@@ -180,9 +180,9 @@ def _place_hall_runs(industry, width, height, rng, available, scenes):
     aligned along each hall's long axis. Neighbouring runs may use a second
     compatible hall design, but each individual run uses exactly one design.
     """
-    if industry not in HALL_INDUSTRIES or 'General industrial' not in available:
+    if industry not in HALL_INDUSTRIES or 'Industrial buildings' not in available:
         return {}
-    families = [name for name in HALL_COMPONENTS if name in available['General industrial']]
+    families = [name for name in HALL_COMPONENTS if name in available['Industrial buildings']]
     if not families:
         return {}
     selected = {}
@@ -221,7 +221,7 @@ def _place_hall_runs(industry, width, height, rng, available, scenes):
         scenes[identifier] = scene
         run_id = f'hall-{number + 1}'
         for index, cell in enumerate(cells):
-            selected[cell] = ('General industrial', scene, {
+            selected[cell] = ('Industrial buildings', scene, {
                 'id': run_id, 'family': family, 'axis': 'x' if axis == 0 else 'y',
                 'index': index, 'length': len(cells),
             })

@@ -1,0 +1,1420 @@
+{
+  "shapes": [
+    {
+      "id": "main_building",
+      "type": "box",
+      "bounds": [
+        -0.38,
+        -0.225,
+        0.0,
+        0.38,
+        0.225,
+        0.6
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "main_heavy_plinth",
+      "type": "box",
+      "bounds": [
+        -0.386,
+        -0.231,
+        0,
+        0.386,
+        0.231,
+        0.035
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_0_0",
+      "type": "box",
+      "bounds": [
+        -0.393,
+        -0.237,
+        0.035,
+        -0.367,
+        -0.221,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_0_1",
+      "type": "box",
+      "bounds": [
+        -0.241,
+        -0.237,
+        0.035,
+        -0.215,
+        -0.221,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_0_2",
+      "type": "box",
+      "bounds": [
+        -0.089,
+        -0.237,
+        0.035,
+        -0.063,
+        -0.221,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_0_3",
+      "type": "box",
+      "bounds": [
+        0.063,
+        -0.237,
+        0.035,
+        0.089,
+        -0.221,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_0_4",
+      "type": "box",
+      "bounds": [
+        0.215,
+        -0.237,
+        0.035,
+        0.241,
+        -0.221,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_0_5",
+      "type": "box",
+      "bounds": [
+        0.367,
+        -0.237,
+        0.035,
+        0.393,
+        -0.221,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_glass_0_0_0",
+      "type": "box",
+      "bounds": [
+        -0.36007,
+        -0.234,
+        0.075,
+        -0.24793,
+        -0.216,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_0_1",
+      "type": "box",
+      "bounds": [
+        -0.20807,
+        -0.234,
+        0.075,
+        -0.09593,
+        -0.216,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_0_2",
+      "type": "box",
+      "bounds": [
+        -0.05607,
+        -0.234,
+        0.075,
+        0.05607,
+        -0.216,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_0_3",
+      "type": "box",
+      "bounds": [
+        0.09593,
+        -0.234,
+        0.075,
+        0.20807,
+        -0.216,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_0_4",
+      "type": "box",
+      "bounds": [
+        0.24793,
+        -0.234,
+        0.075,
+        0.36007,
+        -0.216,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_1_0",
+      "type": "box",
+      "bounds": [
+        -0.36007,
+        -0.234,
+        0.24333,
+        -0.24793,
+        -0.216,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_1_1",
+      "type": "box",
+      "bounds": [
+        -0.20807,
+        -0.234,
+        0.24333,
+        -0.09593,
+        -0.216,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_1_2",
+      "type": "box",
+      "bounds": [
+        -0.05607,
+        -0.234,
+        0.24333,
+        0.05607,
+        -0.216,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_1_3",
+      "type": "box",
+      "bounds": [
+        0.09593,
+        -0.234,
+        0.24333,
+        0.20807,
+        -0.216,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_1_4",
+      "type": "box",
+      "bounds": [
+        0.24793,
+        -0.234,
+        0.24333,
+        0.36007,
+        -0.216,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_2_0",
+      "type": "box",
+      "bounds": [
+        -0.36007,
+        -0.234,
+        0.41167,
+        -0.24793,
+        -0.216,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_2_1",
+      "type": "box",
+      "bounds": [
+        -0.20807,
+        -0.234,
+        0.41167,
+        -0.09593,
+        -0.216,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_2_2",
+      "type": "box",
+      "bounds": [
+        -0.05607,
+        -0.234,
+        0.41167,
+        0.05607,
+        -0.216,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_2_3",
+      "type": "box",
+      "bounds": [
+        0.09593,
+        -0.234,
+        0.41167,
+        0.20807,
+        -0.216,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_0_2_4",
+      "type": "box",
+      "bounds": [
+        0.24793,
+        -0.234,
+        0.41167,
+        0.36007,
+        -0.216,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_belt_0_1",
+      "type": "box",
+      "bounds": [
+        -0.395,
+        -0.24,
+        0.23033,
+        0.395,
+        -0.218,
+        0.24933
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_belt_0_2",
+      "type": "box",
+      "bounds": [
+        -0.395,
+        -0.24,
+        0.39867,
+        0.395,
+        -0.218,
+        0.41767
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_1_0",
+      "type": "box",
+      "bounds": [
+        -0.393,
+        0.221,
+        0.035,
+        -0.367,
+        0.237,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_1_1",
+      "type": "box",
+      "bounds": [
+        -0.241,
+        0.221,
+        0.035,
+        -0.215,
+        0.237,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_1_2",
+      "type": "box",
+      "bounds": [
+        -0.089,
+        0.221,
+        0.035,
+        -0.063,
+        0.237,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_1_3",
+      "type": "box",
+      "bounds": [
+        0.063,
+        0.221,
+        0.035,
+        0.089,
+        0.237,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_1_4",
+      "type": "box",
+      "bounds": [
+        0.215,
+        0.221,
+        0.035,
+        0.241,
+        0.237,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_pier_1_5",
+      "type": "box",
+      "bounds": [
+        0.367,
+        0.221,
+        0.035,
+        0.393,
+        0.237,
+        0.616
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_glass_1_0_0",
+      "type": "box",
+      "bounds": [
+        -0.36007,
+        0.216,
+        0.075,
+        -0.24793,
+        0.234,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_0_1",
+      "type": "box",
+      "bounds": [
+        -0.20807,
+        0.216,
+        0.075,
+        -0.09593,
+        0.234,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_0_2",
+      "type": "box",
+      "bounds": [
+        -0.05607,
+        0.216,
+        0.075,
+        0.05607,
+        0.234,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_0_3",
+      "type": "box",
+      "bounds": [
+        0.09593,
+        0.216,
+        0.075,
+        0.20807,
+        0.234,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_0_4",
+      "type": "box",
+      "bounds": [
+        0.24793,
+        0.216,
+        0.075,
+        0.36007,
+        0.234,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_1_0",
+      "type": "box",
+      "bounds": [
+        -0.36007,
+        0.216,
+        0.24333,
+        -0.24793,
+        0.234,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_1_1",
+      "type": "box",
+      "bounds": [
+        -0.20807,
+        0.216,
+        0.24333,
+        -0.09593,
+        0.234,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_1_2",
+      "type": "box",
+      "bounds": [
+        -0.05607,
+        0.216,
+        0.24333,
+        0.05607,
+        0.234,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_1_3",
+      "type": "box",
+      "bounds": [
+        0.09593,
+        0.216,
+        0.24333,
+        0.20807,
+        0.234,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_1_4",
+      "type": "box",
+      "bounds": [
+        0.24793,
+        0.216,
+        0.24333,
+        0.36007,
+        0.234,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_2_0",
+      "type": "box",
+      "bounds": [
+        -0.36007,
+        0.216,
+        0.41167,
+        -0.24793,
+        0.234,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_2_1",
+      "type": "box",
+      "bounds": [
+        -0.20807,
+        0.216,
+        0.41167,
+        -0.09593,
+        0.234,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_2_2",
+      "type": "box",
+      "bounds": [
+        -0.05607,
+        0.216,
+        0.41167,
+        0.05607,
+        0.234,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_2_3",
+      "type": "box",
+      "bounds": [
+        0.09593,
+        0.216,
+        0.41167,
+        0.20807,
+        0.234,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_glass_1_2_4",
+      "type": "box",
+      "bounds": [
+        0.24793,
+        0.216,
+        0.41167,
+        0.36007,
+        0.234,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_belt_1_1",
+      "type": "box",
+      "bounds": [
+        -0.395,
+        0.218,
+        0.23033,
+        0.395,
+        0.24,
+        0.24933
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_belt_1_2",
+      "type": "box",
+      "bounds": [
+        -0.395,
+        0.218,
+        0.39867,
+        0.395,
+        0.24,
+        0.41767
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endpier_0_0",
+      "type": "box",
+      "bounds": [
+        -0.392,
+        -0.235,
+        0.035,
+        -0.376,
+        -0.215,
+        0.615
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endpier_0_1",
+      "type": "box",
+      "bounds": [
+        -0.392,
+        -0.085,
+        0.035,
+        -0.376,
+        -0.065,
+        0.615
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endpier_0_2",
+      "type": "box",
+      "bounds": [
+        -0.392,
+        0.065,
+        0.035,
+        -0.376,
+        0.085,
+        0.615
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endpier_0_3",
+      "type": "box",
+      "bounds": [
+        -0.392,
+        0.215,
+        0.035,
+        -0.376,
+        0.235,
+        0.615
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endglass_0_0_0",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        -0.2059,
+        0.075,
+        -0.371,
+        -0.0941,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_0_0_1",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        -0.0559,
+        0.075,
+        -0.371,
+        0.0559,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_0_0_2",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        0.0941,
+        0.075,
+        -0.371,
+        0.2059,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_0_1_0",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        -0.2059,
+        0.24333,
+        -0.371,
+        -0.0941,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_0_1_1",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        -0.0559,
+        0.24333,
+        -0.371,
+        0.0559,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_0_1_2",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        0.0941,
+        0.24333,
+        -0.371,
+        0.2059,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_0_2_0",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        -0.2059,
+        0.41167,
+        -0.371,
+        -0.0941,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_0_2_1",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        -0.0559,
+        0.41167,
+        -0.371,
+        0.0559,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_0_2_2",
+      "type": "box",
+      "bounds": [
+        -0.389,
+        0.0941,
+        0.41167,
+        -0.371,
+        0.2059,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endbelt_0_1",
+      "type": "box",
+      "bounds": [
+        -0.395,
+        -0.237,
+        0.23033,
+        -0.373,
+        0.237,
+        0.24933
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endbelt_0_2",
+      "type": "box",
+      "bounds": [
+        -0.395,
+        -0.237,
+        0.39867,
+        -0.373,
+        0.237,
+        0.41767
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endpier_1_0",
+      "type": "box",
+      "bounds": [
+        0.376,
+        -0.235,
+        0.035,
+        0.392,
+        -0.215,
+        0.615
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endpier_1_1",
+      "type": "box",
+      "bounds": [
+        0.376,
+        -0.085,
+        0.035,
+        0.392,
+        -0.065,
+        0.615
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endpier_1_2",
+      "type": "box",
+      "bounds": [
+        0.376,
+        0.065,
+        0.035,
+        0.392,
+        0.085,
+        0.615
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endpier_1_3",
+      "type": "box",
+      "bounds": [
+        0.376,
+        0.215,
+        0.035,
+        0.392,
+        0.235,
+        0.615
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endglass_1_0_0",
+      "type": "box",
+      "bounds": [
+        0.371,
+        -0.2059,
+        0.075,
+        0.389,
+        -0.0941,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_1_0_1",
+      "type": "box",
+      "bounds": [
+        0.371,
+        -0.0559,
+        0.075,
+        0.389,
+        0.0559,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_1_0_2",
+      "type": "box",
+      "bounds": [
+        0.371,
+        0.0941,
+        0.075,
+        0.389,
+        0.2059,
+        0.20967
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_1_1_0",
+      "type": "box",
+      "bounds": [
+        0.371,
+        -0.2059,
+        0.24333,
+        0.389,
+        -0.0941,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_1_1_1",
+      "type": "box",
+      "bounds": [
+        0.371,
+        -0.0559,
+        0.24333,
+        0.389,
+        0.0559,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_1_1_2",
+      "type": "box",
+      "bounds": [
+        0.371,
+        0.0941,
+        0.24333,
+        0.389,
+        0.2059,
+        0.378
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_1_2_0",
+      "type": "box",
+      "bounds": [
+        0.371,
+        -0.2059,
+        0.41167,
+        0.389,
+        -0.0941,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_1_2_1",
+      "type": "box",
+      "bounds": [
+        0.371,
+        -0.0559,
+        0.41167,
+        0.389,
+        0.0559,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endglass_1_2_2",
+      "type": "box",
+      "bounds": [
+        0.371,
+        0.0941,
+        0.41167,
+        0.389,
+        0.2059,
+        0.54633
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "main_endbelt_1_1",
+      "type": "box",
+      "bounds": [
+        0.373,
+        -0.237,
+        0.23033,
+        0.395,
+        0.237,
+        0.24933
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_endbelt_1_2",
+      "type": "box",
+      "bounds": [
+        0.373,
+        -0.237,
+        0.39867,
+        0.395,
+        0.237,
+        0.41767
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_roof",
+      "type": "box",
+      "bounds": [
+        -0.392,
+        -0.237,
+        0.592,
+        0.392,
+        0.237,
+        0.625
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_coping_side_0",
+      "type": "box",
+      "bounds": [
+        -0.398,
+        -0.24,
+        0.619,
+        0.398,
+        -0.21,
+        0.642
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_coping_side_1",
+      "type": "box",
+      "bounds": [
+        -0.398,
+        0.21,
+        0.619,
+        0.398,
+        0.24,
+        0.642
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_coping_end_0",
+      "type": "box",
+      "bounds": [
+        -0.395,
+        -0.24,
+        0.619,
+        -0.365,
+        0.24,
+        0.642
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "main_coping_end_1",
+      "type": "box",
+      "bounds": [
+        0.365,
+        -0.24,
+        0.619,
+        0.395,
+        0.24,
+        0.642
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_building",
+      "type": "box",
+      "bounds": [
+        0.22999999999999998,
+        -0.19,
+        0.0,
+        0.37,
+        0.19,
+        0.78
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "end_tower_heavy_plinth",
+      "type": "box",
+      "bounds": [
+        0.22399999999999998,
+        -0.196,
+        0,
+        0.376,
+        0.196,
+        0.035
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_pier_0_0",
+      "type": "box",
+      "bounds": [
+        0.21699999999999997,
+        -0.202,
+        0.035,
+        0.243,
+        -0.186,
+        0.796
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_pier_0_1",
+      "type": "box",
+      "bounds": [
+        0.357,
+        -0.202,
+        0.035,
+        0.383,
+        -0.186,
+        0.796
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_glass_0_0_0",
+      "type": "box",
+      "bounds": [
+        0.24927,
+        -0.199,
+        0.075,
+        0.35073,
+        -0.181,
+        0.19487
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "end_tower_glass_0_1_0",
+      "type": "box",
+      "bounds": [
+        0.24927,
+        -0.199,
+        0.24625,
+        0.35073,
+        -0.181,
+        0.36613
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "end_tower_glass_0_2_0",
+      "type": "box",
+      "bounds": [
+        0.24927,
+        -0.199,
+        0.4175,
+        0.35073,
+        -0.181,
+        0.53738
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "end_tower_glass_0_3_0",
+      "type": "box",
+      "bounds": [
+        0.24927,
+        -0.199,
+        0.58875,
+        0.35073,
+        -0.181,
+        0.70862
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "end_tower_belt_0_1",
+      "type": "box",
+      "bounds": [
+        0.21499999999999997,
+        -0.205,
+        0.23325,
+        0.385,
+        -0.183,
+        0.25225
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_belt_0_2",
+      "type": "box",
+      "bounds": [
+        0.21499999999999997,
+        -0.205,
+        0.4045,
+        0.385,
+        -0.183,
+        0.4235
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_belt_0_3",
+      "type": "box",
+      "bounds": [
+        0.21499999999999997,
+        -0.205,
+        0.57575,
+        0.385,
+        -0.183,
+        0.59475
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_pier_1_0",
+      "type": "box",
+      "bounds": [
+        0.21699999999999997,
+        0.186,
+        0.035,
+        0.243,
+        0.202,
+        0.796
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_pier_1_1",
+      "type": "box",
+      "bounds": [
+        0.357,
+        0.186,
+        0.035,
+        0.383,
+        0.202,
+        0.796
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_glass_1_0_0",
+      "type": "box",
+      "bounds": [
+        0.24927,
+        0.181,
+        0.075,
+        0.35073,
+        0.199,
+        0.19487
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "end_tower_glass_1_1_0",
+      "type": "box",
+      "bounds": [
+        0.24927,
+        0.181,
+        0.24625,
+        0.35073,
+        0.199,
+        0.36613
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "end_tower_glass_1_2_0",
+      "type": "box",
+      "bounds": [
+        0.24927,
+        0.181,
+        0.4175,
+        0.35073,
+        0.199,
+        0.53738
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "end_tower_glass_1_3_0",
+      "type": "box",
+      "bounds": [
+        0.24927,
+        0.181,
+        0.58875,
+        0.35073,
+        0.199,
+        0.70862
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "end_tower_belt_1_1",
+      "type": "box",
+      "bounds": [
+        0.21499999999999997,
+        0.183,
+        0.23325,
+        0.385,
+        0.205,
+        0.25225
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_belt_1_2",
+      "type": "box",
+      "bounds": [
+        0.21499999999999997,
+        0.183,
+        0.4045,
+        0.385,
+        0.205,
+        0.4235
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_belt_1_3",
+      "type": "box",
+      "bounds": [
+        0.21499999999999997,
+        0.183,
+        0.57575,
+        0.385,
+        0.205,
+        0.59475
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_roof",
+      "type": "box",
+      "bounds": [
+        0.21799999999999997,
+        -0.202,
+        0.772,
+        0.382,
+        0.202,
+        0.805
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_coping_side_0",
+      "type": "box",
+      "bounds": [
+        0.212,
+        -0.205,
+        0.799,
+        0.388,
+        -0.175,
+        0.822
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_coping_side_1",
+      "type": "box",
+      "bounds": [
+        0.212,
+        0.175,
+        0.799,
+        0.388,
+        0.205,
+        0.822
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_coping_end_0",
+      "type": "box",
+      "bounds": [
+        0.21499999999999997,
+        -0.205,
+        0.799,
+        0.245,
+        0.205,
+        0.822
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "end_tower_coping_end_1",
+      "type": "box",
+      "bounds": [
+        0.355,
+        -0.205,
+        0.799,
+        0.385,
+        0.205,
+        0.822
+      ],
+      "material": "concrete"
+    }
+  ],
+  "role": "shed",
+  "footprint": [
+    -0.404,
+    -0.246,
+    0.404,
+    0.246
+  ],
+  "catalogue": {
+    "label": "Daylight block \u2014 raised end stair tower \u00b7 no stacks",
+    "status": "prototype_only",
+    "theme": "1920s\u20131950s daylight factories"
+  }
+}

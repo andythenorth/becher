@@ -1,0 +1,105 @@
+{
+  "shapes": [
+    {
+      "id": "primary_body",
+      "type": "box",
+      "bounds": [
+        -0.36,
+        -0.25,
+        0,
+        0.23,
+        0.25,
+        0.8
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "primary_cap",
+      "type": "box",
+      "bounds": [
+        -0.38,
+        -0.27,
+        0.8,
+        0.25,
+        0.27,
+        0.86
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "lower_concrete_mass",
+      "type": "box",
+      "bounds": [
+        -0.37,
+        -0.26,
+        0,
+        0.23,
+        0.26,
+        0.27
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "loading_aperture",
+      "type": "box",
+      "bounds": [
+        -0.16,
+        -0.266,
+        0.01,
+        0.09,
+        -0.246,
+        0.25
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "infeed_housing",
+      "type": "box",
+      "bounds": [
+        0.235,
+        -0.22,
+        0,
+        0.405,
+        0.205,
+        0.46
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "infeed_cap",
+      "type": "box",
+      "bounds": [
+        0.22,
+        -0.235,
+        0.46,
+        0.42,
+        0.22,
+        0.51
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "visible_discharge",
+      "type": "beam",
+      "start": [
+        0.3,
+        -0.05,
+        0.48
+      ],
+      "end": [
+        0.16,
+        -0.05,
+        0.25
+      ],
+      "thickness": 0.085,
+      "material": "equipment"
+    }
+  ],
+  "role": "structure",
+  "footprint": [
+    -0.388,
+    -0.278,
+    0.428,
+    0.278
+  ]
+}

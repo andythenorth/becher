@@ -1,0 +1,66 @@
+{
+  "shapes": [
+    {
+      "id": "charging_tower",
+      "type": "box",
+      "bounds": [
+        -0.13,
+        -0.14,
+        0,
+        0.1,
+        0.14,
+        0.68
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "upper_chamber",
+      "type": "box",
+      "bounds": [
+        -0.18,
+        -0.17,
+        0.6,
+        0.15,
+        0.17,
+        0.82
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "top",
+      "type": "box",
+      "bounds": [
+        -0.19,
+        -0.18,
+        0.82,
+        0.16,
+        0.18,
+        0.87
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "drop_spout",
+      "type": "beam",
+      "start": [
+        0.09,
+        0.0,
+        0.56
+      ],
+      "end": [
+        0.25,
+        0.0,
+        0.23
+      ],
+      "thickness": 0.06,
+      "material": "pipe"
+    }
+  ],
+  "role": "structure",
+  "footprint": [
+    -0.198,
+    -0.188,
+    0.288,
+    0.188
+  ]
+}

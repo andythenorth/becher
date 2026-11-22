@@ -1,0 +1,128 @@
+{
+  "shapes": [
+    {
+      "id": "back_wall",
+      "type": "box",
+      "bounds": [
+        -0.405,
+        0.135,
+        0,
+        0.405,
+        0.26,
+        0.4
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "loading_pier_0",
+      "type": "box",
+      "bounds": [
+        -0.4,
+        -0.25,
+        0,
+        -0.265,
+        0.17,
+        0.5
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "loading_pier_1",
+      "type": "box",
+      "bounds": [
+        -0.07,
+        -0.25,
+        0,
+        0.07,
+        0.17,
+        0.5
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "loading_pier_2",
+      "type": "box",
+      "bounds": [
+        0.265,
+        -0.25,
+        0,
+        0.4,
+        0.17,
+        0.5
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "lower_deck",
+      "type": "box",
+      "bounds": [
+        -0.405,
+        -0.27,
+        0.41,
+        0.405,
+        0.27,
+        0.53
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "bin_mass",
+      "type": "box",
+      "bounds": [
+        -0.42,
+        -0.29,
+        0.52,
+        0.42,
+        0.29,
+        0.8
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "bin_cap",
+      "type": "box",
+      "bounds": [
+        -0.43,
+        -0.3,
+        0.8,
+        0.43,
+        0.3,
+        0.84
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "loading_dark_gate_1",
+      "type": "box",
+      "bounds": [
+        -0.24,
+        -0.26,
+        0.03,
+        -0.09,
+        -0.246,
+        0.26
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "loading_dark_gate_2",
+      "type": "box",
+      "bounds": [
+        0.09,
+        -0.26,
+        0.03,
+        0.24,
+        -0.246,
+        0.26
+      ],
+      "material": "frame"
+    }
+  ],
+  "role": "structure",
+  "footprint": [
+    -0.438,
+    -0.308,
+    0.438,
+    0.308
+  ]
+}

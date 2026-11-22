@@ -1,0 +1,115 @@
+{
+  "shapes": [
+    {
+      "id": "inset_concrete_base",
+      "type": "box",
+      "bounds": [
+        -0.35,
+        -0.21,
+        0,
+        0.35,
+        0.21,
+        0.13
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "steel_clad_shell",
+      "type": "box",
+      "bounds": [
+        -0.382,
+        -0.24,
+        0.116,
+        0.382,
+        0.24,
+        0.61
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "steel_flat_roof",
+      "type": "box",
+      "bounds": [
+        -0.398,
+        -0.255,
+        0.61,
+        0.398,
+        0.255,
+        0.649
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "large_loading_door",
+      "type": "box",
+      "bounds": [
+        -0.395,
+        -0.086,
+        0.12000000000000001,
+        -0.375,
+        0.086,
+        0.32
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "side_service_door",
+      "type": "box",
+      "bounds": [
+        0.374,
+        -0.092,
+        0.13,
+        0.394,
+        0.02,
+        0.28
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "side_window_0",
+      "type": "box",
+      "bounds": [
+        -0.24992000000000003,
+        -0.248,
+        0.32,
+        -0.17792000000000002,
+        -0.23099999999999998,
+        0.38
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "side_window_1",
+      "type": "box",
+      "bounds": [
+        -0.036,
+        -0.248,
+        0.32,
+        0.036,
+        -0.23099999999999998,
+        0.38
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "side_window_2",
+      "type": "box",
+      "bounds": [
+        0.17792000000000002,
+        -0.248,
+        0.32,
+        0.24992000000000003,
+        -0.23099999999999998,
+        0.38
+      ],
+      "material": "glass"
+    }
+  ],
+  "role": "shed",
+  "footprint": [
+    -0.406,
+    -0.263,
+    0.406,
+    0.263
+  ]
+}

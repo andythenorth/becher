@@ -1,4 +1,30 @@
 {
+  "Industrial buildings": {
+    "sheds": [
+      "gable_shed",
+      "monitor_shed",
+      "sawtooth_hall",
+      "boiler_house",
+      "twin_bay_shed",
+      "dispatch_shed",
+      "tall_mill",
+      "mill_steel_gable_long",
+      "mill_steel_gable_high",
+      "foundry_monitor_broad",
+      "mill_sawtooth_clad",
+      "foundry_flat_clad",
+      "mill_clerestory_tall"
+    ],
+    "annexes": [
+      "office_annex",
+      "loading_annex"
+    ],
+    "storage": [],
+    "yards": [
+      "enclosed_lift_tower",
+      "cooling_cell"
+    ]
+  },
   "Compact process buildings": {
     "yards": [
       "wrapped_process_compact_join_07_01",
@@ -230,26 +256,6 @@
     "sheds": [],
     "annexes": []
   },
-  "General industrial": {
-    "sheds": [
-      "gable_shed",
-      "monitor_shed",
-      "sawtooth_hall",
-      "boiler_house",
-      "twin_bay_shed",
-      "dispatch_shed",
-      "tall_mill"
-    ],
-    "annexes": [
-      "office_annex",
-      "loading_annex"
-    ],
-    "storage": [],
-    "yards": [
-      "enclosed_lift_tower",
-      "cooling_cell"
-    ]
-  },
   "Chimneys": {
     "sheds": [],
     "annexes": [],
@@ -296,7 +302,12 @@
       "quarry_final_06_twin_stack_boiler",
       "quarry_final_10_industrial_lift",
       "quarry_final_enlarged_mine_hall_56",
-      "quarry_final_enlarged_mine_hall_57"
+      "quarry_final_enlarged_mine_hall_57",
+      "mine_screen_hall_massive",
+      "mine_screen_hall_grounded",
+      "mine_coal_breaker_asymmetric",
+      "mine_crusher_house_heavy",
+      "mine_screening_shed_low"
     ],
     "annexes": [
       "quarry_final_balanced_headframe",
@@ -308,7 +319,10 @@
       "quarry_headframe_open_gantry"
     ],
     "storage": [],
-    "yards": []
+    "yards": [
+      "mine_washery_gallery",
+      "mine_sorting_tower_sidebay"
+    ]
   },
   "Liquid processing": {
     "storage": [
@@ -450,5 +464,58 @@
       "shed_open_gable_long_broad_high",
       "shed_open_clerestory_long_mid_height"
     ]
+  },
+  "Bulk loading and bunkers": {
+    "sheds": [
+      "bulk_hopper_house_heavy",
+      "bulk_coal_tipple_grounded",
+      "bulk_loading_building_bays",
+      "bulk_hopper_house_medium",
+      "bulk_coal_tipple_medium"
+    ],
+    "annexes": [
+      "loading_annex"
+    ],
+    "storage": [
+      "bulk_rail_bunker_piers",
+      "bulk_bunker_massive_buttress",
+      "bulk_rail_bunker_piers_medium",
+      "bulk_bunker_buttress_medium"
+    ],
+    "yards": [
+      "bulk_narrow_charging_tower"
+    ]
+  },
+  "Daylight factories": {
+    "sheds": [
+      "daylight_long_columnated",
+      "daylight_tall_five_storey",
+      "daylight_end_stair_tower",
+      "dagenham_pair_chimneys",
+      "dagenham_four_chimneys",
+      "dagenham_stepped_three_stacks",
+      "foundry_heavy_daylight",
+      "powerhouse_high_window",
+      "factory_tile_corner_e",
+      "factory_tile_corner_e_foundry",
+      "factory_tile_corner_e_low",
+      "factory_tile_end_e",
+      "factory_tile_end_e_stack",
+      "factory_tile_end_w",
+      "factory_tile_end_w_stack",
+      "factory_tile_junction_t",
+      "factory_tile_junction_t_tall",
+      "factory_tile_mid",
+      "factory_tile_mid_2stacks",
+      "factory_tile_wing_end_corner",
+      "factory_tile_wing_end_corner_foundry",
+      "factory_tile_wing_end_corner_low",
+      "factory_tile_wing_end_t",
+      "factory_tile_wing_end_t_tall",
+      "factory_tile_wing_mid_t"
+    ],
+    "annexes": [],
+    "storage": [],
+    "yards": []
   }
 }

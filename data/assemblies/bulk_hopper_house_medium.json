@@ -1,0 +1,102 @@
+{
+  "shapes": [
+    {
+      "id": "housing",
+      "type": "box",
+      "bounds": [
+        -0.2415,
+        -0.1995,
+        0.0,
+        0.2277,
+        0.1925,
+        0.6003
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "lower_concrete_band",
+      "type": "box",
+      "bounds": [
+        -0.2484,
+        -0.203,
+        0.0,
+        0.2346,
+        0.196,
+        0.174
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "roof",
+      "type": "box",
+      "bounds": [
+        -0.25875,
+        -0.21,
+        0.6003,
+        0.24495,
+        0.21,
+        0.6438
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "under_hopper_gate_0",
+      "type": "box",
+      "bounds": [
+        -0.16905,
+        -0.2072,
+        0.03045,
+        -0.06555,
+        -0.1974,
+        0.1566
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "under_hopper_gate_1",
+      "type": "box",
+      "bounds": [
+        0.03105,
+        -0.2072,
+        0.03045,
+        0.13455,
+        -0.1974,
+        0.1566
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "upper_slot",
+      "type": "box",
+      "bounds": [
+        -0.1242,
+        -0.2072,
+        0.3654,
+        0.1587,
+        -0.1939,
+        0.4437
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "side_gallery",
+      "type": "box",
+      "bounds": [
+        0.2277,
+        -0.119,
+        0.2436,
+        0.30705,
+        0.091,
+        0.4089
+      ],
+      "material": "equipment"
+    }
+  ],
+  "role": "structure",
+  "footprint": [
+    -0.26427,
+    -0.2156,
+    0.31257,
+    0.2156
+  ]
+}

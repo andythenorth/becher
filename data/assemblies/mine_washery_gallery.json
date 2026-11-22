@@ -1,0 +1,105 @@
+{
+  "shapes": [
+    {
+      "id": "washery_mass",
+      "type": "box",
+      "bounds": [
+        -0.32,
+        -0.26,
+        0,
+        0.1,
+        0.24,
+        0.65
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "washery_top",
+      "type": "box",
+      "bounds": [
+        -0.34,
+        -0.28,
+        0.65,
+        0.12,
+        0.26,
+        0.7
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "upper_deck",
+      "type": "box",
+      "bounds": [
+        -0.23,
+        -0.2,
+        0.7,
+        0.07,
+        0.18,
+        0.77
+      ],
+      "material": "equipment"
+    },
+    {
+      "id": "screen_bay",
+      "type": "box",
+      "bounds": [
+        0.14,
+        -0.19,
+        0.12,
+        0.37,
+        0.18,
+        0.38
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "screen_cap",
+      "type": "box",
+      "bounds": [
+        0.12,
+        -0.21,
+        0.38,
+        0.39,
+        0.2,
+        0.42
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "outfeed_enclosed",
+      "type": "beam",
+      "start": [
+        -0.03,
+        0,
+        0.59
+      ],
+      "end": [
+        0.25,
+        0,
+        0.35
+      ],
+      "thickness": 0.11,
+      "material": "roof"
+    },
+    {
+      "id": "side_high_windows",
+      "type": "box",
+      "bounds": [
+        -0.329,
+        -0.13,
+        0.33,
+        -0.31,
+        0.1,
+        0.41
+      ],
+      "material": "glass"
+    }
+  ],
+  "role": "structure",
+  "footprint": [
+    -0.348,
+    -0.288,
+    0.398,
+    0.268
+  ]
+}

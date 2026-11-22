@@ -13,7 +13,7 @@ def is_horizontal_tank(name):
     return name.startswith('storage_tank_horizontal_')
 
 
-@pytest.mark.parametrize('building_tag', ['General industrial', 'Compact process buildings'])
+@pytest.mark.parametrize('building_tag', ['Industrial buildings', 'Compact process buildings'])
 @pytest.mark.parametrize('silhouette', ['low', 'high'])
 def test_horizontal_tank_building_triples_are_available(building_tag, silhouette):
     buildings = {name for names in vocabularies()[building_tag].values() for name in names}
@@ -52,7 +52,7 @@ def test_corner_packing_obeys_volume_collision_and_bounds():
 
 
 def test_seeded_mixed_vocabulary_batches_are_reproducible():
-    for tag in ('General industrial', 'Compact process buildings'):
+    for tag in ('Industrial buildings', 'Compact process buildings'):
         for silhouette in ('low', 'high'):
             tags = ['Liquid storage', tag]
             assert draft(tags, 12345, silhouette) == draft(list(reversed(tags)), 12345, silhouette)
