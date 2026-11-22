@@ -23,7 +23,7 @@ def _base_recolour(surface, rotation, style):
 
 @pytest.mark.parametrize('rotation', (0, 90, 180, 270))
 def test_pitched_roof_guides_gain_pattern_and_ridge(rotation):
-    scene = {'shapes': rigid_place(load_part('shed_open_gable_long_broad_high'), '', (.5, .5))}
+    scene = {'shapes': rigid_place(load_part('shed_bridged_gable_broad'), '', (.5, .5))}
     surfaces, _ = cast_mesh(compile_scene(scene), rotation)
     before = _base_recolour(surfaces, rotation, 'blue_cladding')
     after = recolour(surfaces, rotation, 'blue_cladding')
@@ -78,7 +78,7 @@ def test_brick_style_does_not_add_metal_siding_texture():
     assert np.array_equal(after[wall], before[wall])
 
 @pytest.mark.parametrize('rotation', (0, 90, 180, 270))
-@pytest.mark.parametrize('component', ('foundry_monitor_broad', 'shed_open_gable_long_broad_high'))
+@pytest.mark.parametrize('component', ('foundry_monitor_broad', 'shed_bridged_gable_broad'))
 def test_camera_facing_pitched_roof_has_exactly_one_light_perimeter(component, rotation):
     """The single perimeter mask is also the ridge—never two outlines."""
     from src.colour_suggestions import (
@@ -127,7 +127,7 @@ def test_rear_roof_is_one_to_one_and_shared_ridge_is_not_double_painted(rotation
     )
     from src.mesh.camera import rays
     surface, _ = cast_mesh(compile_scene({
-        'shapes': rigid_place(load_part('shed_open_gable_long_broad_high'), '', (.5, .5))
+        'shapes': rigid_place(load_part('shed_bridged_gable_broad'), '', (.5, .5))
     }), rotation)
     spec = STYLES['blue_cladding']
     base = _base_recolour(surface, rotation, 'blue_cladding')

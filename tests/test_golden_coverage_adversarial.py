@@ -1,6 +1,6 @@
 """Negative controls for the golden oracle: damaged metadata must be rejected."""
 import pytest
-from test_golden_outputs import REFERENCE, assert_complete_sprite_coverage
+from .test_golden_outputs import REFERENCE, assert_complete_sprite_coverage
 
 
 def simulated_manifest(case):
