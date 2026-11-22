@@ -1,0 +1,457 @@
+{
+  "role": "shed",
+  "footprint": [
+    -0.234,
+    -0.179,
+    0.234,
+    0.179
+  ],
+  "shapes": [
+    {
+      "id": "building_shell",
+      "type": "box",
+      "bounds": [
+        -0.21,
+        -0.155,
+        0.025,
+        0.21,
+        0.155,
+        0.2
+      ],
+      "material": "wall"
+    },
+    {
+      "id": "ground_plinth",
+      "type": "box",
+      "bounds": [
+        -0.216,
+        -0.161,
+        0,
+        0.216,
+        0.161,
+        0.035
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "roof_slab",
+      "type": "box",
+      "bounds": [
+        -0.217,
+        -0.162,
+        0.191,
+        0.217,
+        0.162,
+        0.218
+      ],
+      "material": "roof"
+    },
+    {
+      "id": "parapet_x-1",
+      "type": "box",
+      "bounds": [
+        -0.22,
+        -0.163,
+        0.198,
+        -0.212,
+        0.163,
+        0.229
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "parapet_x1",
+      "type": "box",
+      "bounds": [
+        0.212,
+        -0.163,
+        0.198,
+        0.22,
+        0.163,
+        0.229
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "parapet_y-1",
+      "type": "box",
+      "bounds": [
+        -0.218,
+        -0.165,
+        0.198,
+        0.218,
+        -0.157,
+        0.229
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "parapet_y1",
+      "type": "box",
+      "bounds": [
+        -0.218,
+        0.157,
+        0.198,
+        0.218,
+        0.165,
+        0.229
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "glaze_x-1_0_0",
+      "type": "box",
+      "bounds": [
+        -0.1904,
+        -0.173,
+        0.083,
+        -0.0896,
+        -0.162,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "glaze_x-1_1_0",
+      "type": "box",
+      "bounds": [
+        -0.0504,
+        -0.173,
+        0.083,
+        0.0504,
+        -0.162,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "glaze_x-1_2_0",
+      "type": "box",
+      "bounds": [
+        0.0896,
+        -0.173,
+        0.083,
+        0.1904,
+        -0.162,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "pier_x-1_0",
+      "type": "box",
+      "bounds": [
+        -0.2185,
+        -0.178,
+        0.035,
+        -0.2015,
+        -0.164,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_x-1_1",
+      "type": "box",
+      "bounds": [
+        -0.0785,
+        -0.178,
+        0.035,
+        -0.0615,
+        -0.164,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_x-1_2",
+      "type": "box",
+      "bounds": [
+        0.0615,
+        -0.178,
+        0.035,
+        0.0785,
+        -0.164,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_x-1_3",
+      "type": "box",
+      "bounds": [
+        0.2015,
+        -0.178,
+        0.035,
+        0.2185,
+        -0.164,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "glaze_x1_0_0",
+      "type": "box",
+      "bounds": [
+        -0.1904,
+        0.162,
+        0.083,
+        -0.0896,
+        0.173,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "glaze_x1_1_0",
+      "type": "box",
+      "bounds": [
+        -0.0504,
+        0.162,
+        0.083,
+        0.0504,
+        0.173,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "glaze_x1_2_0",
+      "type": "box",
+      "bounds": [
+        0.0896,
+        0.162,
+        0.083,
+        0.1904,
+        0.173,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "pier_x1_0",
+      "type": "box",
+      "bounds": [
+        -0.2185,
+        0.164,
+        0.035,
+        -0.2015,
+        0.178,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_x1_1",
+      "type": "box",
+      "bounds": [
+        -0.0785,
+        0.164,
+        0.035,
+        -0.0615,
+        0.178,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_x1_2",
+      "type": "box",
+      "bounds": [
+        0.0615,
+        0.164,
+        0.035,
+        0.0785,
+        0.178,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_x1_3",
+      "type": "box",
+      "bounds": [
+        0.2015,
+        0.164,
+        0.035,
+        0.2185,
+        0.178,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "glaze_y-1_0_0",
+      "type": "box",
+      "bounds": [
+        -0.228,
+        -0.1333,
+        0.083,
+        -0.217,
+        -0.0217,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "glaze_y-1_1_0",
+      "type": "box",
+      "bounds": [
+        -0.228,
+        0.0217,
+        0.083,
+        -0.217,
+        0.1333,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "pier_y-1_0",
+      "type": "box",
+      "bounds": [
+        -0.233,
+        -0.1635,
+        0.035,
+        -0.219,
+        -0.1465,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_y-1_1",
+      "type": "box",
+      "bounds": [
+        -0.233,
+        -0.0085,
+        0.035,
+        -0.219,
+        0.0085,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_y-1_2",
+      "type": "box",
+      "bounds": [
+        -0.233,
+        0.1465,
+        0.035,
+        -0.219,
+        0.1635,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "glaze_y1_0_0",
+      "type": "box",
+      "bounds": [
+        0.217,
+        -0.1333,
+        0.083,
+        0.228,
+        -0.0217,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "glaze_y1_1_0",
+      "type": "box",
+      "bounds": [
+        0.217,
+        0.0217,
+        0.083,
+        0.228,
+        0.1333,
+        0.155
+      ],
+      "material": "glass"
+    },
+    {
+      "id": "pier_y1_0",
+      "type": "box",
+      "bounds": [
+        0.219,
+        -0.1635,
+        0.035,
+        0.233,
+        -0.1465,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_y1_1",
+      "type": "box",
+      "bounds": [
+        0.219,
+        -0.0085,
+        0.035,
+        0.233,
+        0.0085,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "pier_y1_2",
+      "type": "box",
+      "bounds": [
+        0.219,
+        0.1465,
+        0.035,
+        0.233,
+        0.1635,
+        0.202
+      ],
+      "material": "concrete"
+    },
+    {
+      "id": "loading_door",
+      "type": "box",
+      "bounds": [
+        -0.0336,
+        -0.176,
+        0.035,
+        0.0378,
+        -0.161,
+        0.07425
+      ],
+      "material": "frame"
+    },
+    {
+      "id": "stair_lift_head",
+      "type": "box",
+      "bounds": [
+        0.137,
+        0.082,
+        0.217,
+        0.192,
+        0.137,
+        0.243
+      ],
+      "material": "metal"
+    },
+    {
+      "id": "stair_roof",
+      "type": "box",
+      "bounds": [
+        0.133,
+        0.078,
+        0.235,
+        0.196,
+        0.141,
+        0.25
+      ],
+      "material": "roof"
+    }
+  ],
+  "catalogue": {
+    "label": "Daylight Low Office Annex",
+    "theme": "Interwar and postwar columnated daylight factories"
+  }
+}

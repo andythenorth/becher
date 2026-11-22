@@ -3,7 +3,6 @@
 from collections import Counter
 from functools import lru_cache
 from itertools import combinations
-from copy import deepcopy
 import json
 from pathlib import Path
 import random
@@ -74,8 +73,14 @@ def rigid_place(part, prefix, centre, turns=0):
     def pt(p):
         x, y = rotate_xy(p[0], p[1], turns)
         return [round(x + ox, 8), round(y + oy, 8), round(p[2] + SLAB, 8)]
-    result = deepcopy(part['shapes'])
-    for shape in result:
+    result = []
+    for source in part['shapes']:
+        # Only coordinates and IDs change. Copy the shape and construct new
+        # coordinate arrays below, rather than recursively copying immutable
+        # material metadata and every old coordinate first.
+        shape = source.copy()
+        if 'crease_rings' in shape:
+            shape['crease_rings'] = list(shape['crease_rings'])
         shape['id'] = prefix + shape['id']
         if 'bounds' in shape:
             b = shape['bounds']
@@ -94,6 +99,7 @@ def rigid_place(part, prefix, centre, turns=0):
             shape['end'] = pt(shape['end'])
         else:
             raise ValueError(f"Unsupported rigid placement for {shape['id']}")
+        result.append(shape)
     return result
 
 
@@ -156,8 +162,20 @@ def valid_addition(shapes, occupied, footprint_bounds, *, whole_tile=False):
     if any(box[0] < -EPSILON or box[1] < -EPSILON or
            box[3] > 1+EPSILON or box[4] > 1+EPSILON for box in volumes):
         return False
-    if any(volumes_overlap(box, old) for box in volumes for old in occupied):
-        return False
+    if occupied:
+        # A component's full enclosing box is a conservative collision test.
+        # Most edge-packed parts have a gap, so avoid the costly primitive-
+        # by-primitive comparisons unless the enclosing boxes overlap.
+        left = min(box[0] for box in volumes)
+        right = max(box[3] for box in volumes)
+        front = min(box[1] for box in volumes)
+        back = max(box[4] for box in volumes)
+        if not (right <= min(box[0] for box in occupied) + EPSILON or
+                max(box[3] for box in occupied) <= left + EPSILON or
+                back <= min(box[1] for box in occupied) + EPSILON or
+                max(box[4] for box in occupied) <= front + EPSILON):
+            if any(volumes_overlap(box, old) for box in volumes for old in occupied):
+                return False
     return True
 
 
@@ -332,6 +350,15 @@ def _general_candidates(names, silhouette):
     packable = [name for name in names
                 if parts[name].get('placement') != 'tile' or fits_packing_site(name)]
     heights = {name: max(map(top,parts[name]['shapes'])) for name in packable}
+    # Edge attachments never overlap in XY. Every successful pair must fit
+    # its two shorter footprint dimensions side-by-side, plus clearance.
+    # Quarter-turn rotations are already explored in the normal search.
+    short_span = {
+        name: min(parts[name]['footprint'][2] - parts[name]['footprint'][0],
+                  parts[name]['footprint'][3] - parts[name]['footprint'][1])
+        for name in packable
+    }
+    pair_limit = SITE_MAX - SITE_MIN - GAP + EPSILON
 
     def matches_profile(*names):
         height = max(heights[name] for name in names)
@@ -340,6 +367,8 @@ def _general_candidates(names, silhouette):
     for a,b in combinations(packable,2):
         # Preserve the current exclusion of different tank designs.
         if parts[a].get('role') == parts[b].get('role') == 'tank':
+            continue
+        if short_span[a] + short_span[b] > pair_limit:
             continue
         if not matches_profile(a,b):
             continue
@@ -361,7 +390,7 @@ def _general_candidates(names, silhouette):
 
     # Repeat identical parts where a second copy fits; no special casing.
     for name in packable:
-        if not matches_profile(name):
+        if not matches_profile(name) or 2 * short_span[name] > pair_limit:
             continue
         for axis in (0,1):
             found = False

@@ -42,7 +42,7 @@ def test_daylight_factory_vocabulary_separates_tile_sections_and_regular_buildin
     catalogue = component_catalogue()
     groups = vocabularies()
     assert 'General industrial' not in groups
-    assert set(FACTORY_TILES + DAYLIGHT_STANDALONE) == set(groups['Daylight factories']['sheds'])
+    assert set(FACTORY_TILES + DAYLIGHT_STANDALONE) <= set(groups['Daylight factories']['sheds'])
     assert not set(FACTORY_TILES + DAYLIGHT_STANDALONE) & set(groups['Industrial buildings']['sheds'])
     assert {'mill_steel_gable_long', 'mill_clerestory_tall'} <= set(groups['Industrial buildings']['sheds'])
     assert set(FACTORY_TILES + DAYLIGHT_STANDALONE) <= set(catalogue)
