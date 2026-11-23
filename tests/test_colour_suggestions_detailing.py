@@ -39,14 +39,29 @@ def test_pitched_roof_guides_gain_pattern_and_ridge(rotation):
 
 
 @pytest.mark.parametrize('rotation', (0, 90, 180, 270))
-def test_flat_roofs_are_not_patterned(rotation):
-    scene = {'shapes': rigid_place(load_part('dispatch_shed'), '', (.5, .5))}
+def test_flat_roofs_use_shared_charcoal_ramp_and_light_outline(rotation):
+    from src.colour_suggestions import (
+        FLAT_ROOF_BASE, FLAT_ROOF_DARK, FLAT_ROOF_LIGHT,
+        PITCHED_ROOF_MAX_Z, _apply_flat_roof_shading,
+        _one_pixel_roof_perimeter,
+    )
+    scene = {'shapes': rigid_place(load_part('foundry_flat_clad'), '', (.5, .5))}
     surfaces, _ = cast_mesh(compile_scene(scene), rotation)
     before = _base_recolour(surfaces, rotation, 'blue_cladding')
     after = recolour(surfaces, rotation, 'blue_cladding')
+    flat_roof = ((surfaces.material == MATERIAL_IDS['roof']) &
+                 (surfaces.role == SURFACE_ROLES['roof_top']) &
+                 (surfaces.normal[..., 2] >= PITCHED_ROOF_MAX_Z))
+    assert flat_roof.any()
+    assert set(np.unique(after[flat_roof])) <= {
+        FLAT_ROOF_DARK, FLAT_ROOF_BASE, FLAT_ROOF_LIGHT}
+    assert np.unique(after[flat_roof]).size >= 2
+    repeated, _ = _apply_flat_roof_shading(before, surfaces, rotation)
     roof = surfaces.material == MATERIAL_IDS['roof']
-    assert roof.any()
-    assert np.array_equal(after[roof], before[roof])
+    assert np.array_equal(after[roof], repeated[roof])
+    outline = _one_pixel_roof_perimeter(flat_roof)
+    assert outline.any()
+    assert np.all(after[outline] == FLAT_ROOF_LIGHT)
 
 
 def test_vertical_metal_siding_is_optional_per_wall_primitive():

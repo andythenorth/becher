@@ -7,7 +7,11 @@ import numpy as np
 from PIL import Image
 import pytest
 
-from src.colour_suggestions import STYLES, ROTATIONS, recolour, render
+from src.colour_suggestions import (
+    STYLES, ROTATIONS, recolour, render,
+    FLAT_ROOF_BASE, FLAT_ROOF_DARK, FLAT_ROOF_LIGHT,
+    PITCHED_ROOF_MAX_Z,
+)
 from src.geometry import MATERIAL_IDS
 from src.mesh.compile import compile_scene
 from src.mesh.render import cast_mesh
@@ -38,6 +42,13 @@ def test_colour_guides_preserve_silhouette_and_all_other_materials():
     original = surface.reference_pixels.copy()
     walls = surface.material == MATERIAL_IDS['wall']
     roofs = surface.material == MATERIAL_IDS['roof']
+    flat_top = (roofs & (surface.role == 2) &
+                (surface.normal[..., 2] >= PITCHED_ROOF_MAX_Z))
+    flat_primitives = np.unique(surface.primitive[flat_top])
+    flat_fascia = (roofs & (surface.role == 3) &
+                   (np.abs(surface.normal[..., 2]) <= 0.08) &
+                   np.isin(surface.primitive, flat_primitives))
+    other_roofs = roofs & ~flat_top & ~flat_fascia
     vessels = surface.material == MATERIAL_IDS['tank_wall']
     unchanged = ~(walls | roofs | vessels)
     assert walls.any() and roofs.any() and (surface.material == MATERIAL_IDS['glass']).any()
@@ -47,7 +58,10 @@ def test_colour_guides_preserve_silhouette_and_all_other_materials():
         assert np.array_equal(output == 0, original == 0)
         assert np.array_equal(output[unchanged], original[unchanged])
         assert set(np.unique(output[walls])) <= set(config['wall'])
-        assert set(np.unique(output[roofs])) <= set(config['roof'])
+        assert set(np.unique(output[other_roofs])) <= set(config['roof'])
+        assert set(np.unique(output[flat_top])) <= {
+            FLAT_ROOF_DARK, FLAT_ROOF_BASE, FLAT_ROOF_LIGHT}
+        assert np.all(output[flat_fascia] == FLAT_ROOF_BASE)
         assert set(np.unique(output[vessels])) <= set(config['tank_wall'])
     assert np.array_equal(surface.reference_pixels, original)
     with pytest.raises(ValueError, match='Unknown colour suggestion'):

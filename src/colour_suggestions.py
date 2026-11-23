@@ -73,6 +73,9 @@ ROOF_TERMINAL_EPS = 0.020
 RIDGE_HEIGHT_EPS = 0.010
 MIN_REAR_ROOF_PIXELS = 40  # Avoid dithering exposed one-pixel slivers.
 WALL_TEXTURE_STRIDE = 2  # one light screen column, one dark cladding rib
+FLAT_ROOF_BASE = 5       # dark grey; adjacent indices are one shade either side
+FLAT_ROOF_DARK = 4
+FLAT_ROOF_LIGHT = 6
 
 
 def _visible_positions(surfaces, rotation):
@@ -154,6 +157,75 @@ def _one_pixel_roof_perimeter(mask):
         border[col[0], x] = True
         border[col[-1], x] = True
     return border
+
+
+def _mask_components(mask):
+    """Return deterministic 8-connected components in row-major order."""
+    seen = np.zeros_like(mask, dtype=bool)
+    components = []
+    height, width = mask.shape
+    for y, x in zip(*np.nonzero(mask)):
+        if seen[y, x]:
+            continue
+        component = np.zeros_like(mask, dtype=bool)
+        seen[y, x] = True
+        stack = [(int(y), int(x))]
+        while stack:
+            cy, cx = stack.pop()
+            component[cy, cx] = True
+            for dy in (-1, 0, 1):
+                for dx in (-1, 0, 1):
+                    ny, nx = cy + dy, cx + dx
+                    if (0 <= ny < height and 0 <= nx < width and
+                            mask[ny, nx] and not seen[ny, nx]):
+                        seen[ny, nx] = True
+                        stack.append((ny, nx))
+        components.append(component)
+    return components
+
+
+def _apply_flat_roof_shading(pixels, surfaces, rotation):
+    """Shade flat roof tops charcoal, with sparse flecks and a light outline."""
+    result = np.array(pixels, copy=True)
+    touched = np.zeros_like(result, dtype=bool)
+    flat_top = ((surfaces.material == 2) & (surfaces.role == 2) &
+                (surfaces.normal[..., 2] >= PITCHED_ROOF_MAX_Z))
+    if not flat_top.any():
+        return result, touched
+
+    positions = _visible_positions(surfaces, rotation)
+    flat_primitives = np.unique(surfaces.primitive[flat_top])
+    flat_fascia = ((surfaces.material == 2) & (surfaces.role == 3) &
+                   (np.abs(surfaces.normal[..., 2]) <= 0.08) &
+                   np.isin(surfaces.primitive, flat_primitives))
+    result[flat_fascia] = FLAT_ROOF_BASE
+    touched[flat_fascia] = True
+
+    qx = np.zeros(flat_top.shape, dtype=np.int64)
+    qy = np.zeros(flat_top.shape, dtype=np.int64)
+    qx[flat_top] = np.rint(positions[..., 0][flat_top] * 128).astype(np.int64)
+    qy[flat_top] = np.rint(positions[..., 1][flat_top] * 128).astype(np.int64)
+    for primitive in flat_primitives:
+        by_primitive = flat_top & (surfaces.primitive == primitive)
+        levels = np.unique(np.round(positions[..., 2][by_primitive], 3))
+        for level in levels:
+            plane = by_primitive & (np.round(positions[..., 2], 3) == level)
+            for mask in _mask_components(plane):
+                ys, xs = np.nonzero(mask)
+                result[ys, xs] = FLAT_ROOF_BASE
+                # World-space hashing keeps the sparse flecks attached to the
+                # roof as the camera rotates; two of 29 buckets are flecked.
+                key = ((qx[ys, xs] * 73856093) ^
+                       (qy[ys, xs] * 19349663) ^
+                       (int(primitive) * 83492791)) % 29
+                result[ys[key == 0], xs[key == 0]] = FLAT_ROOF_DARK
+                result[ys[key == 1], xs[key == 1]] = FLAT_ROOF_LIGHT
+                touched[ys, xs] = True
+
+                edge = _one_pixel_roof_perimeter(mask)
+                result[edge] = FLAT_ROOF_LIGHT
+                touched[edge] = True
+    return result, touched
 
 
 
@@ -329,7 +401,8 @@ def recolour(surfaces, rotation, style, palette=None):
     pixels = shade(surfaces, palette, light=rotate_xy(SUN_FIVE, rotation),
                    index_ramps=indices)
     roof_pixels, roof_mask = _apply_roof_banding(pixels, surfaces, rotation, spec['roof'])
-    pixels = roof_pixels
+    flat_pixels, flat_roof_mask = _apply_flat_roof_shading(roof_pixels, surfaces, rotation)
+    pixels = flat_pixels
     wall_pixels, wall_mask = _apply_vertical_metal_siding(
         pixels, surfaces, spec['wall'], enabled=bool(spec.get('metal_siding')))
     edge_pixels, edge_mask = _apply_horizontal_wall_edges(
@@ -339,6 +412,10 @@ def recolour(surfaces, rotation, style, palette=None):
         non_roof = roof_mask & (surfaces.material != 2)
         if np.any(non_roof):
             raise ValueError('Roof banding modified non-roof pixels')
+    if np.any(flat_roof_mask):
+        non_roof = flat_roof_mask & (surfaces.material != 2)
+        if np.any(non_roof):
+            raise ValueError('Flat roof shading modified non-roof pixels')
     if np.any(wall_mask):
         non_wall = wall_mask & ~((surfaces.role == 1) & np.isin(surfaces.material, np.array([1, 10], dtype=np.uint8)))
         if np.any(non_wall):
