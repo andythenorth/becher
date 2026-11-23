@@ -174,3 +174,62 @@ def test_process_pipes_stay_in_approved_brown_red_or_green_ramps():
     brown_red = (227, 228, 229, 230)
     false_green = (97, 99, 100, 102)
     assert {tuple(spec['pipe']) for spec in STYLES.values()} == {brown_red, false_green}
+
+
+def test_metal_cladding_uses_one_light_one_dark_screen_columns():
+    from types import SimpleNamespace
+    from src.colour_suggestions import _apply_vertical_metal_siding, WALL_TEXTURE_STRIDE
+
+    assert WALL_TEXTURE_STRIDE == 2
+    wall = STYLES['blue_cladding']['wall']
+    shape = (8, 10)
+    surfaces = SimpleNamespace(
+        role=np.ones(shape, dtype=np.uint8),
+        material=np.ones(shape, dtype=np.uint8),
+        primitive=np.ones(shape, dtype=np.int32),
+    )
+    base = np.full(shape, wall[2], dtype=np.uint8)
+    textured, touched = _apply_vertical_metal_siding(base, surfaces, wall, enabled=True)
+
+    expected = np.zeros(shape, dtype=bool)
+    expected[:, 2::WALL_TEXTURE_STRIDE] = True
+    expected[:, -1] = False  # keep the outer silhouette column plain
+    assert np.array_equal(touched, expected)
+    assert np.all(textured[touched] == wall[1])
+    assert np.array_equal(textured[~touched], base[~touched])
+
+
+def test_cladding_wall_edges_follow_both_visible_wall_faces():
+    from types import SimpleNamespace
+    from src.colour_suggestions import _apply_horizontal_wall_edges
+
+    shape = (10, 12)
+    role = np.zeros(shape, dtype=np.uint8)
+    material = np.zeros(shape, dtype=np.uint8)
+    primitive = np.zeros(shape, dtype=np.int32)
+    normal = np.zeros((*shape, 3), dtype=np.float32)
+    # The two perpendicular faces model the long elevation and building end;
+    # both receive the same top and bottom edge detail.
+    role[1:7, 1:8] = 1
+    material[1:7, 1:8] = 1
+    primitive[1:7, 1:8] = 1
+    normal[1:7, 1:8] = (0, 1, 0)
+    role[2:6, 8:10] = 1
+    material[2:6, 8:10] = 1
+    primitive[2:6, 8:10] = 1
+    normal[2:6, 8:10] = (1, 0, 0)
+    surfaces = SimpleNamespace(role=role, material=material,
+                               primitive=primitive, normal=normal)
+    wall = STYLES['blue_cladding']['wall']
+    base = np.full(shape, wall[2], dtype=np.uint8)
+    detailed, touched = _apply_horizontal_wall_edges(base, surfaces, wall, enabled=True)
+
+    expected = np.zeros(shape, dtype=bool)
+    for x in range(1, 8):
+        expected[1, x] = True
+        expected[6, x] = True
+    for x in range(8, 10):
+        expected[2, x] = True
+        expected[5, x] = True
+    assert np.array_equal(touched, expected)
+    assert np.all(detailed[touched] == wall[0])

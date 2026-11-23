@@ -72,7 +72,7 @@ PITCHED_ROOF_MAX_Z = 0.965
 ROOF_TERMINAL_EPS = 0.020
 RIDGE_HEIGHT_EPS = 0.010
 MIN_REAR_ROOF_PIXELS = 40  # Avoid dithering exposed one-pixel slivers.
-WALL_TEXTURE_STRIDE = 3
+WALL_TEXTURE_STRIDE = 2  # one light screen column, one dark cladding rib
 
 
 def _visible_positions(surfaces, rotation):
@@ -276,6 +276,44 @@ def _apply_vertical_metal_siding(pixels, surfaces, wall_ramp, *, enabled):
     return result, touched
 
 
+def _apply_horizontal_wall_edges(pixels, surfaces, wall_ramp, *, enabled):
+    """Darken the top and bottom pixel of both visible wall faces.
+
+    Face normals split the two visible sides of a building. Per-column extrema
+    follow each projected wall boundary, applying the same one-pixel course
+    to both faces. Ambiguous surfaces with other than two clear vertical faces
+    are skipped.
+    """
+    result = np.array(pixels, copy=True)
+    touched = np.zeros_like(result, dtype=bool)
+    if not enabled:
+        return result, touched
+    eligible = ((surfaces.role == 1) &
+                np.isin(surfaces.material, np.array([1, 10], dtype=np.uint8)))
+    dark = np.uint8(wall_ramp[0])
+    rounded = np.round(surfaces.normal, 3)
+    for primitive in np.unique(surfaces.primitive[eligible]):
+        primitive_mask = eligible & (surfaces.primitive == primitive)
+        faces = []
+        wall_normals = rounded[primitive_mask]
+        wall_normals = wall_normals[np.abs(wall_normals[:, 2]) <= 0.1]
+        for normal in np.unique(wall_normals, axis=0):
+            face = primitive_mask & np.all(rounded == normal, axis=-1)
+            if face.sum() >= 8:
+                faces.append(face)
+        if len(faces) != 2:
+            continue
+        edge = np.zeros_like(primitive_mask)
+        for face in faces:
+            for x in np.flatnonzero(face.any(axis=0)):
+                ys = np.flatnonzero(face[:, x])
+                edge[ys[0], x] = True
+                edge[ys[-1], x] = True
+        result[edge] = dark
+        touched |= edge
+    return result, touched
+
+
 def recolour(surfaces, rotation, style, palette=None):
     """Render material studies through the same shader as the original sprite.
 
@@ -294,7 +332,9 @@ def recolour(surfaces, rotation, style, palette=None):
     pixels = roof_pixels
     wall_pixels, wall_mask = _apply_vertical_metal_siding(
         pixels, surfaces, spec['wall'], enabled=bool(spec.get('metal_siding')))
-    pixels = wall_pixels
+    edge_pixels, edge_mask = _apply_horizontal_wall_edges(
+        wall_pixels, surfaces, spec['wall'], enabled=bool(spec.get('metal_siding')))
+    pixels = edge_pixels
     if np.any(roof_mask):
         non_roof = roof_mask & (surfaces.material != 2)
         if np.any(non_roof):
@@ -303,6 +343,10 @@ def recolour(surfaces, rotation, style, palette=None):
         non_wall = wall_mask & ~((surfaces.role == 1) & np.isin(surfaces.material, np.array([1, 10], dtype=np.uint8)))
         if np.any(non_wall):
             raise ValueError('Wall texturing modified non-wall pixels')
+    if np.any(edge_mask):
+        non_wall = edge_mask & ~((surfaces.role == 1) & np.isin(surfaces.material, np.array([1, 10], dtype=np.uint8)))
+        if np.any(non_wall):
+            raise ValueError('Wall edge detailing modified non-wall pixels')
     if not np.array_equal(pixels == 0, surfaces.reference_pixels == 0):
         raise ValueError('Colour suggestion changed silhouette')
     return pixels
